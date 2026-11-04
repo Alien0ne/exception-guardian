@@ -12,7 +12,7 @@ It grades 13 exceptions: REVOKE 6, REVIEW 3, OK 4.
 
 | File | What it is |
 |---|---|
-| `demo-run/report.html` | the whole run on one page. GitHub shows its source, so download it and open it in a browser. It loads nothing from the network |
+| `demo-run/report.html` | the whole run on one page: [open it in your browser](https://alien0ne.github.io/exception-guardian/examples/demo-run/report.html) (GitHub Pages). It loads nothing from the network |
 | `demo-run/report.md` | the same grades as text, with each exception's evidence |
 | `demo-run/hunt-briefs/R-HERO-001.md` | the hunt brief for the exception to revoke first: evidence, look-back window, queries |
 | `demo-run/rules/R-HERO-001/` | its Sigma rules, each with a Splunk, Sentinel and Defender query where one converts |

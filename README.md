@@ -116,7 +116,7 @@ even need to run it to see the result: a fresh run is checked in at
 | Open | To see |
 |---|---|
 | [`report.md`](examples/demo-run/report.md) | the ranked report: every exception, with its then-and-now evidence |
-| `report.html` | the same run as one page: download it and open it in a browser (GitHub shows HTML as source) |
+| [`report.html`](https://alien0ne.github.io/exception-guardian/examples/demo-run/report.html) | the same run as one page, [open it in your browser](https://alien0ne.github.io/exception-guardian/examples/demo-run/report.html) (served by GitHub Pages) |
 | [`hunt-briefs/R-HERO-001.md`](examples/demo-run/hunt-briefs/R-HERO-001.md) | what the SOC gets for one exception: hosts, evidence, the window to search, tested queries |
 | [`rules/R-HERO-001/`](examples/demo-run/rules/R-HERO-001/) | the Sigma rules and their Splunk, Sentinel and Defender queries |
 | [`approval-plan.md`](examples/demo-run/approval-plan.md) | the plan a person approves, with ticket text |
