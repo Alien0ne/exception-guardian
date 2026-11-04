@@ -79,20 +79,11 @@ person.
 
 ## How it works
 
-[![Exception Guardian, the whole workflow in 90 seconds, on the live lab run: 324 exceptions re-graded, PrintNightmare accepted as internal only but internet-facing, in KEV and on an attack path to a domain controller; 7 to revoke, 316 to review, 1 fine; 4 DCs proven and confirmed by a person; 16 SigmaHQ rules, 6 drafts by Claude, tested and converted for Splunk, Sentinel and Defender; a person types y in their own terminal; hunt briefs for the hidden window](docs/media/workflow.webp)](docs/media/workflow-eric.mp4)
+[![Exception Guardian, the whole workflow in 90 seconds, on the live lab run: 324 exceptions re-graded, PrintNightmare accepted as internal only but internet-facing, in KEV and on an attack path to a domain controller; 7 to revoke, 316 to review, 1 fine; 4 DCs proven and confirmed by a person; 16 SigmaHQ rules, 6 drafts by Claude, tested and converted for Splunk, Sentinel and Defender; a person types y in their own terminal; hunt briefs for the hidden window](docs/media/workflow.webp)](docs/films.md)
 
-**Watch it with sound.** The animation above is the same film without sound. Every number in it comes from the
-live run of 4 Nov 2026, with host, account and address names left out.
-
-Male voice (Eric, 89 s):
-
-https://github.com/user-attachments/assets/2189797c-c339-4ebe-936e-5e7055d3c12f
-
-Female voice (Alice, 102 s):
-
-https://github.com/user-attachments/assets/64de2b09-94d9-479b-8610-755c0fe23506
-
-To download them: [Eric](docs/media/workflow-eric.mp4), [Alice](docs/media/workflow-alice.mp4).
+**[Watch it with sound](docs/films.md)**: a male voice (Eric, 89 s) or a female voice (Alice, 102 s). The animation
+above is the same film without sound. Every number in it comes from the live run of 4 Nov 2026, with host, account
+and address names left out. Download: [Eric](docs/media/workflow-eric.mp4), [Alice](docs/media/workflow-alice.mp4).
 
 ![Who does what at each step. Find: the CLI grades every exception from Tenable VM, Tenable SC or a CSV against CISA KEV, FIRST EPSS, exposure and attack paths, and Claude explains each REVOKE. 1b Exposure (optional): Claude looks for passive evidence and the CLI re-checks every claim; a person says yes. 1c DCs: the CLI proves each domain controller from the scan evidence, Claude asks one question, a person confirms. Guard: SigmaHQ rules, Claude's drafts and sample logs, validated, tested and converted by the CLI, with hunt briefs. Approve: the CLI writes the plan; only a person runs --apply in their own terminal. Hunt: the SOC hunts the hidden window. report.html is rewritten after every step](docs/media/workflow.png)
 
