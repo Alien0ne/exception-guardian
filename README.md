@@ -511,6 +511,9 @@ built into the page.
 **Built for SWARM Global (2–6 Nov 2026):** the code in `src/` (all but the bundled SigmaHQ rules), the playbook and
 its skills, the slash commands and hooks, the sample data, the drafted rules and the tests.
 
+**Team wh0-Kn0w5** (SWARM Global 2026): Narasimha Tiruveedula ([@Alien0ne](https://github.com/Alien0ne)) and
+Ilakkiya Vijayakumar ([@ilakkiya-v](https://github.com/ilakkiya-v)).
+
 **Reused:** the libraries and SigmaHQ rules listed under Credits, and the public KEV and EPSS data.
 
 ## Credits
