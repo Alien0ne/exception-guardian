@@ -1,0 +1,19 @@
+# Column map for the sample "other scanner" exception export.
+columns:
+  rule_id: "Exception ID"
+  cve: "CVE"
+  target: "Host"
+  created: "Created On"
+  expires: "Expires On"
+  justification: "Reason"
+  owner: "Approved By"
+  status: "State"
+  type: "Exception Type"
+date_format: "%Y-%m-%d"
+type_values:
+  "Risk Accepted": accept
+  "Severity Changed": recast
+  "Excluded": exclusion
+status_values:
+  "Active": enabled
+  "Inactive": disabled

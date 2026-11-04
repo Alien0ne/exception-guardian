@@ -1,0 +1,2 @@
+imProcessCreate
+| where (ParentProcessName endswith "\\crushftpservice.exe" or ActingProcessName endswith "\\crushftpservice.exe") and (TargetProcessName endswith "\\bash.exe" or TargetProcessName endswith "\\cmd.exe" or TargetProcessName endswith "\\cscript.exe" or TargetProcessName endswith "\\mshta.exe" or TargetProcessName endswith "\\powershell.exe" or TargetProcessName endswith "\\powershell_ise.exe" or TargetProcessName endswith "\\pwsh.exe" or TargetProcessName endswith "\\sh.exe" or TargetProcessName endswith "\\wscript.exe")

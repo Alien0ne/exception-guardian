@@ -1,0 +1,21 @@
+# Sample earlier run (2026-10-26): same sources, asset inventory as it was before web-portal-01 went on the internet (2026-10-28).
+sources:
+  - name: tenable-vm
+    fixture_dir: samples/tenable_vm
+  - name: tenable-sc
+    fixture_dir: samples/tenable_sc
+  - name: csv
+    path: samples/csv/other_scanner_exceptions.csv
+    map: maps/other-scanner.yaml
+assets:
+  fixture: samples/history/2026-10-26/assets.json
+
+# Grading thresholds
+revoke_epss: 0.5
+review_max_age_days: 365
+review_epss_delta: 0.1
+internal_keywords: [internal, not internet, no external, isolated, air-gapped, intranet]
+
+siem_targets: [splunk, sentinel, defender]
+offline: false
+intel_snapshot_dir: samples/intel

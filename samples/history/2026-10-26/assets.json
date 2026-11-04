@@ -1,0 +1,182 @@
+{
+  "_source_doc": "https://developer.tenable.com/reference/assets-list-assets",
+  "_note": "x_* fields are sample extensions (exposure history, criticality, attack path) not returned by this endpoint.",
+  "assets": [
+    {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "hostname": [
+        "web-portal-01"
+      ],
+      "fqdn": [
+        "web-portal-01.example.com"
+      ],
+      "ipv4": [
+        "203.0.113.10"
+      ],
+      "operating_system": [
+        "Linux Ubuntu 22.04"
+      ],
+      "tags": [
+        {
+          "tag_key": "App",
+          "tag_value": "Customer Portal"
+        }
+      ],
+      "last_seen": "2026-10-25T06:00:00.000Z",
+      "x_exposure_since": null,
+      "x_critical": null,
+      "x_on_attack_path": null
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000002",
+      "hostname": [
+        "web-portal-02"
+      ],
+      "fqdn": [
+        "web-portal-02.example.com"
+      ],
+      "ipv4": [
+        "192.0.2.11"
+      ],
+      "operating_system": [
+        "Linux Ubuntu 22.04"
+      ],
+      "tags": [
+        {
+          "tag_key": "App",
+          "tag_value": "Staff Portal"
+        }
+      ],
+      "last_seen": "2026-11-01T06:00:00.000Z",
+      "x_exposure_since": null,
+      "x_critical": null,
+      "x_on_attack_path": null
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000003",
+      "hostname": [
+        "ml-ray-head-01"
+      ],
+      "fqdn": [
+        "ml-ray-head-01.example.com"
+      ],
+      "ipv4": [
+        "192.0.2.21"
+      ],
+      "operating_system": [
+        "Linux Rocky 9"
+      ],
+      "tags": [
+        {
+          "tag_key": "App",
+          "tag_value": "ML Platform"
+        }
+      ],
+      "last_seen": "2026-11-01T06:00:00.000Z",
+      "x_exposure_since": null,
+      "x_critical": null,
+      "x_on_attack_path": true
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000004",
+      "hostname": [
+        "ftp-01"
+      ],
+      "fqdn": [
+        "ftp-01.example.com"
+      ],
+      "ipv4": [
+        "192.0.2.30"
+      ],
+      "operating_system": [
+        "Microsoft Windows Server 2022"
+      ],
+      "tags": [
+        {
+          "tag_key": "App",
+          "tag_value": "File Transfer"
+        }
+      ],
+      "last_seen": "2026-11-01T06:00:00.000Z",
+      "x_exposure_since": null,
+      "x_critical": true,
+      "x_on_attack_path": null
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000005",
+      "hostname": [
+        "hr-app-02"
+      ],
+      "fqdn": [
+        "hr-app-02.example.com"
+      ],
+      "ipv4": [
+        "192.0.2.42"
+      ],
+      "operating_system": [
+        "Linux Debian 12"
+      ],
+      "tags": [
+        {
+          "tag_key": "App",
+          "tag_value": "HR"
+        }
+      ],
+      "last_seen": "2026-11-01T06:00:00.000Z",
+      "x_exposure_since": null,
+      "x_critical": null,
+      "x_on_attack_path": null
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000006",
+      "hostname": [
+        "hr-app-03"
+      ],
+      "fqdn": [
+        "hr-app-03.example.com"
+      ],
+      "ipv4": [
+        "192.0.2.43"
+      ],
+      "operating_system": [
+        "Linux Debian 12"
+      ],
+      "tags": [
+        {
+          "tag_key": "App",
+          "tag_value": "HR"
+        }
+      ],
+      "last_seen": "2026-11-01T06:00:00.000Z",
+      "x_exposure_since": null,
+      "x_critical": null,
+      "x_on_attack_path": null
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000007",
+      "hostname": [
+        "build-01"
+      ],
+      "fqdn": [
+        "build-01.example.com"
+      ],
+      "ipv4": [
+        "192.0.2.50"
+      ],
+      "operating_system": [
+        "Linux Ubuntu 20.04"
+      ],
+      "tags": [
+        {
+          "tag_key": "App",
+          "tag_value": "CI"
+        }
+      ],
+      "last_seen": "2026-11-01T06:00:00.000Z",
+      "x_exposure_since": null,
+      "x_critical": null,
+      "x_on_attack_path": null
+    }
+  ],
+  "total": 7
+}

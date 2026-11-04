@@ -1,0 +1,36 @@
+{
+  "_source_doc": "https://docs.tenable.com/security-center/api/Accept-Risk-Rule.htm",
+  "rules": [
+    {
+      "id": "SC-AR-101",
+      "repository": {
+        "id": "1",
+        "name": "Internal"
+      },
+      "organization": {
+        "id": "1",
+        "name": "Example Org"
+      },
+      "user": {
+        "id": "3",
+        "username": "sc-analyst"
+      },
+      "plugin": {
+        "id": "214441",
+        "name": "Plugin for CVE-2025-22868"
+      },
+      "hostType": "ip",
+      "hostValue": "192.0.2.50",
+      "port": "any",
+      "protocol": "any",
+      "comments": "Accepted by CAB",
+      "expires": "-1",
+      "status": "0",
+      "createdTime": "1747699200",
+      "modifiedTime": "1747699200",
+      "x_cves": [
+        "CVE-2025-22868"
+      ]
+    }
+  ]
+}

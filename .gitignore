@@ -1,0 +1,12 @@
+.env
+out/
+.venv/
+__pycache__/
+.pytest_cache/
+*.egg-info/
+.claude/skills/
+.cache/
+*.local.yaml
+.ruff_cache/
+.hallmark/
+.superpowers/

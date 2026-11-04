@@ -1,0 +1,656 @@
+{
+  "R-HERO-001": {
+    "dir": "R-HERO-001",
+    "rule_id": "R-HERO-001",
+    "source": "tenable-vm",
+    "rule_type": "accept",
+    "rules": [
+      {
+        "file": "CVE-2025-54068-web.yml",
+        "origin": "drafted",
+        "title": "Failed Livewire Update Requests - Possible CVE-2025-54068 Exploitation Attempts",
+        "author": "Exception Guardian (drafted)",
+        "url": null,
+        "conversions": {
+          "splunk": {
+            "ok": true,
+            "file": "CVE-2025-54068-web.splunk.txt",
+            "error": null,
+            "note": null
+          },
+          "sentinel": {
+            "ok": false,
+            "file": null,
+            "error": "unsupported: Sentinel (ASIM) has no field for cs",
+            "note": null
+          },
+          "defender": {
+            "ok": false,
+            "file": null,
+            "error": "unsupported: Defender XDR has no table for webserver logs",
+            "note": null
+          }
+        },
+        "tested": {
+          "tested": true,
+          "attack_hits": 3,
+          "attack_total": 3,
+          "benign_hits": 0,
+          "benign_total": 6,
+          "benign_hit_notes": [],
+          "logsource": "webserver",
+          "agent_events": 0
+        }
+      },
+      {
+        "file": "CVE-2025-54068.yml",
+        "origin": "drafted",
+        "title": "Shell Or Downloader Spawned By PHP Worker - Possible Livewire CVE-2025-54068 Exploitation",
+        "author": "Exception Guardian (drafted)",
+        "url": null,
+        "conversions": {
+          "splunk": {
+            "ok": true,
+            "file": "CVE-2025-54068.splunk.txt",
+            "error": null,
+            "note": null
+          },
+          "sentinel": {
+            "ok": true,
+            "file": "CVE-2025-54068.sentinel.txt",
+            "error": null,
+            "note": null
+          },
+          "defender": {
+            "ok": true,
+            "file": "CVE-2025-54068.defender.txt",
+            "error": null,
+            "note": null
+          }
+        },
+        "tested": {
+          "tested": true,
+          "attack_hits": 4,
+          "attack_total": 4,
+          "benign_hits": 1,
+          "benign_total": 11,
+          "benign_hit_notes": [
+            "Composer post-install script shells out from PHP during a deploy, a listed false positive"
+          ],
+          "logsource": "process_creation/linux",
+          "agent_events": 0
+        }
+      },
+      {
+        "file": "proc_creation_lnx_webshell_detection.yml",
+        "origin": "generic",
+        "title": "Linux Webshell Indicators",
+        "author": "Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)",
+        "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/linux/process_creation/proc_creation_lnx_webshell_detection.yml",
+        "conversions": {
+          "splunk": {
+            "ok": true,
+            "file": "proc_creation_lnx_webshell_detection.splunk.txt",
+            "error": null,
+            "note": null
+          },
+          "sentinel": {
+            "ok": true,
+            "file": "proc_creation_lnx_webshell_detection.sentinel.txt",
+            "error": null,
+            "note": null
+          },
+          "defender": {
+            "ok": true,
+            "file": "proc_creation_lnx_webshell_detection.defender.txt",
+            "error": null,
+            "note": null
+          }
+        },
+        "tested": {
+          "tested": true,
+          "attack_hits": 0,
+          "attack_total": 7,
+          "benign_hits": 0,
+          "benign_total": 11,
+          "benign_hit_notes": [],
+          "logsource": "process_creation/linux",
+          "attack_missed_notes": [
+            "Livewire RCE: PHP worker pipes a downloaded script to sh",
+            "Livewire RCE: PHP worker fetches a payload with curl",
+            "Livewire RCE: reverse shell from the PHP worker"
+          ],
+          "agent_events": 0,
+          "attack_scope": "any CVE"
+        }
+      }
+    ],
+    "conversions": {
+      "splunk": {
+        "ok": 3,
+        "unsupported": 0
+      },
+      "sentinel": {
+        "ok": 2,
+        "unsupported": 1
+      },
+      "defender": {
+        "ok": 2,
+        "unsupported": 1
+      }
+    },
+    "dropped": [],
+    "missing_drafts": [],
+    "no_valid_draft": [],
+    "not_drafted": [],
+    "not_loggable": [],
+    "needs_samples": [],
+    "coverage_gaps": []
+  },
+  "R-RAY-002": {
+    "dir": "R-RAY-002",
+    "rule_id": "R-RAY-002",
+    "source": "tenable-vm",
+    "rule_type": "recast",
+    "rules": [
+      {
+        "file": "CVE-2025-62593.yml",
+        "origin": "drafted",
+        "title": "Shell Or Downloader Spawned By Ray Process - Possible CVE-2025-62593 Exploitation",
+        "author": "Exception Guardian (drafted)",
+        "url": null,
+        "conversions": {
+          "splunk": {
+            "ok": true,
+            "file": "CVE-2025-62593.splunk.txt",
+            "error": null,
+            "note": null
+          },
+          "sentinel": {
+            "ok": true,
+            "file": "CVE-2025-62593.sentinel.txt",
+            "error": null,
+            "note": null
+          },
+          "defender": {
+            "ok": true,
+            "file": "CVE-2025-62593.defender.txt",
+            "error": null,
+            "note": null
+          }
+        },
+        "tested": {
+          "tested": true,
+          "attack_hits": 3,
+          "attack_total": 3,
+          "benign_hits": 0,
+          "benign_total": 11,
+          "benign_hit_notes": [],
+          "logsource": "process_creation/linux",
+          "agent_events": 0
+        }
+      },
+      {
+        "file": "proc_creation_lnx_webshell_detection.yml",
+        "origin": "generic",
+        "title": "Linux Webshell Indicators",
+        "author": "Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)",
+        "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/linux/process_creation/proc_creation_lnx_webshell_detection.yml",
+        "conversions": {
+          "splunk": {
+            "ok": true,
+            "file": "proc_creation_lnx_webshell_detection.splunk.txt",
+            "error": null,
+            "note": null
+          },
+          "sentinel": {
+            "ok": true,
+            "file": "proc_creation_lnx_webshell_detection.sentinel.txt",
+            "error": null,
+            "note": null
+          },
+          "defender": {
+            "ok": true,
+            "file": "proc_creation_lnx_webshell_detection.defender.txt",
+            "error": null,
+            "note": null
+          }
+        },
+        "tested": {
+          "tested": true,
+          "attack_hits": 0,
+          "attack_total": 7,
+          "benign_hits": 0,
+          "benign_total": 11,
+          "benign_hit_notes": [],
+          "logsource": "process_creation/linux",
+          "attack_missed_notes": [
+            "Livewire RCE: PHP worker pipes a downloaded script to sh",
+            "Livewire RCE: PHP worker fetches a payload with curl",
+            "Livewire RCE: reverse shell from the PHP worker"
+          ],
+          "agent_events": 0,
+          "attack_scope": "any CVE"
+        }
+      }
+    ],
+    "conversions": {
+      "splunk": {
+        "ok": 2,
+        "unsupported": 0
+      },
+      "sentinel": {
+        "ok": 2,
+        "unsupported": 0
+      },
+      "defender": {
+        "ok": 2,
+        "unsupported": 0
+      }
+    },
+    "dropped": [],
+    "missing_drafts": [],
+    "no_valid_draft": [],
+    "not_drafted": [],
+    "not_loggable": [],
+    "needs_samples": [],
+    "coverage_gaps": []
+  },
+  "CSV-Q-201": {
+    "dir": "CSV-Q-201",
+    "rule_id": "CSV-Q-201",
+    "source": "csv:other-scanner",
+    "rule_type": "accept",
+    "rules": [
+      {
+        "file": "CVE-2025-62593.yml",
+        "origin": "drafted",
+        "title": "Shell Or Downloader Spawned By Ray Process - Possible CVE-2025-62593 Exploitation",
+        "author": "Exception Guardian (drafted)",
+        "url": null,
+        "conversions": {
+          "splunk": {
+            "ok": true,
+            "file": "CVE-2025-62593.splunk.txt",
+            "error": null,
+            "note": null
+          },
+          "sentinel": {
+            "ok": true,
+            "file": "CVE-2025-62593.sentinel.txt",
+            "error": null,
+            "note": null
+          },
+          "defender": {
+            "ok": true,
+            "file": "CVE-2025-62593.defender.txt",
+            "error": null,
+            "note": null
+          }
+        },
+        "tested": {
+          "tested": true,
+          "attack_hits": 3,
+          "attack_total": 3,
+          "benign_hits": 0,
+          "benign_total": 11,
+          "benign_hit_notes": [],
+          "logsource": "process_creation/linux",
+          "agent_events": 0
+        }
+      },
+      {
+        "file": "proc_creation_lnx_webshell_detection.yml",
+        "origin": "generic",
+        "title": "Linux Webshell Indicators",
+        "author": "Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)",
+        "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/linux/process_creation/proc_creation_lnx_webshell_detection.yml",
+        "conversions": {
+          "splunk": {
+            "ok": true,
+            "file": "proc_creation_lnx_webshell_detection.splunk.txt",
+            "error": null,
+            "note": null
+          },
+          "sentinel": {
+            "ok": true,
+            "file": "proc_creation_lnx_webshell_detection.sentinel.txt",
+            "error": null,
+            "note": null
+          },
+          "defender": {
+            "ok": true,
+            "file": "proc_creation_lnx_webshell_detection.defender.txt",
+            "error": null,
+            "note": null
+          }
+        },
+        "tested": {
+          "tested": true,
+          "attack_hits": 0,
+          "attack_total": 7,
+          "benign_hits": 0,
+          "benign_total": 11,
+          "benign_hit_notes": [],
+          "logsource": "process_creation/linux",
+          "attack_missed_notes": [
+            "Livewire RCE: PHP worker pipes a downloaded script to sh",
+            "Livewire RCE: PHP worker fetches a payload with curl",
+            "Livewire RCE: reverse shell from the PHP worker"
+          ],
+          "agent_events": 0,
+          "attack_scope": "any CVE"
+        }
+      }
+    ],
+    "conversions": {
+      "splunk": {
+        "ok": 2,
+        "unsupported": 0
+      },
+      "sentinel": {
+        "ok": 2,
+        "unsupported": 0
+      },
+      "defender": {
+        "ok": 2,
+        "unsupported": 0
+      }
+    },
+    "dropped": [],
+    "missing_drafts": [],
+    "no_valid_draft": [],
+    "not_drafted": [],
+    "not_loggable": [],
+    "needs_samples": [],
+    "coverage_gaps": []
+  },
+  "R-CRUSH-003": {
+    "dir": "R-CRUSH-003",
+    "rule_id": "R-CRUSH-003",
+    "source": "tenable-vm",
+    "rule_type": "accept",
+    "rules": [
+      {
+        "file": "proc_creation_win_crushftp_susp_child_processes.yml",
+        "origin": "sigmahq",
+        "title": "Suspicious CrushFTP Child Process",
+        "author": "Craig Sweeney, Matt Anderson, Jose Oregon, Tim Kasper, Faith Stratton, Samantha Shaw, Swachchhanda Shrawan Poudel (Nextron Systems)",
+        "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-31161/proc_creation_win_crushftp_susp_child_processes.yml",
+        "conversions": {
+          "splunk": {
+            "ok": true,
+            "file": "proc_creation_win_crushftp_susp_child_processes.splunk.txt",
+            "error": null,
+            "note": null
+          },
+          "sentinel": {
+            "ok": true,
+            "file": "proc_creation_win_crushftp_susp_child_processes.sentinel.txt",
+            "error": null,
+            "note": null
+          },
+          "defender": {
+            "ok": true,
+            "file": "proc_creation_win_crushftp_susp_child_processes.defender.txt",
+            "error": null,
+            "note": null
+          }
+        },
+        "tested": {
+          "tested": true,
+          "attack_hits": 2,
+          "attack_total": 2,
+          "benign_hits": 1,
+          "benign_total": 4,
+          "benign_hit_notes": [
+            "CrushFTP runs its own update script through cmd"
+          ],
+          "logsource": "process_creation/windows",
+          "agent_events": 0
+        }
+      }
+    ],
+    "conversions": {
+      "splunk": {
+        "ok": 1,
+        "unsupported": 0
+      },
+      "sentinel": {
+        "ok": 1,
+        "unsupported": 0
+      },
+      "defender": {
+        "ok": 1,
+        "unsupported": 0
+      }
+    },
+    "dropped": [],
+    "missing_drafts": [],
+    "no_valid_draft": [],
+    "not_drafted": [],
+    "not_loggable": [],
+    "needs_samples": [],
+    "coverage_gaps": []
+  },
+  "R-INJECT-007": {
+    "dir": "R-INJECT-007",
+    "rule_id": "R-INJECT-007",
+    "source": "tenable-vm",
+    "rule_type": "accept",
+    "rules": [
+      {
+        "file": "CVE-2025-54068-web.yml",
+        "origin": "drafted",
+        "title": "Failed Livewire Update Requests - Possible CVE-2025-54068 Exploitation Attempts",
+        "author": "Exception Guardian (drafted)",
+        "url": null,
+        "conversions": {
+          "splunk": {
+            "ok": true,
+            "file": "CVE-2025-54068-web.splunk.txt",
+            "error": null,
+            "note": null
+          },
+          "sentinel": {
+            "ok": false,
+            "file": null,
+            "error": "unsupported: Sentinel (ASIM) has no field for cs",
+            "note": null
+          },
+          "defender": {
+            "ok": false,
+            "file": null,
+            "error": "unsupported: Defender XDR has no table for webserver logs",
+            "note": null
+          }
+        },
+        "tested": {
+          "tested": true,
+          "attack_hits": 3,
+          "attack_total": 3,
+          "benign_hits": 0,
+          "benign_total": 6,
+          "benign_hit_notes": [],
+          "logsource": "webserver",
+          "agent_events": 0
+        }
+      },
+      {
+        "file": "CVE-2025-54068.yml",
+        "origin": "drafted",
+        "title": "Shell Or Downloader Spawned By PHP Worker - Possible Livewire CVE-2025-54068 Exploitation",
+        "author": "Exception Guardian (drafted)",
+        "url": null,
+        "conversions": {
+          "splunk": {
+            "ok": true,
+            "file": "CVE-2025-54068.splunk.txt",
+            "error": null,
+            "note": null
+          },
+          "sentinel": {
+            "ok": true,
+            "file": "CVE-2025-54068.sentinel.txt",
+            "error": null,
+            "note": null
+          },
+          "defender": {
+            "ok": true,
+            "file": "CVE-2025-54068.defender.txt",
+            "error": null,
+            "note": null
+          }
+        },
+        "tested": {
+          "tested": true,
+          "attack_hits": 4,
+          "attack_total": 4,
+          "benign_hits": 1,
+          "benign_total": 11,
+          "benign_hit_notes": [
+            "Composer post-install script shells out from PHP during a deploy, a listed false positive"
+          ],
+          "logsource": "process_creation/linux",
+          "agent_events": 0
+        }
+      },
+      {
+        "file": "proc_creation_lnx_webshell_detection.yml",
+        "origin": "generic",
+        "title": "Linux Webshell Indicators",
+        "author": "Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)",
+        "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/linux/process_creation/proc_creation_lnx_webshell_detection.yml",
+        "conversions": {
+          "splunk": {
+            "ok": true,
+            "file": "proc_creation_lnx_webshell_detection.splunk.txt",
+            "error": null,
+            "note": null
+          },
+          "sentinel": {
+            "ok": true,
+            "file": "proc_creation_lnx_webshell_detection.sentinel.txt",
+            "error": null,
+            "note": null
+          },
+          "defender": {
+            "ok": true,
+            "file": "proc_creation_lnx_webshell_detection.defender.txt",
+            "error": null,
+            "note": null
+          }
+        },
+        "tested": {
+          "tested": true,
+          "attack_hits": 0,
+          "attack_total": 7,
+          "benign_hits": 0,
+          "benign_total": 11,
+          "benign_hit_notes": [],
+          "logsource": "process_creation/linux",
+          "attack_missed_notes": [
+            "Livewire RCE: PHP worker pipes a downloaded script to sh",
+            "Livewire RCE: PHP worker fetches a payload with curl",
+            "Livewire RCE: reverse shell from the PHP worker"
+          ],
+          "agent_events": 0,
+          "attack_scope": "any CVE"
+        }
+      }
+    ],
+    "conversions": {
+      "splunk": {
+        "ok": 3,
+        "unsupported": 0
+      },
+      "sentinel": {
+        "ok": 2,
+        "unsupported": 1
+      },
+      "defender": {
+        "ok": 2,
+        "unsupported": 1
+      }
+    },
+    "dropped": [],
+    "missing_drafts": [],
+    "no_valid_draft": [],
+    "not_drafted": [],
+    "not_loggable": [],
+    "needs_samples": [],
+    "coverage_gaps": []
+  },
+  "EXCL-001": {
+    "dir": "EXCL-001",
+    "rule_id": "EXCL-001",
+    "source": "tenable-vm",
+    "rule_type": "exclusion",
+    "rules": [
+      {
+        "file": "proc_creation_lnx_webshell_detection.yml",
+        "origin": "generic",
+        "title": "Linux Webshell Indicators",
+        "author": "Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)",
+        "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/linux/process_creation/proc_creation_lnx_webshell_detection.yml",
+        "conversions": {
+          "splunk": {
+            "ok": true,
+            "file": "proc_creation_lnx_webshell_detection.splunk.txt",
+            "error": null,
+            "note": null
+          },
+          "sentinel": {
+            "ok": true,
+            "file": "proc_creation_lnx_webshell_detection.sentinel.txt",
+            "error": null,
+            "note": null
+          },
+          "defender": {
+            "ok": true,
+            "file": "proc_creation_lnx_webshell_detection.defender.txt",
+            "error": null,
+            "note": null
+          }
+        },
+        "tested": {
+          "tested": true,
+          "attack_hits": 0,
+          "attack_total": 7,
+          "benign_hits": 0,
+          "benign_total": 11,
+          "benign_hit_notes": [],
+          "logsource": "process_creation/linux",
+          "attack_missed_notes": [
+            "Livewire RCE: PHP worker pipes a downloaded script to sh",
+            "Livewire RCE: PHP worker fetches a payload with curl",
+            "Livewire RCE: reverse shell from the PHP worker"
+          ],
+          "agent_events": 0,
+          "attack_scope": "any CVE"
+        }
+      }
+    ],
+    "conversions": {
+      "splunk": {
+        "ok": 1,
+        "unsupported": 0
+      },
+      "sentinel": {
+        "ok": 1,
+        "unsupported": 0
+      },
+      "defender": {
+        "ok": 1,
+        "unsupported": 0
+      }
+    },
+    "dropped": [],
+    "missing_drafts": [],
+    "no_valid_draft": [],
+    "not_drafted": [],
+    "not_loggable": [],
+    "needs_samples": [],
+    "coverage_gaps": []
+  }
+}

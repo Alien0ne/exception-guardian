@@ -1,0 +1,50 @@
+{
+  "previous_today": "2026-10-26",
+  "today": "2026-11-02",
+  "partial": false,
+  "escalated": [
+    {
+      "rule_id": "EXCL-001",
+      "source": "tenable-vm",
+      "rule_type": "exclusion",
+      "cves": [],
+      "was": "REVIEW",
+      "now": "REVOKE",
+      "new_triggers": [
+        {
+          "code": "INTERNET_FACING",
+          "now": "internet-facing",
+          "source": "tag Exposure:Internet: web-portal-01"
+        }
+      ]
+    }
+  ],
+  "new_evidence": [
+    {
+      "rule_id": "R-HERO-001",
+      "source": "tenable-vm",
+      "rule_type": "accept",
+      "cves": [
+        "CVE-2025-54068"
+      ],
+      "was": "REVOKE",
+      "now": "REVOKE",
+      "new_triggers": [
+        {
+          "code": "INTERNET_FACING",
+          "now": "internet-facing",
+          "source": "tag Exposure:Internet: web-portal-01"
+        },
+        {
+          "code": "JUSTIFICATION_CONTRADICTED",
+          "now": "says internal, but the asset is internet-facing",
+          "source": "justification vs asset inventory"
+        }
+      ]
+    }
+  ],
+  "new": [],
+  "eased": [],
+  "gone": [],
+  "unchanged": 11
+}

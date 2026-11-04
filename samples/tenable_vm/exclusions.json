@@ -1,0 +1,17 @@
+{
+  "_source_doc": "https://developer.tenable.com/reference/exclusions-list",
+  "exclusions": [
+    {
+      "id": 1001,
+      "name": "EXCL-001",
+      "description": "Fragile host, excluded from scans",
+      "creation_date": 1740787200,
+      "last_modification_date": 1740787200,
+      "schedule": {
+        "enabled": false
+      },
+      "members": "web-portal-01.example.com,203.0.113.10",
+      "network_id": "00000000-0000-4000-8000-000000000000"
+    }
+  ]
+}

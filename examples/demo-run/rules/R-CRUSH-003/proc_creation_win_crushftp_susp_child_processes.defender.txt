@@ -1,0 +1,2 @@
+DeviceProcessEvents
+| where InitiatingProcessFolderPath endswith "\\crushftpservice.exe" and (FolderPath endswith "\\bash.exe" or FolderPath endswith "\\cmd.exe" or FolderPath endswith "\\cscript.exe" or FolderPath endswith "\\mshta.exe" or FolderPath endswith "\\powershell.exe" or FolderPath endswith "\\powershell_ise.exe" or FolderPath endswith "\\pwsh.exe" or FolderPath endswith "\\sh.exe" or FolderPath endswith "\\wscript.exe")

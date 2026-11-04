@@ -1,0 +1,4 @@
+Exception ID,CVE,Host,Created On,Expires On,Reason,Approved By,State,Exception Type
+CSV-Q-201,CVE-2025-62593,ml-ray-head-01.example.com,2026-01-05,,Internal ML only,ml-owner@example.com,Active,Risk Accepted
+CSV-Q-202,CVE-2025-27152,unknown-host-99.example.com,2026-10-15,2027-04-15,Lab,lab-owner@example.com,Active,Risk Accepted
+CSV-Q-203,,hr-app-02.example.com,31/31/2026,,Bad row for testing,x@example.com,Active,Risk Accepted

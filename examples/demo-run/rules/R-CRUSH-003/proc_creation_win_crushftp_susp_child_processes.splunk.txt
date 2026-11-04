@@ -1,0 +1,1 @@
+ParentImage="*\\crushftpservice.exe" Image IN ("*\\bash.exe", "*\\cmd.exe", "*\\cscript.exe", "*\\mshta.exe", "*\\powershell.exe", "*\\powershell_ise.exe", "*\\pwsh.exe", "*\\sh.exe", "*\\wscript.exe")

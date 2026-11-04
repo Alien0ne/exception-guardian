@@ -1,0 +1,2353 @@
+{
+ "commit": "ccbb0369507f796db0b0ae6854c8a2be471b9d84",
+ "cves": {
+  "CVE-2010-5278": [
+   {
+    "title": "CVE-2010-5278 Exploitation Attempt",
+    "author": "Subhash Popuri (@pbssubhash)",
+    "path": "rules-emerging-threats/2010/Exploits/CVE-2010-5278/web_cve_2010_5278_exploitation_attempt.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2010/Exploits/CVE-2010-5278/web_cve_2010_5278_exploitation_attempt.yml"
+   }
+  ],
+  "CVE-2014-6287": [
+   {
+    "title": "Rejetto HTTP File Server RCE",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2014/Exploits/CVE-2014-6287/web_cve_2014_6287_hfs_rce.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2014/Exploits/CVE-2014-6287/web_cve_2014_6287_hfs_rce.yml"
+   }
+  ],
+  "CVE-2015-1641": [
+   {
+    "title": "Exploit for CVE-2015-1641",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2015/Exploits/CVE-2015-1641/proc_creation_win_exploit_cve_2015_1641.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2015/Exploits/CVE-2015-1641/proc_creation_win_exploit_cve_2015_1641.yml"
+   }
+  ],
+  "CVE-2017-0261": [
+   {
+    "title": "Exploit for CVE-2017-0261",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2017/Exploits/CVE-2017-0261/proc_creation_win_exploit_cve_2017_0261.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2017/Exploits/CVE-2017-0261/proc_creation_win_exploit_cve_2017_0261.yml"
+   }
+  ],
+  "CVE-2017-11882": [
+   {
+    "title": "RegAsm.EXE Execution Without CommandLine Flags or Files",
+    "author": "frack113",
+    "path": "rules/windows/process_creation/proc_creation_win_regasm_no_flag_or_dll_execution.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_regasm_no_flag_or_dll_execution.yml"
+   },
+   {
+    "title": "Droppers Exploiting CVE-2017-11882",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2017/Exploits/CVE-2017-11882/proc_creation_win_exploit_cve_2017_11882.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2017/Exploits/CVE-2017-11882/proc_creation_win_exploit_cve_2017_11882.yml"
+   }
+  ],
+  "CVE-2017-5638": [
+   {
+    "title": "Potential OGNL Injection Exploitation In JVM Based Application",
+    "author": "Moti Harmats",
+    "path": "rules/application/jvm/java_ognl_injection_exploitation_attempt.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/application/jvm/java_ognl_injection_exploitation_attempt.yml"
+   },
+   {
+    "title": "Suspicious Activity in Shell Commands",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules/linux/builtin/lnx_shell_susp_commands.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/linux/builtin/lnx_shell_susp_commands.yml"
+   }
+  ],
+  "CVE-2017-8759": [
+   {
+    "title": "Exploit for CVE-2017-8759",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2017/Exploits/CVE-2017-8759/proc_creation_win_exploit_cve_2017_8759.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2017/Exploits/CVE-2017-8759/proc_creation_win_exploit_cve_2017_8759.yml"
+   }
+  ],
+  "CVE-2018-13379": [
+   {
+    "title": "Fortinet CVE-2018-13379 Exploitation",
+    "author": "Bhabesh Raj",
+    "path": "rules-emerging-threats/2018/Exploits/CVE-2018-13379/web_cve_2018_13379_fortinet_preauth_read_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2018/Exploits/CVE-2018-13379/web_cve_2018_13379_fortinet_preauth_read_exploit.yml"
+   }
+  ],
+  "CVE-2018-15473": [
+   {
+    "title": "SSHD Error Message CVE-2018-15473",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2018/Exploits/CVE-2018-15473/lnx_sshd_exploit_cve_2018_15473.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2018/Exploits/CVE-2018-15473/lnx_sshd_exploit_cve_2018_15473.yml"
+   }
+  ],
+  "CVE-2018-2894": [
+   {
+    "title": "Oracle WebLogic Exploit",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2018/Exploits/CVE-2018-2894/web_cve_2018_2894_weblogic_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2018/Exploits/CVE-2018-2894/web_cve_2018_2894_weblogic_exploit.yml"
+   }
+  ],
+  "CVE-2019-0708": [
+   {
+    "title": "Outbound RDP Connections Over Non-Standard Tools",
+    "author": "Markus Neis",
+    "path": "rules/windows/network_connection/net_connection_win_rdp_outbound_over_non_standard_tools.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/network_connection/net_connection_win_rdp_outbound_over_non_standard_tools.yml"
+   },
+   {
+    "title": "Terminal Service Process Spawn",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules/windows/process_creation/proc_creation_win_svchost_termserv_proc_spawn.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_svchost_termserv_proc_spawn.yml"
+   },
+   {
+    "title": "Scanner PoC for CVE-2019-0708 RDP RCE Vuln",
+    "author": "Florian Roth (Nextron Systems), Adam Bradbury (idea)",
+    "path": "rules-emerging-threats/2019/Exploits/CVE-2019-0708/win_security_exploit_cve_2019_0708_scanner_poc.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2019/Exploits/CVE-2019-0708/win_security_exploit_cve_2019_0708_scanner_poc.yml"
+   },
+   {
+    "title": "Potential RDP Exploit CVE-2019-0708",
+    "author": "Lionel PRAT, Christophe BROCAS, @atc_project (improvements)",
+    "path": "rules-emerging-threats/2019/Exploits/CVE-2019-0708/win_system_exploit_cve_2019_0708.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2019/Exploits/CVE-2019-0708/win_system_exploit_cve_2019_0708.yml"
+   }
+  ],
+  "CVE-2019-11510": [
+   {
+    "title": "Pulse Secure Attack CVE-2019-11510",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2019/Exploits/CVE-2019-11510/web_cve_2019_11510_pulsesecure_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2019/Exploits/CVE-2019-11510/web_cve_2019_11510_pulsesecure_exploit.yml"
+   }
+  ],
+  "CVE-2019-1378": [
+   {
+    "title": "Exploiting SetupComplete.cmd CVE-2019-1378",
+    "author": "Florian Roth (Nextron Systems), oscd.community, Jonhnathan Ribeiro",
+    "path": "rules-emerging-threats/2019/Exploits/CVE-2019-1378/proc_creation_win_exploit_cve_2019_1378.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2019/Exploits/CVE-2019-1378/proc_creation_win_exploit_cve_2019_1378.yml"
+   }
+  ],
+  "CVE-2019-1388": [
+   {
+    "title": "Exploiting CVE-2019-1388",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2019/Exploits/CVE-2019-1388/proc_creation_win_exploit_cve_2019_1388.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2019/Exploits/CVE-2019-1388/proc_creation_win_exploit_cve_2019_1388.yml"
+   }
+  ],
+  "CVE-2019-14287": [
+   {
+    "title": "Sudo Privilege Escalation CVE-2019-14287 - Builtin",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2019/Exploits/CVE-2019-14287/lnx_sudo_exploit_cve_2019_14287.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2019/Exploits/CVE-2019-14287/lnx_sudo_exploit_cve_2019_14287.yml"
+   },
+   {
+    "title": "Sudo Privilege Escalation CVE-2019-14287",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2019/Exploits/CVE-2019-14287/proc_creation_lnx_exploit_cve_2019_14287.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2019/Exploits/CVE-2019-14287/proc_creation_lnx_exploit_cve_2019_14287.yml"
+   }
+  ],
+  "CVE-2019-19781": [
+   {
+    "title": "Citrix Netscaler Attack CVE-2019-19781",
+    "author": "Arnim Rupp, Florian Roth",
+    "path": "rules-emerging-threats/2019/Exploits/CVE-2019-19781/web_cve_2019_19781_citrix_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2019/Exploits/CVE-2019-19781/web_cve_2019_19781_citrix_exploit.yml"
+   }
+  ],
+  "CVE-2019-3398": [
+   {
+    "title": "Confluence Exploitation CVE-2019-3398",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2019/Exploits/CVE-2019-3398/web_cve_2019_3398_confluence.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2019/Exploits/CVE-2019-3398/web_cve_2019_3398_confluence.yml"
+   }
+  ],
+  "CVE-2020-0688": [
+   {
+    "title": "CVE-2020-0688 Exploitation Attempt",
+    "author": "NVISO",
+    "path": "rules-emerging-threats/2020/Exploits/CVE-2020-0688/web_cve_2020_0688_exchange_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2020/Exploits/CVE-2020-0688/web_cve_2020_0688_exchange_exploit.yml"
+   },
+   {
+    "title": "CVE-2020-0688 Exchange Exploitation via Web Log",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2020/Exploits/CVE-2020-0688/web_cve_2020_0688_msexchange.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2020/Exploits/CVE-2020-0688/web_cve_2020_0688_msexchange.yml"
+   },
+   {
+    "title": "CVE-2020-0688 Exploitation via Eventlog",
+    "author": "Florian Roth (Nextron Systems), wagga",
+    "path": "rules-emerging-threats/2020/Exploits/CVE-2020-0688/win_vul_cve_2020_0688.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2020/Exploits/CVE-2020-0688/win_vul_cve_2020_0688.yml"
+   }
+  ],
+  "CVE-2020-10148": [
+   {
+    "title": "CVE-2020-10148 SolarWinds Orion API Auth Bypass",
+    "author": "Bhabesh Raj, Tim Shelton",
+    "path": "rules-emerging-threats/2020/Exploits/CVE-2020-10148/web_cve_2020_10148_solarwinds_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2020/Exploits/CVE-2020-10148/web_cve_2020_10148_solarwinds_exploit.yml"
+   }
+  ],
+  "CVE-2020-10189": [
+   {
+    "title": "Exploited CVE-2020-10189 Zoho ManageEngine",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2020/Exploits/CVE-2020-10189/proc_creation_win_exploit_cve_2020_10189.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2020/Exploits/CVE-2020-10189/proc_creation_win_exploit_cve_2020_10189.yml"
+   }
+  ],
+  "CVE-2020-1048": [
+   {
+    "title": "Suspicious PrinterPorts Creation (CVE-2020-1048)",
+    "author": "EagleEye Team, Florian Roth",
+    "path": "rules-emerging-threats/2020/Exploits/CVE-2020-1048/proc_creation_win_exploit_cve_2020_1048.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2020/Exploits/CVE-2020-1048/proc_creation_win_exploit_cve_2020_1048.yml"
+   },
+   {
+    "title": "CVE-2020-1048 Exploitation Attempt - Suspicious New Printer Ports - Registry",
+    "author": "EagleEye Team, Florian Roth (Nextron Systems), NVISO",
+    "path": "rules-emerging-threats/2020/Exploits/CVE-2020-1048/registry_set_exploit_cve_2020_1048_new_printer_port.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2020/Exploits/CVE-2020-1048/registry_set_exploit_cve_2020_1048_new_printer_port.yml"
+   }
+  ],
+  "CVE-2020-1350": [
+   {
+    "title": "DNS RCE CVE-2020-1350",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2020/Exploits/CVE-2020-1350/proc_creation_win_exploit_cve_2020_1350.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2020/Exploits/CVE-2020-1350/proc_creation_win_exploit_cve_2020_1350.yml"
+   }
+  ],
+  "CVE-2020-1472": [
+   {
+    "title": "Exploitation Attempt Of CVE-2020-1472 - Execution of ZeroLogon PoC",
+    "author": "@Kostastsale, TheDFIRReport",
+    "path": "rules-emerging-threats/2020/Exploits/CVE-2020-1472/proc_creation_win_exploit_cve_2020_1472_zero_poc.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2020/Exploits/CVE-2020-1472/proc_creation_win_exploit_cve_2020_1472_zero_poc.yml"
+   },
+   {
+    "title": "Potential Zerologon (CVE-2020-1472) Exploitation",
+    "author": "Aleksandr Akhremchik, @aleqs4ndr, ocsd.community",
+    "path": "rules-placeholder/windows/builtin/security/win_security_exploit_cve_2020_1472.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-placeholder/windows/builtin/security/win_security_exploit_cve_2020_1472.yml"
+   }
+  ],
+  "CVE-2020-14882": [
+   {
+    "title": "Oracle WebLogic Exploit CVE-2020-14882",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2020/Exploits/CVE-2020-14882/web_cve_2020_14882_weblogic_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2020/Exploits/CVE-2020-14882/web_cve_2020_14882_weblogic_exploit.yml"
+   }
+  ],
+  "CVE-2020-1599": [
+   {
+    "title": "MSHTA Execution with Suspicious File Extensions",
+    "author": "Diego Perez (@darkquassar), Markus Neis, Swisscom (Improve Rule), Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules/windows/process_creation/proc_creation_win_mshta_susp_execution.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_mshta_susp_execution.yml"
+   }
+  ],
+  "CVE-2020-16875": [
+   {
+    "title": "CVE-2020-0688 Exploitation via Eventlog",
+    "author": "Florian Roth (Nextron Systems), wagga",
+    "path": "rules-emerging-threats/2020/Exploits/CVE-2020-0688/win_vul_cve_2020_0688.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2020/Exploits/CVE-2020-0688/win_vul_cve_2020_0688.yml"
+   }
+  ],
+  "CVE-2020-28188": [
+   {
+    "title": "TerraMaster TOS CVE-2020-28188",
+    "author": "Bhabesh Raj",
+    "path": "rules-emerging-threats/2020/Exploits/CVE-2020-28188/web_cve_2020_28188_terramaster_rce_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2020/Exploits/CVE-2020-28188/web_cve_2020_28188_terramaster_rce_exploit.yml"
+   }
+  ],
+  "CVE-2020-3452": [
+   {
+    "title": "Cisco ASA FTD Exploit CVE-2020-3452",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2020/Exploits/CVE-2020-3452/web_cve_2020_3452_cisco_asa_ftd.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2020/Exploits/CVE-2020-3452/web_cve_2020_3452_cisco_asa_ftd.yml"
+   }
+  ],
+  "CVE-2020-5902": [
+   {
+    "title": "CVE-2020-5902 F5 BIG-IP Exploitation Attempt",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2020/Exploits/CVE-2020-5902/web_cve_2020_5902_f5_bigip.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2020/Exploits/CVE-2020-5902/web_cve_2020_5902_f5_bigip.yml"
+   }
+  ],
+  "CVE-2020-7315": [
+   {
+    "title": "Creation Of Non-Existent System DLL",
+    "author": "Nasreddine Bencherchali (Nextron Systems), fornotes",
+    "path": "rules/windows/file/file_event/file_event_win_create_non_existent_dlls.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/file/file_event/file_event_win_create_non_existent_dlls.yml"
+   },
+   {
+    "title": "Potential DLL Sideloading Of Non-Existent DLLs From System Folders",
+    "author": "Nasreddine Bencherchali (Nextron Systems), SBousseaden",
+    "path": "rules/windows/image_load/image_load_side_load_non_existent_dlls.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/image_load/image_load_side_load_non_existent_dlls.yml"
+   }
+  ],
+  "CVE-2020-8193": [
+   {
+    "title": "Citrix ADS Exploitation CVE-2020-8193 CVE-2020-8195",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2020/Exploits/CVE-2020-8193/web_cve_2020_8193_8195_citrix_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2020/Exploits/CVE-2020-8193/web_cve_2020_8193_8195_citrix_exploit.yml"
+   }
+  ],
+  "CVE-2020-8195": [
+   {
+    "title": "Citrix ADS Exploitation CVE-2020-8193 CVE-2020-8195",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2020/Exploits/CVE-2020-8193/web_cve_2020_8193_8195_citrix_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2020/Exploits/CVE-2020-8193/web_cve_2020_8193_8195_citrix_exploit.yml"
+   }
+  ],
+  "CVE-2020-8196": [
+   {
+    "title": "Citrix ADS Exploitation CVE-2020-8193 CVE-2020-8195",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2020/Exploits/CVE-2020-8193/web_cve_2020_8193_8195_citrix_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2020/Exploits/CVE-2020-8193/web_cve_2020_8193_8195_citrix_exploit.yml"
+   }
+  ],
+  "CVE-2021-1675": [
+   {
+    "title": "Malicious PowerShell Commandlets - PoshModule",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules/windows/powershell/powershell_module/posh_pm_malicious_commandlets.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/powershell/powershell_module/posh_pm_malicious_commandlets.yml"
+   },
+   {
+    "title": "Malicious PowerShell Commandlets - ScriptBlock",
+    "author": "Sean Metcalf, Florian Roth, Bartlomiej Czyz @bczyz1, oscd.community, Nasreddine Bencherchali, Tim Shelton, Mustafa Kaan Demir, Georg Lauenstein, Max Altgelt, Tobias Michalski, Austin Songer",
+    "path": "rules/windows/powershell/powershell_script/posh_ps_malicious_commandlets.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/powershell/powershell_script/posh_ps_malicious_commandlets.yml"
+   },
+   {
+    "title": "Malicious PowerShell Commandlets - ProcessCreation",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules/windows/process_creation/proc_creation_win_powershell_malicious_cmdlets.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_powershell_malicious_cmdlets.yml"
+   },
+   {
+    "title": "Suspicious Printer Driver Empty Manufacturer",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules/windows/registry/registry_set/registry_set_susp_printer_driver.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/registry/registry_set/registry_set_susp_printer_driver.yml"
+   },
+   {
+    "title": "Antivirus PrinterNightmare CVE-2021-34527 Exploit Detection",
+    "author": "Sittikorn S, Nuttakorn T, Tim Shelton",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-1675/av_exploit_cve_2021_34527_print_nightmare.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-1675/av_exploit_cve_2021_34527_print_nightmare.yml"
+   },
+   {
+    "title": "Potential PrintNightmare Exploitation Attempt",
+    "author": "Bhabesh Raj",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-1675/file_delete_win_exploit_cve_2021_1675_print_nightmare.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-1675/file_delete_win_exploit_cve_2021_1675_print_nightmare.yml"
+   },
+   {
+    "title": "CVE-2021-1675 Print Spooler Exploitation Filename Pattern",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-1675/file_event_win_exploit_cve_2021_1675_printspooler.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-1675/file_event_win_exploit_cve_2021_1675_printspooler.yml"
+   },
+   {
+    "title": "Windows Spooler Service Suspicious Binary Load",
+    "author": "FPT.EagleEye, Thomas Patzke (improvements)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-1675/image_load_exploit_cve_2021_1675_spoolsv_dll_load.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-1675/image_load_exploit_cve_2021_1675_spoolsv_dll_load.yml"
+   },
+   {
+    "title": "PrinterNightmare Mimikatz Driver Name",
+    "author": "Markus Neis, @markus_neis, Florian Roth",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-1675/registry_event_cve_2021_1675_mimikatz_printernightmare_drivers.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-1675/registry_event_cve_2021_1675_mimikatz_printernightmare_drivers.yml"
+   },
+   {
+    "title": "Possible CVE-2021-1675 Print Spooler Exploitation",
+    "author": "Florian Roth (Nextron Systems), KevTheHermit, fuzzyf10w, Tim Shelton",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-1675/win_exploit_cve_2021_1675_printspooler.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-1675/win_exploit_cve_2021_1675_printspooler.yml"
+   },
+   {
+    "title": "CVE-2021-1675 Print Spooler Exploitation",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-1675/win_exploit_cve_2021_1675_printspooler_operational.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-1675/win_exploit_cve_2021_1675_printspooler_operational.yml"
+   },
+   {
+    "title": "CVE-2021-1675 Print Spooler Exploitation IPC Access",
+    "author": "INIT_6",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-1675/win_security_exploit_cve_2021_1675_printspooler_security.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-1675/win_security_exploit_cve_2021_1675_printspooler_security.yml"
+   },
+   {
+    "title": "Possible PrintNightmare Print Driver Install - CVE-2021-1675",
+    "author": "@neu5ron (Nate Guagenti)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-1675/zeek_dce_rpc_exploit_cve_2021_1675_printnightmare_print_driver_install.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-1675/zeek_dce_rpc_exploit_cve_2021_1675_printnightmare_print_driver_install.yml"
+   }
+  ],
+  "CVE-2021-1678": [
+   {
+    "title": "Possible PrintNightmare Print Driver Install - CVE-2021-1675",
+    "author": "@neu5ron (Nate Guagenti)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-1675/zeek_dce_rpc_exploit_cve_2021_1675_printnightmare_print_driver_install.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-1675/zeek_dce_rpc_exploit_cve_2021_1675_printnightmare_print_driver_install.yml"
+   }
+  ],
+  "CVE-2021-20090": [
+   {
+    "title": "Arcadyan Router Exploitations",
+    "author": "Bhabesh Raj",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-20090/web_cve_2021_20090_2021_20091_arcadyan_router_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-20090/web_cve_2021_20090_2021_20091_arcadyan_router_exploit.yml"
+   }
+  ],
+  "CVE-2021-20091": [
+   {
+    "title": "Arcadyan Router Exploitations",
+    "author": "Bhabesh Raj",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-20090/web_cve_2021_20090_2021_20091_arcadyan_router_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-20090/web_cve_2021_20090_2021_20091_arcadyan_router_exploit.yml"
+   }
+  ],
+  "CVE-2021-2109": [
+   {
+    "title": "Oracle WebLogic Exploit CVE-2021-2109",
+    "author": "Bhabesh Raj",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-2109/web_cve_2021_2109_weblogic_rce_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-2109/web_cve_2021_2109_weblogic_rce_exploit.yml"
+   }
+  ],
+  "CVE-2021-21551": [
+   {
+    "title": "PUA - Process Hacker Driver Load",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules/windows/driver_load/driver_load_win_pua_process_hacker.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/driver_load/driver_load_win_pua_process_hacker.yml"
+   }
+  ],
+  "CVE-2021-21972": [
+   {
+    "title": "CVE-2021-21972 VSphere Exploitation",
+    "author": "Bhabesh Raj",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-21972/web_cve_2021_21972_vsphere_unauth_rce_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-21972/web_cve_2021_21972_vsphere_unauth_rce_exploit.yml"
+   }
+  ],
+  "CVE-2021-21978": [
+   {
+    "title": "CVE-2021-21978 Exploitation Attempt",
+    "author": "Bhabesh Raj",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-21978/web_cve_2021_21978_vmware_view_planner_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-21978/web_cve_2021_21978_vmware_view_planner_exploit.yml"
+   },
+   {
+    "title": "Exploitation of CVE-2021-26814 in Wazuh",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-26814/web_cve_2021_26814_wzuh_rce.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-26814/web_cve_2021_26814_wzuh_rce.yml"
+   }
+  ],
+  "CVE-2021-22005": [
+   {
+    "title": "VMware vCenter Server File Upload CVE-2021-22005",
+    "author": "Sittikorn S",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-22005/web_cve_2021_22005_vmware_file_upload.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-22005/web_cve_2021_22005_vmware_file_upload.yml"
+   }
+  ],
+  "CVE-2021-22123": [
+   {
+    "title": "Fortinet CVE-2021-22123 Exploitation",
+    "author": "Bhabesh Raj, Florian Roth",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-22123/web_cve_2021_22123_fortinet_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-22123/web_cve_2021_22123_fortinet_exploit.yml"
+   }
+  ],
+  "CVE-2021-22893": [
+   {
+    "title": "Pulse Connect Secure RCE Attack CVE-2021-22893",
+    "author": "Sittikorn S",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-22893/web_cve_2021_22893_pulse_secure_rce_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-22893/web_cve_2021_22893_pulse_secure_rce_exploit.yml"
+   }
+  ],
+  "CVE-2021-23727": [
+   {
+    "title": "Shell Spawned by Celery Worker Process",
+    "author": "Jennifer Batina",
+    "path": "rules/linux/process_creation/proc_creation_lnx_celery_worker_shell_spawn.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/linux/process_creation/proc_creation_lnx_celery_worker_shell_spawn.yml"
+   }
+  ],
+  "CVE-2021-24085": [
+   {
+    "title": "CVE-2020-0688 Exploitation via Eventlog",
+    "author": "Florian Roth (Nextron Systems), wagga",
+    "path": "rules-emerging-threats/2020/Exploits/CVE-2020-0688/win_vul_cve_2020_0688.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2020/Exploits/CVE-2020-0688/win_vul_cve_2020_0688.yml"
+   }
+  ],
+  "CVE-2021-26084": [
+   {
+    "title": "Java Payload Strings",
+    "author": "frack113, Harjot Singh, \"@cyb3rjy0t\" (update)",
+    "path": "rules/web/webserver_generic/web_java_payload_in_access_logs.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/web/webserver_generic/web_java_payload_in_access_logs.yml"
+   },
+   {
+    "title": "Potential Atlassian Confluence CVE-2021-26084 Exploitation Attempt",
+    "author": "Bhabesh Raj",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-26084/proc_creation_win_exploit_cve_2021_26084_atlassian_confluence.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-26084/proc_creation_win_exploit_cve_2021_26084_atlassian_confluence.yml"
+   },
+   {
+    "title": "Potential CVE-2021-26084 Exploitation Attempt",
+    "author": "Sittikorn S, Nuttakorn T",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-26084/web_cve_2021_26084_confluence_rce_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-26084/web_cve_2021_26084_confluence_rce_exploit.yml"
+   }
+  ],
+  "CVE-2021-26814": [
+   {
+    "title": "Exploitation of CVE-2021-26814 in Wazuh",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-26814/web_cve_2021_26814_wzuh_rce.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-26814/web_cve_2021_26814_wzuh_rce.yml"
+   }
+  ],
+  "CVE-2021-26855": [
+   {
+    "title": "ProxyLogon MSExchange OabVirtualDirectory",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules/windows/builtin/msexchange/win_exchange_proxylogon_oabvirtualdir.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/builtin/msexchange/win_exchange_proxylogon_oabvirtualdir.yml"
+   },
+   {
+    "title": "ProxyLogon Reset Virtual Directories Based On IIS Log",
+    "author": "frack113",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-26858/web_cve_2021_26858_iis_rce.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-26858/web_cve_2021_26858_iis_rce.yml"
+   }
+  ],
+  "CVE-2021-26857": [
+   {
+    "title": "Potential CVE-2021-26857 Exploitation Attempt",
+    "author": "Bhabesh Raj",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-26857/proc_creation_win_exploit_cve_2021_26857_msexchange.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-26857/proc_creation_win_exploit_cve_2021_26857_msexchange.yml"
+   }
+  ],
+  "CVE-2021-26858": [
+   {
+    "title": "CVE-2021-26858 Exchange Exploitation",
+    "author": "Bhabesh Raj",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-26858/file_event_win_cve_2021_26858_msexchange.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-26858/file_event_win_cve_2021_26858_msexchange.yml"
+   },
+   {
+    "title": "ProxyLogon Reset Virtual Directories Based On IIS Log",
+    "author": "frack113",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-26858/web_cve_2021_26858_iis_rce.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-26858/web_cve_2021_26858_iis_rce.yml"
+   }
+  ],
+  "CVE-2021-27905": [
+   {
+    "title": "Potential CVE-2021-27905 Exploitation Attempt",
+    "author": "@gott_cyber",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-27905/web_cve_2021_27905_apache_solr_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-27905/web_cve_2021_27905_apache_solr_exploit.yml"
+   }
+  ],
+  "CVE-2021-28480": [
+   {
+    "title": "Exchange Exploitation CVE-2021-28480",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-28480/web_cve_2021_28480_exchange_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-28480/web_cve_2021_28480_exchange_exploit.yml"
+   }
+  ],
+  "CVE-2021-31979": [
+   {
+    "title": "CVE-2021-31979 CVE-2021-33771 Exploits by Sourgum",
+    "author": "Sittikorn S",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-33771/file_event_win_cve_2021_31979_cve_2021_33771_exploits.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-33771/file_event_win_cve_2021_31979_cve_2021_33771_exploits.yml"
+   },
+   {
+    "title": "CVE-2021-31979 CVE-2021-33771 Exploits",
+    "author": "Sittikorn S, frack113",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-33771/registry_set_cve_2021_31979_cve_2021_33771_exploits.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-33771/registry_set_cve_2021_31979_cve_2021_33771_exploits.yml"
+   }
+  ],
+  "CVE-2021-33766": [
+   {
+    "title": "CVE-2021-33766 Exchange ProxyToken Exploitation",
+    "author": "Florian Roth (Nextron Systems), Max Altgelt (Nextron Systems), Christian Burkard (Nextron Systems)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-33766/web_cve_2021_33766_msexchange_proxytoken.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-33766/web_cve_2021_33766_msexchange_proxytoken.yml"
+   }
+  ],
+  "CVE-2021-33771": [
+   {
+    "title": "CVE-2021-31979 CVE-2021-33771 Exploits by Sourgum",
+    "author": "Sittikorn S",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-33771/file_event_win_cve_2021_31979_cve_2021_33771_exploits.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-33771/file_event_win_cve_2021_31979_cve_2021_33771_exploits.yml"
+   },
+   {
+    "title": "CVE-2021-31979 CVE-2021-33771 Exploits",
+    "author": "Sittikorn S, frack113",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-33771/registry_set_cve_2021_31979_cve_2021_33771_exploits.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-33771/registry_set_cve_2021_31979_cve_2021_33771_exploits.yml"
+   }
+  ],
+  "CVE-2021-34484": [
+   {
+    "title": "Potential Exploitation of CVE-2022-21919 or CVE-2021-34484 for LPE",
+    "author": "Cybex",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-21919/win_system_exploit_cve_2022_21919_or_cve_2021_34484.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-21919/win_system_exploit_cve_2022_21919_or_cve_2021_34484.yml"
+   }
+  ],
+  "CVE-2021-34527": [
+   {
+    "title": "Remote Printing Abuse for Lateral Movement",
+    "author": "Sagie Dulce, Dekel Paz",
+    "path": "rules/application/rpc_firewall/rpc_firewall_printing_lateral_movement.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/application/rpc_firewall/rpc_firewall_printing_lateral_movement.yml"
+   },
+   {
+    "title": "Antivirus PrinterNightmare CVE-2021-34527 Exploit Detection",
+    "author": "Sittikorn S, Nuttakorn T, Tim Shelton",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-1675/av_exploit_cve_2021_34527_print_nightmare.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-1675/av_exploit_cve_2021_34527_print_nightmare.yml"
+   },
+   {
+    "title": "Windows Spooler Service Suspicious Binary Load",
+    "author": "FPT.EagleEye, Thomas Patzke (improvements)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-1675/image_load_exploit_cve_2021_1675_spoolsv_dll_load.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-1675/image_load_exploit_cve_2021_1675_spoolsv_dll_load.yml"
+   },
+   {
+    "title": "PrinterNightmare Mimikatz Driver Name",
+    "author": "Markus Neis, @markus_neis, Florian Roth",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-1675/registry_event_cve_2021_1675_mimikatz_printernightmare_drivers.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-1675/registry_event_cve_2021_1675_mimikatz_printernightmare_drivers.yml"
+   },
+   {
+    "title": "CVE-2021-1675 Print Spooler Exploitation IPC Access",
+    "author": "INIT_6",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-1675/win_security_exploit_cve_2021_1675_printspooler_security.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-1675/win_security_exploit_cve_2021_1675_printspooler_security.yml"
+   },
+   {
+    "title": "Possible PrintNightmare Print Driver Install - CVE-2021-1675",
+    "author": "@neu5ron (Nate Guagenti)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-1675/zeek_dce_rpc_exploit_cve_2021_1675_printnightmare_print_driver_install.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-1675/zeek_dce_rpc_exploit_cve_2021_1675_printnightmare_print_driver_install.yml"
+   }
+  ],
+  "CVE-2021-35211": [
+   {
+    "title": "Suspicious Serv-U Process Pattern",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules/windows/process_creation/proc_creation_win_servu_susp_child_process.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_servu_susp_child_process.yml"
+   },
+   {
+    "title": "Serv-U Exploitation CVE-2021-35211 by DEV-0322",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-35211/proc_creation_win_exploit_cve_2021_35211_servu.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-35211/proc_creation_win_exploit_cve_2021_35211_servu.yml"
+   }
+  ],
+  "CVE-2021-36934": [
+   {
+    "title": "HackTool - Typical HiveNightmare SAM File Export",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules/windows/file/file_event/file_event_win_hktl_hivenightmare_file_exports.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/file/file_event/file_event_win_hktl_hivenightmare_file_exports.yml"
+   },
+   {
+    "title": "Potential SAM Database Dump",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules/windows/file/file_event/file_event_win_sam_dump.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/file/file_event/file_event_win_sam_dump.yml"
+   }
+  ],
+  "CVE-2021-36942": [
+   {
+    "title": "Remote Encrypting File System Abuse",
+    "author": "Sagie Dulce, Dekel Paz",
+    "path": "rules/application/rpc_firewall/rpc_firewall_efs_abuse.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/application/rpc_firewall/rpc_firewall_efs_abuse.yml"
+   }
+  ],
+  "CVE-2021-38647": [
+   {
+    "title": "OMIGOD HTTP No Authentication RCE - CVE-2021-38647",
+    "author": "Nate Guagenti (neu5ron)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-38647/zeek_http_exploit_cve_2021_38647_omigod_no_auth_rce.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-38647/zeek_http_exploit_cve_2021_38647_omigod_no_auth_rce.yml"
+   }
+  ],
+  "CVE-2021-4034": [
+   {
+    "title": "PwnKit Local Privilege Escalation",
+    "author": "Sreeman",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-4034/lnx_auth_exploit_cve_2021_4034_pwnkit_lpe.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-4034/lnx_auth_exploit_cve_2021_4034_pwnkit_lpe.yml"
+   }
+  ],
+  "CVE-2021-40444": [
+   {
+    "title": "Suspicious Word Cab File Write CVE-2021-40444",
+    "author": "Florian Roth (Nextron Systems), Sittikorn S",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-40444/file_event_win_exploit_cve_2021_40444.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-40444/file_event_win_exploit_cve_2021_40444.yml"
+   },
+   {
+    "title": "Potential CVE-2021-40444 Exploitation Attempt",
+    "author": "Florian Roth (Nextron Systems), @neonprimetime",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-40444/proc_creation_win_exploit_cve_2021_40444.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-40444/proc_creation_win_exploit_cve_2021_40444.yml"
+   },
+   {
+    "title": "Potential Exploitation Attempt From Office Application",
+    "author": "Christian Burkard (Nextron Systems), @SBousseaden (idea)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-40444/proc_creation_win_exploit_cve_2021_40444_office_directory_traversal.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-40444/proc_creation_win_exploit_cve_2021_40444_office_directory_traversal.yml"
+   }
+  ],
+  "CVE-2021-40539": [
+   {
+    "title": "Suspicious Shells Spawn by Java Utility Keytool",
+    "author": "Andreas Hunkeler (@Karneades)",
+    "path": "rules/windows/process_creation/proc_creation_win_java_keytool_susp_child_process.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_java_keytool_susp_child_process.yml"
+   },
+   {
+    "title": "ADSelfService Exploitation",
+    "author": "Tobias Michalski (Nextron Systems), Max Altgelt (Nextron Systems)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-40539/web_cve_2021_40539_adselfservice.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-40539/web_cve_2021_40539_adselfservice.yml"
+   },
+   {
+    "title": "CVE-2021-40539 Zoho ManageEngine ADSelfService Plus Exploit",
+    "author": "Sittikorn S, Nuttakorn Tungpoonsup",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-40539/web_cve_2021_40539_manageengine_adselfservice_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-40539/web_cve_2021_40539_manageengine_adselfservice_exploit.yml"
+   }
+  ],
+  "CVE-2021-41379": [
+   {
+    "title": "InstallerFileTakeOver LPE CVE-2021-41379 File Create Event",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-41379/file_event_win_cve_2021_41379_msi_lpe.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-41379/file_event_win_cve_2021_41379_msi_lpe.yml"
+   },
+   {
+    "title": "Potential CVE-2021-41379 Exploitation Attempt",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-41379/proc_creation_win_exploit_cve_2021_41379.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-41379/proc_creation_win_exploit_cve_2021_41379.yml"
+   },
+   {
+    "title": "LPE InstallerFileTakeOver PoC CVE-2021-41379",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-41379/win_vul_cve_2021_41379.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-41379/win_vul_cve_2021_41379.yml"
+   }
+  ],
+  "CVE-2021-41773": [
+   {
+    "title": "CVE-2021-41773 Exploitation Attempt",
+    "author": "daffainfo, Florian Roth",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-41773/web_cve_2021_41773_apache_path_traversal.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-41773/web_cve_2021_41773_apache_path_traversal.yml"
+   }
+  ],
+  "CVE-2021-42237": [
+   {
+    "title": "Sitecore Pre-Auth RCE CVE-2021-42237",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-42237/web_cve_2021_42237_sitecore_report_ashx.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-42237/web_cve_2021_42237_sitecore_report_ashx.yml"
+   }
+  ],
+  "CVE-2021-42278": [
+   {
+    "title": "Win Susp Computer Name Containing Samtheadmin",
+    "author": "elhoim",
+    "path": "rules/windows/builtin/security/win_security_susp_computer_name.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/builtin/security/win_security_susp_computer_name.yml"
+   },
+   {
+    "title": "Potential CVE-2021-42278 Exploitation Attempt",
+    "author": "frack113",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-42278/win_system_exploit_cve_2021_42278.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-42278/win_system_exploit_cve_2021_42278.yml"
+   }
+  ],
+  "CVE-2021-42287": [
+   {
+    "title": "Win Susp Computer Name Containing Samtheadmin",
+    "author": "elhoim",
+    "path": "rules/windows/builtin/security/win_security_susp_computer_name.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/builtin/security/win_security_susp_computer_name.yml"
+   },
+   {
+    "title": "Suspicious Computer Account Name Change CVE-2021-42287",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-42287/win_security_samaccountname_spoofing_cve_2021_42287.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-42287/win_security_samaccountname_spoofing_cve_2021_42287.yml"
+   },
+   {
+    "title": "Potential CVE-2021-42287 Exploitation Attempt",
+    "author": "frack113",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-42287/win_system_exploit_cve_2021_42287.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-42287/win_system_exploit_cve_2021_42287.yml"
+   }
+  ],
+  "CVE-2021-42292": [
+   {
+    "title": "Office Application Initiated Network Connection To Non-Local IP",
+    "author": "Christopher Peacock '@securepeacock', SCYTHE '@scythe_io', Florian Roth (Nextron Systems), Tim Shelton, Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules/windows/network_connection/net_connection_win_office_outbound_non_local_ip.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/network_connection/net_connection_win_office_outbound_non_local_ip.yml"
+   }
+  ],
+  "CVE-2021-42321": [
+   {
+    "title": "Possible Exploitation of Exchange RCE CVE-2021-42321",
+    "author": "Florian Roth (Nextron Systems), @testanull",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-42321/win_exchange_cve_2021_42321.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-42321/win_exchange_cve_2021_42321.yml"
+   }
+  ],
+  "CVE-2021-43798": [
+   {
+    "title": "Grafana Path Traversal Exploitation CVE-2021-43798",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-43798/web_cve_2021_43798_grafana.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-43798/web_cve_2021_43798_grafana.yml"
+   }
+  ],
+  "CVE-2021-44077": [
+   {
+    "title": "CVE-2021-44077 POC Default Dropped File",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-44077/file_event_win_cve_2021_44077_poc_default_files.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-44077/file_event_win_cve_2021_44077_poc_default_files.yml"
+   }
+  ],
+  "CVE-2021-44228": [
+   {
+    "title": "Potential CVE-2021-44228 Exploitation Attempt - VMware Horizon",
+    "author": "@kostastsale",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-44228/proc_creation_win_exploit_cve_2021_44228_vmware_horizon_log4j.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-44228/proc_creation_win_exploit_cve_2021_44228_vmware_horizon_log4j.yml"
+   },
+   {
+    "title": "Log4j RCE CVE-2021-44228 Generic",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-44228/web_cve_2021_44228_log4j.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-44228/web_cve_2021_44228_log4j.yml"
+   },
+   {
+    "title": "Log4j RCE CVE-2021-44228 in Fields",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-44228/web_cve_2021_44228_log4j_fields.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-44228/web_cve_2021_44228_log4j_fields.yml"
+   }
+  ],
+  "CVE-2022-21554": [
+   {
+    "title": "Potential CVE-2023-21554 QueueJumper Exploitation",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-21554/proc_creation_win_exploit_cve_2023_21554_queuejumper.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-21554/proc_creation_win_exploit_cve_2023_21554_queuejumper.yml"
+   }
+  ],
+  "CVE-2022-21587": [
+   {
+    "title": "Potential CVE-2022-21587 Exploitation Attempt",
+    "author": "Isa Almannaei",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-21587/web_cve_2022_21587_oracle_ebs.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-21587/web_cve_2022_21587_oracle_ebs.yml"
+   }
+  ],
+  "CVE-2022-21894": [
+   {
+    "title": "Windows Service Terminated With Error",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules/windows/builtin/system/service_control_manager/win_system_service_terminated_error_generic.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/builtin/system/service_control_manager/win_system_service_terminated_error_generic.yml"
+   },
+   {
+    "title": "Important Windows Service Terminated With Error",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules/windows/builtin/system/service_control_manager/win_system_service_terminated_error_important.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/builtin/system/service_control_manager/win_system_service_terminated_error_important.yml"
+   },
+   {
+    "title": "Windows Defender Real-Time Protection Failure/Restart",
+    "author": "Nasreddine Bencherchali (Nextron Systems), Christopher Peacock '@securepeacock' (Update)",
+    "path": "rules/windows/builtin/windefend/win_defender_real_time_protection_errors.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/builtin/windefend/win_defender_real_time_protection_errors.yml"
+   },
+   {
+    "title": "Outbound Network Connection To Public IP Via Winlogon",
+    "author": "Christopher Peacock @securepeacock, SCYTHE @scythe_io",
+    "path": "rules/windows/network_connection/net_connection_win_winlogon_net_connections.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/network_connection/net_connection_win_winlogon_net_connections.yml"
+   }
+  ],
+  "CVE-2022-21919": [
+   {
+    "title": "Potential Exploitation of CVE-2022-21919 or CVE-2021-34484 for LPE",
+    "author": "Cybex",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-21919/win_system_exploit_cve_2022_21919_or_cve_2021_34484.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-21919/win_system_exploit_cve_2022_21919_or_cve_2021_34484.yml"
+   }
+  ],
+  "CVE-2022-22954": [
+   {
+    "title": "Potential CVE-2022-22954 Exploitation Attempt - VMware Workspace ONE Access Remote Code Execution",
+    "author": "@kostastsale",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-22954/proc_creation_win_exploit_cve_2022_22954_vmware_workspace_one_rce.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-22954/proc_creation_win_exploit_cve_2022_22954_vmware_workspace_one_rce.yml"
+   }
+  ],
+  "CVE-2022-24527": [
+   {
+    "title": "CVE-2022-24527 Microsoft Connected Cache LPE",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-24527/file_event_win_cve_2022_24527_lpe.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-24527/file_event_win_cve_2022_24527_lpe.yml"
+   }
+  ],
+  "CVE-2022-26134": [
+   {
+    "title": "Potential OGNL Injection Exploitation In JVM Based Application",
+    "author": "Moti Harmats",
+    "path": "rules/application/jvm/java_ognl_injection_exploitation_attempt.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/application/jvm/java_ognl_injection_exploitation_attempt.yml"
+   },
+   {
+    "title": "Java Payload Strings",
+    "author": "frack113, Harjot Singh, \"@cyb3rjy0t\" (update)",
+    "path": "rules/web/webserver_generic/web_java_payload_in_access_logs.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/web/webserver_generic/web_java_payload_in_access_logs.yml"
+   },
+   {
+    "title": "Atlassian Confluence CVE-2022-26134",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-26134/proc_creation_lnx_exploit_cve_2022_26134_atlassian_confluence.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-26134/proc_creation_lnx_exploit_cve_2022_26134_atlassian_confluence.yml"
+   }
+  ],
+  "CVE-2022-26809": [
+   {
+    "title": "Potential CVE-2022-26809 Exploitation Attempt",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-26809/proc_creation_win_exploit_cve_2022_26809_rpcss_child_process_anomaly.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-26809/proc_creation_win_exploit_cve_2022_26809_rpcss_child_process_anomaly.yml"
+   }
+  ],
+  "CVE-2022-27800": [
+   {
+    "title": "Potential Nimbuspwn Exploit CVE-2022-29799 and CVE-2022-27800",
+    "author": "Bhabesh Raj",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-29799/lnx_exploit_cve_2022_27999_cve_2022_27800.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-29799/lnx_exploit_cve_2022_27999_cve_2022_27800.yml"
+   }
+  ],
+  "CVE-2022-27925": [
+   {
+    "title": "Zimbra Collaboration Suite Email Server Unauthenticated RCE",
+    "author": "@gott_cyber",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-27925/web_cve_2022_27925_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-27925/web_cve_2022_27925_exploit.yml"
+   }
+  ],
+  "CVE-2022-29072": [
+   {
+    "title": "Potential CVE-2022-29072 Exploitation Attempt",
+    "author": "frack113, @kostastsale",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-29072/proc_creation_win_exploit_cve_2022_29072_7zip.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-29072/proc_creation_win_exploit_cve_2022_29072_7zip.yml"
+   }
+  ],
+  "CVE-2022-29799": [
+   {
+    "title": "Potential Nimbuspwn Exploit CVE-2022-29799 and CVE-2022-27800",
+    "author": "Bhabesh Raj",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-29799/lnx_exploit_cve_2022_27999_cve_2022_27800.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-29799/lnx_exploit_cve_2022_27999_cve_2022_27800.yml"
+   }
+  ],
+  "CVE-2022-30190": [
+   {
+    "title": "File Creation In Suspicious Directory By Msdt.EXE",
+    "author": "Vadim Varganov, Florian Roth (Nextron Systems)",
+    "path": "rules/windows/file/file_event/file_event_win_msdt_susp_directories.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/file/file_event/file_event_win_msdt_susp_directories.yml"
+   },
+   {
+    "title": "Diagnostic Library Sdiageng.DLL Loaded By Msdt.EXE",
+    "author": "Greg (rule)",
+    "path": "rules/windows/image_load/image_load_dll_sdiageng_load_by_msdt.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/image_load/image_load_dll_sdiageng_load_by_msdt.yml"
+   },
+   {
+    "title": "Potential Exploitation Attempt From Office Application",
+    "author": "Christian Burkard (Nextron Systems), @SBousseaden (idea)",
+    "path": "rules-emerging-threats/2021/Exploits/CVE-2021-40444/proc_creation_win_exploit_cve_2021_40444_office_directory_traversal.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2021/Exploits/CVE-2021-40444/proc_creation_win_exploit_cve_2021_40444_office_directory_traversal.yml"
+   },
+   {
+    "title": "Suspicious Set Value of MSDT in Registry (CVE-2022-30190)",
+    "author": "Sittikorn S",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-30190/registry_set_exploit_cve_2022_30190_msdt_follina.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-30190/registry_set_exploit_cve_2022_30190_msdt_follina.yml"
+   }
+  ],
+  "CVE-2022-31656": [
+   {
+    "title": "CVE-2022-31656 VMware Workspace ONE Access Auth Bypass",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-31656/web_cve_2022_31656_auth_bypass.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-31656/web_cve_2022_31656_auth_bypass.yml"
+   }
+  ],
+  "CVE-2022-31659": [
+   {
+    "title": "CVE-2022-31659 VMware Workspace ONE Access RCE",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-31659/web_cve_2022_31659_vmware_rce.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-31659/web_cve_2022_31659_vmware_rce.yml"
+   }
+  ],
+  "CVE-2022-33891": [
+   {
+    "title": "Apache Spark Shell Command Injection - ProcessCreation",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-33891/proc_creation_lnx_exploit_cve_2022_33891_spark_shell_command_injection.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-33891/proc_creation_lnx_exploit_cve_2022_33891_spark_shell_command_injection.yml"
+   },
+   {
+    "title": "Apache Spark Shell Command Injection - Weblogs",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-33891/web_cve_2022_33891_spark_shell_command_injection.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-33891/web_cve_2022_33891_spark_shell_command_injection.yml"
+   }
+  ],
+  "CVE-2022-36804": [
+   {
+    "title": "Atlassian Bitbucket Command Injection Via Archive API",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-36804/web_cve_2022_36804_atlassian_bitbucket_command_injection.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-36804/web_cve_2022_36804_atlassian_bitbucket_command_injection.yml"
+   }
+  ],
+  "CVE-2022-37966": [
+   {
+    "title": "Potential KDC RC4-HMAC Downgrade Exploit - CVE-2022-37966",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-37966/win_system_exploit_cve_2022_37966_kdcsvc_rc4_downgrade.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-37966/win_system_exploit_cve_2022_37966_kdcsvc_rc4_downgrade.yml"
+   }
+  ],
+  "CVE-2022-38028": [
+   {
+    "title": "Forest Blizzard APT - File Creation Activity",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2024/TA/Forest-Blizzard/file_event_win_apt_forest_blizzard_activity.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2024/TA/Forest-Blizzard/file_event_win_apt_forest_blizzard_activity.yml"
+   },
+   {
+    "title": "Forest Blizzard APT - JavaScript Constrained File Creation",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2024/TA/Forest-Blizzard/file_event_win_apt_forest_blizzard_constrained_js.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2024/TA/Forest-Blizzard/file_event_win_apt_forest_blizzard_constrained_js.yml"
+   },
+   {
+    "title": "Forest Blizzard APT - Process Creation Activity",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2024/TA/Forest-Blizzard/proc_creation_win_apt_forest_blizzard_activity.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2024/TA/Forest-Blizzard/proc_creation_win_apt_forest_blizzard_activity.yml"
+   },
+   {
+    "title": "Forest Blizzard APT - Custom Protocol Handler Creation",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2024/TA/Forest-Blizzard/registry_set_apt_forest_blizzard_custom_protocol_handler.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2024/TA/Forest-Blizzard/registry_set_apt_forest_blizzard_custom_protocol_handler.yml"
+   },
+   {
+    "title": "Forest Blizzard APT - Custom Protocol Handler DLL Registry Set",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2024/TA/Forest-Blizzard/registry_set_apt_forest_blizzard_custom_protocol_handler_dll.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2024/TA/Forest-Blizzard/registry_set_apt_forest_blizzard_custom_protocol_handler_dll.yml"
+   }
+  ],
+  "CVE-2022-41040": [
+   {
+    "title": "Suspicious ASPX File Drop by Exchange",
+    "author": "Florian Roth (Nextron Systems), MSTI (query, idea)",
+    "path": "rules/windows/file/file_event/file_event_win_exchange_webshell_drop.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/file/file_event/file_event_win_exchange_webshell_drop.yml"
+   },
+   {
+    "title": "Suspicious File Drop by Exchange",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules/windows/file/file_event/file_event_win_exchange_webshell_drop_suspicious.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/file/file_event/file_event_win_exchange_webshell_drop_suspicious.yml"
+   },
+   {
+    "title": "Chopper Webshell Process Pattern",
+    "author": "Florian Roth (Nextron Systems), MSTI (query)",
+    "path": "rules/windows/process_creation/proc_creation_win_webshell_chopper.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_webshell_chopper.yml"
+   }
+  ],
+  "CVE-2022-41080": [
+   {
+    "title": "Potential OWASSRF Exploitation Attempt - Proxy",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-41082/proxy_cve_2022_36804_exchange_owassrf_exploitation.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-41082/proxy_cve_2022_36804_exchange_owassrf_exploitation.yml"
+   },
+   {
+    "title": "OWASSRF Exploitation Attempt Using Public POC - Proxy",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-41082/proxy_cve_2022_36804_exchange_owassrf_poc_exploitation.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-41082/proxy_cve_2022_36804_exchange_owassrf_poc_exploitation.yml"
+   },
+   {
+    "title": "Potential OWASSRF Exploitation Attempt - Webserver",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-41082/web_cve_2022_36804_exchange_owassrf_exploitation.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-41082/web_cve_2022_36804_exchange_owassrf_exploitation.yml"
+   },
+   {
+    "title": "OWASSRF Exploitation Attempt Using Public POC - Webserver",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-41082/web_cve_2022_36804_exchange_owassrf_poc_exploitation.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-41082/web_cve_2022_36804_exchange_owassrf_poc_exploitation.yml"
+   }
+  ],
+  "CVE-2022-41082": [
+   {
+    "title": "Suspicious ASPX File Drop by Exchange",
+    "author": "Florian Roth (Nextron Systems), MSTI (query, idea)",
+    "path": "rules/windows/file/file_event/file_event_win_exchange_webshell_drop.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/file/file_event/file_event_win_exchange_webshell_drop.yml"
+   },
+   {
+    "title": "Suspicious File Drop by Exchange",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules/windows/file/file_event/file_event_win_exchange_webshell_drop_suspicious.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/file/file_event/file_event_win_exchange_webshell_drop_suspicious.yml"
+   },
+   {
+    "title": "Chopper Webshell Process Pattern",
+    "author": "Florian Roth (Nextron Systems), MSTI (query)",
+    "path": "rules/windows/process_creation/proc_creation_win_webshell_chopper.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_webshell_chopper.yml"
+   },
+   {
+    "title": "Potential OWASSRF Exploitation Attempt - Proxy",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-41082/proxy_cve_2022_36804_exchange_owassrf_exploitation.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-41082/proxy_cve_2022_36804_exchange_owassrf_exploitation.yml"
+   },
+   {
+    "title": "OWASSRF Exploitation Attempt Using Public POC - Proxy",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-41082/proxy_cve_2022_36804_exchange_owassrf_poc_exploitation.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-41082/proxy_cve_2022_36804_exchange_owassrf_poc_exploitation.yml"
+   },
+   {
+    "title": "Potential OWASSRF Exploitation Attempt - Webserver",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-41082/web_cve_2022_36804_exchange_owassrf_exploitation.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-41082/web_cve_2022_36804_exchange_owassrf_exploitation.yml"
+   },
+   {
+    "title": "OWASSRF Exploitation Attempt Using Public POC - Webserver",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-41082/web_cve_2022_36804_exchange_owassrf_poc_exploitation.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-41082/web_cve_2022_36804_exchange_owassrf_poc_exploitation.yml"
+   }
+  ],
+  "CVE-2022-41120": [
+   {
+    "title": "HackTool - SysmonEOP Execution",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules/windows/process_creation/proc_creation_win_hktl_sysmoneop.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_hktl_sysmoneop.yml"
+   },
+   {
+    "title": "Suspicious Sysmon as Execution Parent",
+    "author": "Florian Roth (Nextron Systems), Tim Shelton (fp werfault)",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-41120/proc_creation_win_exploit_cve_2022_41120_sysmon_eop.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-41120/proc_creation_win_exploit_cve_2022_41120_sysmon_eop.yml"
+   }
+  ],
+  "CVE-2022-42475": [
+   {
+    "title": "Exploitation Indicator Of CVE-2022-42475",
+    "author": "Nasreddine Bencherchali (Nextron Systems), Nilaa Maharjan, Douglasrose75",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-42475/fortios_sslvpnd_exploit_cve_2022_42475_exploitation_indicators.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-42475/fortios_sslvpnd_exploit_cve_2022_42475_exploitation_indicators.yml"
+   }
+  ],
+  "CVE-2022-44877": [
+   {
+    "title": "Potential Centos Web Panel Exploitation Attempt - CVE-2022-44877",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-44877/web_cve_2022_44877_exploitation_attempt.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-44877/web_cve_2022_44877_exploitation_attempt.yml"
+   }
+  ],
+  "CVE-2022-46169": [
+   {
+    "title": "Potential CVE-2022-46169 Exploitation Attempt",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-46169/web_cve_2022_46169_cacti_exploitation_attempt.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-46169/web_cve_2022_46169_cacti_exploitation_attempt.yml"
+   }
+  ],
+  "CVE-2022-47966": [
+   {
+    "title": "Suspicious Child Process Of Manage Engine ServiceDesk",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules/windows/process_creation/proc_creation_win_java_manageengine_susp_child_process.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_java_manageengine_susp_child_process.yml"
+   }
+  ],
+  "CVE-2023-1389": [
+   {
+    "title": "CVE-2023-1389 Potential Exploitation Attempt - Unauthenticated Command Injection In TP-Link Archer AX21",
+    "author": "Nasreddine Bencherchali (Nextron Systems), Rohit Jain",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-1389/proxy_exploit_cve_2023_1389_unauth_command_injection_tplink_archer_ax21.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-1389/proxy_exploit_cve_2023_1389_unauth_command_injection_tplink_archer_ax21.yml"
+   }
+  ],
+  "CVE-2023-20198": [
+   {
+    "title": "Exploitation Indicators Of CVE-2023-20198",
+    "author": "Lars B. P. Frydenskov (Trifork Security)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-20198/cisco_syslog_cve_2023_20198_ios_xe_web_ui.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-20198/cisco_syslog_cve_2023_20198_ios_xe_web_ui.yml"
+   }
+  ],
+  "CVE-2023-21554": [
+   {
+    "title": "Important Windows Service Terminated Unexpectedly",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules/windows/builtin/system/service_control_manager/win_system_service_terminated_unexpectedly.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/builtin/system/service_control_manager/win_system_service_terminated_unexpectedly.yml"
+   },
+   {
+    "title": "Potential CVE-2023-21554 QueueJumper Exploitation",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2022/Exploits/CVE-2022-21554/proc_creation_win_exploit_cve_2023_21554_queuejumper.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2022/Exploits/CVE-2022-21554/proc_creation_win_exploit_cve_2023_21554_queuejumper.yml"
+   },
+   {
+    "title": "MSMQ Corrupted Packet Encountered",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-21554/win_cve_2023_21554_msmq_corrupted_packet.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-21554/win_cve_2023_21554_msmq_corrupted_packet.yml"
+   }
+  ],
+  "CVE-2023-21746": [
+   {
+    "title": "HackTool - LocalPotato Execution",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules/windows/process_creation/proc_creation_win_hktl_localpotato.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_hktl_localpotato.yml"
+   }
+  ],
+  "CVE-2023-22518": [
+   {
+    "title": "CVE-2023-22518 Exploitation Attempt - Suspicious Confluence Child Process (Linux)",
+    "author": "Andreas Braathen (mnemonic.io)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-22518/proc_creation_lnx_exploit_cve_2023_22518_confluence_java_child_proc.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-22518/proc_creation_lnx_exploit_cve_2023_22518_confluence_java_child_proc.yml"
+   },
+   {
+    "title": "CVE-2023-22518 Exploitation Attempt - Suspicious Confluence Child Process (Windows)",
+    "author": "Andreas Braathen (mnemonic.io)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-22518/proc_creation_win_exploit_cve_2023_22518_confluence_tomcat_child_proc.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-22518/proc_creation_win_exploit_cve_2023_22518_confluence_tomcat_child_proc.yml"
+   },
+   {
+    "title": "CVE-2023-22518 Exploitation Attempt - Vulnerable Endpoint Connection (Proxy)",
+    "author": "Andreas Braathen (mnemonic.io)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-22518/proxy_exploit_cve_2023_22518_confluence_auth_bypass.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-22518/proxy_exploit_cve_2023_22518_confluence_auth_bypass.yml"
+   },
+   {
+    "title": "CVE-2023-22518 Exploitation Attempt - Vulnerable Endpoint Connection (Webserver)",
+    "author": "Andreas Braathen (mnemonic.io)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-22518/web_exploit_cve_2023_22518_confluence_auth_bypass.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-22518/web_exploit_cve_2023_22518_confluence_auth_bypass.yml"
+   }
+  ],
+  "CVE-2023-2283": [
+   {
+    "title": "Potential CVE-2023-2283 Exploitation",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-2283/lnx_sshd_exploit_cve_2023_2283_libssh_authentication_bypass.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-2283/lnx_sshd_exploit_cve_2023_2283_libssh_authentication_bypass.yml"
+   }
+  ],
+  "CVE-2023-23397": [
+   {
+    "title": "Suspicious WebDav Client Execution Via Rundll32.EXE",
+    "author": "Nasreddine Bencherchali (Nextron Systems), Florian Roth (Nextron Systems)",
+    "path": "rules/windows/process_creation/proc_creation_win_rundll32_webdav_client_susp_execution.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_rundll32_webdav_client_susp_execution.yml"
+   },
+   {
+    "title": "Outlook Task/Note Reminder Received",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-23397/registry_set_exploit_cve_2023_23397_outlook_reminder_trigger.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-23397/registry_set_exploit_cve_2023_23397_outlook_reminder_trigger.yml"
+   },
+   {
+    "title": "CVE-2023-23397 Exploitation Attempt",
+    "author": "Robert Lee @quantum_cookie",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-23397/win_security_exploit_cve_2023_23397_outlook_remote_file_query.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-23397/win_security_exploit_cve_2023_23397_outlook_remote_file_query.yml"
+   },
+   {
+    "title": "Potential CVE-2023-23397 Exploitation Attempt - SMB",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-23397/win_smbclient_connectivity_exploit_cve_2023_23397_outlook_remote_file.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-23397/win_smbclient_connectivity_exploit_cve_2023_23397_outlook_remote_file.yml"
+   }
+  ],
+  "CVE-2023-23752": [
+   {
+    "title": "Potential CVE-2023-23752 Exploitation Attempt",
+    "author": "Bhabesh Raj",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-23752/web_cve_2023_23752_joomla_exploit_attempt.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-23752/web_cve_2023_23752_joomla_exploit_attempt.yml"
+   }
+  ],
+  "CVE-2023-25157": [
+   {
+    "title": "Potential CVE-2023-25157 Exploitation Attempt",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-25157/web_cve_2023_25157_geoserver_sql_injection.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-25157/web_cve_2023_25157_geoserver_sql_injection.yml"
+   }
+  ],
+  "CVE-2023-25717": [
+   {
+    "title": "Potential CVE-2023-25717 Exploitation Attempt",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-25717/web_cve_2023_25717_ruckus_wireless_admin_exploit_attempt.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-25717/web_cve_2023_25717_ruckus_wireless_admin_exploit_attempt.yml"
+   }
+  ],
+  "CVE-2023-27363": [
+   {
+    "title": "Potential CVE-2023-27363 Exploitation - HTA File Creation By FoxitPDFReader",
+    "author": "Gregory",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-27363/file_event_win_cve_2023_27363_foxit_rce.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-27363/file_event_win_cve_2023_27363_foxit_rce.yml"
+   }
+  ],
+  "CVE-2023-27997": [
+   {
+    "title": "Potential CVE-2023-27997 Exploitation Indicators",
+    "author": "Sergio Palacios Dominguez, Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-27997/web_cve_2023_27997_pre_authentication_rce.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-27997/web_cve_2023_27997_pre_authentication_rce.yml"
+   }
+  ],
+  "CVE-2023-34362": [
+   {
+    "title": "Potential MOVEit Transfer CVE-2023-34362 Exploitation - File Activity",
+    "author": "Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-34362-MOVEit-Transfer-Exploit/file_event_win_exploit_cve_2023_34362_moveit_transfer.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-34362-MOVEit-Transfer-Exploit/file_event_win_exploit_cve_2023_34362_moveit_transfer.yml"
+   },
+   {
+    "title": "Potential MOVEit Transfer CVE-2023-34362 Exploitation - Dynamic Compilation Via Csc.EXE",
+    "author": "@kostastsale",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-34362-MOVEit-Transfer-Exploit/proc_creation_win_exploit_cve_2023_34362_moveit_transfer_exploitation_activity.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-34362-MOVEit-Transfer-Exploit/proc_creation_win_exploit_cve_2023_34362_moveit_transfer_exploitation_activity.yml"
+   },
+   {
+    "title": "MOVEit CVE-2023-34362 Exploitation Attempt - Potential Web Shell Request",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-34362-MOVEit-Transfer-Exploit/web_cve_2023_34362_known_payload_request.yml.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-34362-MOVEit-Transfer-Exploit/web_cve_2023_34362_known_payload_request.yml.yml"
+   }
+  ],
+  "CVE-2023-36874": [
+   {
+    "title": "Potential CVE-2023-36874 Exploitation - Uncommon Report.Wer Location",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-36874/file_event_win_exploit_cve_2023_36874_report_creation.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-36874/file_event_win_exploit_cve_2023_36874_report_creation.yml"
+   },
+   {
+    "title": "Potential CVE-2023-36874 Exploitation - Fake Wermgr.Exe Creation",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-36874/file_event_win_exploit_cve_2023_36874_wermgr_creation.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-36874/file_event_win_exploit_cve_2023_36874_wermgr_creation.yml"
+   },
+   {
+    "title": "Potential CVE-2023-36874 Exploitation - Fake Wermgr Execution",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-36874/proc_creation_win_exploit_cve_2023_36874_fake_wermgr.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-36874/proc_creation_win_exploit_cve_2023_36874_fake_wermgr.yml"
+   }
+  ],
+  "CVE-2023-36884": [
+   {
+    "title": "Potential CVE-2023-36884 Exploitation Dropped File",
+    "author": "Nasreddine Bencherchali (Nextron Systems), X__Junior (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-36884/file_event_win_exploit_cve_2023_36884_office_windows_html_rce_file_patterns.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-36884/file_event_win_exploit_cve_2023_36884_office_windows_html_rce_file_patterns.yml"
+   },
+   {
+    "title": "Potential CVE-2023-36884 Exploitation Pattern",
+    "author": "X__Junior",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-36884/proxy_exploit_cve_2023_36884_office_windows_html_rce.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-36884/proxy_exploit_cve_2023_36884_office_windows_html_rce.yml"
+   },
+   {
+    "title": "Potential CVE-2023-36884 URL Request Pattern Traffic",
+    "author": "X__Junior",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-36884/proxy_exploit_cve_2023_36884_office_windows_html_rce_extenstion_ip_pattern_traffic.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-36884/proxy_exploit_cve_2023_36884_office_windows_html_rce_extenstion_ip_pattern_traffic.yml"
+   },
+   {
+    "title": "Potential CVE-2023-36884 Exploitation - File Downloads",
+    "author": "X__Junior",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-36884/proxy_exploit_cve_2023_36884_office_windows_html_rce_traffic.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-36884/proxy_exploit_cve_2023_36884_office_windows_html_rce_traffic.yml"
+   },
+   {
+    "title": "Potential CVE-2023-36884 Exploitation - URL Marker",
+    "author": "X__Junior",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-36884/proxy_exploit_cve_2023_36884_office_windows_html_rce_url_marker_traffic.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-36884/proxy_exploit_cve_2023_36884_office_windows_html_rce_url_marker_traffic.yml"
+   },
+   {
+    "title": "Potential CVE-2023-36884 Exploitation - Share Access",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-36884/win_security_exploit_cve_2023_36884_office_windows_html_rce_share_access_pattern.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-36884/win_security_exploit_cve_2023_36884_office_windows_html_rce_share_access_pattern.yml"
+   }
+  ],
+  "CVE-2023-38331": [
+   {
+    "title": "CVE-2023-38331 Exploitation Attempt - Suspicious Double Extension File",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-38831/file_event_win_exploit_cve_2023_38331_winrar_susp_double_ext.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-38831/file_event_win_exploit_cve_2023_38331_winrar_susp_double_ext.yml"
+   },
+   {
+    "title": "CVE-2023-38331 Exploitation Attempt - Suspicious WinRAR Child Process",
+    "author": "Nasreddine Bencherchali (Nextron Systems), Andreas Braathen (mnemonic.io)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-38831/proc_creation_win_exploit_cve_2023_38831_winrar_child_proc.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-38831/proc_creation_win_exploit_cve_2023_38831_winrar_child_proc.yml"
+   }
+  ],
+  "CVE-2023-38831": [
+   {
+    "title": "Process Initiated Network Connection To Ngrok Domain",
+    "author": "Florian Roth (Nextron Systems)",
+    "path": "rules/windows/network_connection/net_connection_win_domain_ngrok.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/network_connection/net_connection_win_domain_ngrok.yml"
+   },
+   {
+    "title": "Potentially Suspicious Child Process Of WinRAR.EXE",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules/windows/process_creation/proc_creation_win_winrar_susp_child_process.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_winrar_susp_child_process.yml"
+   },
+   {
+    "title": "CVE-2023-38331 Exploitation Attempt - Suspicious Double Extension File",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-38831/file_event_win_exploit_cve_2023_38331_winrar_susp_double_ext.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-38831/file_event_win_exploit_cve_2023_38331_winrar_susp_double_ext.yml"
+   },
+   {
+    "title": "CVE-2023-38331 Exploitation Attempt - Suspicious WinRAR Child Process",
+    "author": "Nasreddine Bencherchali (Nextron Systems), Andreas Braathen (mnemonic.io)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-38831/proc_creation_win_exploit_cve_2023_38831_winrar_child_proc.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-38831/proc_creation_win_exploit_cve_2023_38831_winrar_child_proc.yml"
+   }
+  ],
+  "CVE-2023-40477": [
+   {
+    "title": "CVE-2023-40477 Potential Exploitation - .REV File Creation",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-40477/file_event_win_exploit_cve_2023_40477_winrar_rev_file_abuse.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-40477/file_event_win_exploit_cve_2023_40477_winrar_rev_file_abuse.yml"
+   },
+   {
+    "title": "CVE-2023-40477 Potential Exploitation - WinRAR Application Crash",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-40477/win_application_exploit_cve_2023_40477_winrar_crash.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-40477/win_application_exploit_cve_2023_40477_winrar_crash.yml"
+   }
+  ],
+  "CVE-2023-42793": [
+   {
+    "title": "Security Tools Keyword Lookup Via Findstr.EXE",
+    "author": "Nasreddine Bencherchali (Nextron Systems), frack113",
+    "path": "rules/windows/process_creation/proc_creation_win_findstr_security_keyword_lookup.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_findstr_security_keyword_lookup.yml"
+   },
+   {
+    "title": "Diamond Sleet APT DNS Communication Indicators",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/TA/Diamond-Sleet/dns_query_win_apt_diamond_steel_indicators.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/TA/Diamond-Sleet/dns_query_win_apt_diamond_steel_indicators.yml"
+   },
+   {
+    "title": "Diamond Sleet APT File Creation Indicators",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/TA/Diamond-Sleet/file_event_win_apt_diamond_sleet_indicators.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/TA/Diamond-Sleet/file_event_win_apt_diamond_sleet_indicators.yml"
+   },
+   {
+    "title": "Diamond Sleet APT DLL Sideloading Indicators",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/TA/Diamond-Sleet/image_load_apt_diamond_sleet_side_load.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/TA/Diamond-Sleet/image_load_apt_diamond_sleet_side_load.yml"
+   },
+   {
+    "title": "Diamond Sleet APT Process Activity Indicators",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/TA/Diamond-Sleet/proc_creation_win_apt_diamond_sleet_indicators.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/TA/Diamond-Sleet/proc_creation_win_apt_diamond_sleet_indicators.yml"
+   },
+   {
+    "title": "Diamond Sleet APT Scheduled Task Creation - Registry",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/TA/Diamond-Sleet/registry_event_apt_diamond_sleet_scheduled_task.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/TA/Diamond-Sleet/registry_event_apt_diamond_sleet_scheduled_task.yml"
+   },
+   {
+    "title": "Diamond Sleet APT Scheduled Task Creation",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/TA/Diamond-Sleet/win_security_apt_diamond_sleet_scheduled_task.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/TA/Diamond-Sleet/win_security_apt_diamond_sleet_scheduled_task.yml"
+   },
+   {
+    "title": "Onyx Sleet APT File Creation Indicators",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/TA/Onyx-Sleet/file_event_win_apt_onyx_sleet_indicators.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/TA/Onyx-Sleet/file_event_win_apt_onyx_sleet_indicators.yml"
+   }
+  ],
+  "CVE-2023-43261": [
+   {
+    "title": "Potential Information Disclosure CVE-2023-43261 Exploitation - Proxy",
+    "author": "Nasreddine Bencherchali (Nextron Systems), Thurein Oo",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-43261/proxy_exploit_cve_2023_43261_milesight_information_disclosure.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-43261/proxy_exploit_cve_2023_43261_milesight_information_disclosure.yml"
+   },
+   {
+    "title": "Potential Information Disclosure CVE-2023-43261 Exploitation - Web",
+    "author": "Nasreddine Bencherchali (Nextron Systems), Thurein Oo",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-43261/web_exploit_cve_2023_43261_milesight_information_disclosure.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-43261/web_exploit_cve_2023_43261_milesight_information_disclosure.yml"
+   }
+  ],
+  "CVE-2023-43621": [
+   {
+    "title": "Potential Information Disclosure CVE-2023-43261 Exploitation - Proxy",
+    "author": "Nasreddine Bencherchali (Nextron Systems), Thurein Oo",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-43261/proxy_exploit_cve_2023_43261_milesight_information_disclosure.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-43261/proxy_exploit_cve_2023_43261_milesight_information_disclosure.yml"
+   },
+   {
+    "title": "Potential Information Disclosure CVE-2023-43261 Exploitation - Web",
+    "author": "Nasreddine Bencherchali (Nextron Systems), Thurein Oo",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-43261/web_exploit_cve_2023_43261_milesight_information_disclosure.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-43261/web_exploit_cve_2023_43261_milesight_information_disclosure.yml"
+   }
+  ],
+  "CVE-2023-46214": [
+   {
+    "title": "Potential CVE-2023-46214 Exploitation Attempt",
+    "author": "Nasreddine Bencherchali (Nextron Systems), Bhavin Patel (STRT)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-46214/web_cve_2023_46214_rce_splunk_enterprise.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-46214/web_cve_2023_46214_rce_splunk_enterprise.yml"
+   },
+   {
+    "title": "Exploitation Attempt Of CVE-2023-46214 Using Public POC Code",
+    "author": "Lars B. P. Frydenskov(Trifork Security)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-46214/web_cve_2023_46214_rce_splunk_enterprise_poc.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-46214/web_cve_2023_46214_rce_splunk_enterprise_poc.yml"
+   }
+  ],
+  "CVE-2023-46747": [
+   {
+    "title": "CVE-2023-46747 Exploitation Activity - Proxy",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-46747/proxy_cve_2023_46747_f5_remote_code_execution.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-46747/proxy_cve_2023_46747_f5_remote_code_execution.yml"
+   },
+   {
+    "title": "CVE-2023-46747 Exploitation Activity - Webserver",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-46747/web_cve_2023_46747_f5_remote_code_execution.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-46747/web_cve_2023_46747_f5_remote_code_execution.yml"
+   }
+  ],
+  "CVE-2023-4966": [
+   {
+    "title": "CVE-2023-4966 Exploitation Attempt - Citrix ADC Sensitive Information Disclosure - Proxy",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-4966/proxy_exploit_cve_2023_4966_citrix_sensitive_information_disclosure_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-4966/proxy_exploit_cve_2023_4966_citrix_sensitive_information_disclosure_exploit.yml"
+   },
+   {
+    "title": "CVE-2023-4966 Potential Exploitation Attempt - Citrix ADC Sensitive Information Disclosure - Proxy",
+    "author": "Nasreddine Bencherchali (Nextron Systems), Michael Haag (STRT)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-4966/proxy_exploit_cve_2023_4966_citrix_sensitive_information_disclosure_exploit_attempt.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-4966/proxy_exploit_cve_2023_4966_citrix_sensitive_information_disclosure_exploit_attempt.yml"
+   },
+   {
+    "title": "CVE-2023-4966 Potential Exploitation Attempt - Citrix ADC Sensitive Information Disclosure - Webserver",
+    "author": "Nasreddine Bencherchali (Nextron Systems), Michael Haag (STRT)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-4966/web_exploit_cve_2023_4966_citrix_sensitive_information_disclosure_exploit.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-4966/web_exploit_cve_2023_4966_citrix_sensitive_information_disclosure_exploit.yml"
+   },
+   {
+    "title": "CVE-2023-4966 Exploitation Attempt - Citrix ADC Sensitive Information Disclosure - Webserver",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2023/Exploits/CVE-2023-4966/web_exploit_cve_2023_4966_citrix_sensitive_information_disclosure_exploit_attempt.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2023/Exploits/CVE-2023-4966/web_exploit_cve_2023_4966_citrix_sensitive_information_disclosure_exploit_attempt.yml"
+   }
+  ],
+  "CVE-2024-12084": [
+   {
+    "title": "Suspicious Invocation of Shell via Rsync",
+    "author": "Florian Roth",
+    "path": "rules/linux/process_creation/proc_creation_lnx_rsync_shell_spawn.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/linux/process_creation/proc_creation_lnx_rsync_shell_spawn.yml"
+   }
+  ],
+  "CVE-2024-1212": [
+   {
+    "title": "CVE-2024-1212 Exploitation - Progress Kemp LoadMaster Unauthenticated Command Injection",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2024/Exploits/CVE-2024-1212/web_exploit_cve_2024_1212_.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2024/Exploits/CVE-2024-1212/web_exploit_cve_2024_1212_.yml"
+   }
+  ],
+  "CVE-2024-1708": [
+   {
+    "title": "Potentially Suspicious File Download From File Sharing Domain Via PowerShell.EXE",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules/windows/process_creation/proc_creation_win_powershell_download_susp_file_sharing_domains.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_powershell_download_susp_file_sharing_domains.yml"
+   },
+   {
+    "title": "Suspicious PowerShell IEX Execution Patterns",
+    "author": "Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules/windows/process_creation/proc_creation_win_powershell_iex_patterns.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_powershell_iex_patterns.yml"
+   },
+   {
+    "title": "Remote Access Tool - ScreenConnect Potential Suspicious Remote Command Execution",
+    "author": "Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems), @Kostastsale",
+    "path": "rules/windows/process_creation/proc_creation_win_remote_access_tools_screenconnect_remote_execution_susp.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_remote_access_tools_screenconnect_remote_execution_susp.yml"
+   },
+   {
+    "title": "Remote Access Tool - Simple Help Execution",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules/windows/process_creation/proc_creation_win_remote_access_tools_simple_help.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_remote_access_tools_simple_help.yml"
+   },
+   {
+    "title": "User Added To Highly Privileged Group",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules/windows/process_creation/proc_creation_win_susp_add_user_privileged_group.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_susp_add_user_privileged_group.yml"
+   },
+   {
+    "title": "Weak or Abused Passwords In CLI",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules/windows/process_creation/proc_creation_win_susp_weak_or_abused_passwords.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_susp_weak_or_abused_passwords.yml"
+   },
+   {
+    "title": "CVE-2024-1708 - ScreenConnect Path Traversal Exploitation",
+    "author": "Matt Anderson, Andrew Schwartz, Caleb Stewart, Huntress",
+    "path": "rules-emerging-threats/2024/Exploits/CVE-2024-1708/file_event_win_exploit_cve_2024_1708_screenconnect.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2024/Exploits/CVE-2024-1708/file_event_win_exploit_cve_2024_1708_screenconnect.yml"
+   },
+   {
+    "title": "CVE-2024-1708 - ScreenConnect Path Traversal Exploitation - Security",
+    "author": "Matt Anderson, Caleb Stewart, Huntress",
+    "path": "rules-emerging-threats/2024/Exploits/CVE-2024-1708/win_security_exploit_cve_2024_1708_screenconnect.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2024/Exploits/CVE-2024-1708/win_security_exploit_cve_2024_1708_screenconnect.yml"
+   },
+   {
+    "title": "ScreenConnect - SlashAndGrab Exploitation Indicators",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2024/TA/SlashAndGrab-Exploitation-In-Wild/file_event_win_apt_unknown_exploitation_indicators.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2024/TA/SlashAndGrab-Exploitation-In-Wild/file_event_win_apt_unknown_exploitation_indicators.yml"
+   },
+   {
+    "title": "Remote Access Tool - ScreenConnect Remote Command Execution - Hunting",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-threat-hunting/windows/process_creation/proc_creation_win_remote_access_tools_screenconnect_child_proc.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-threat-hunting/windows/process_creation/proc_creation_win_remote_access_tools_screenconnect_child_proc.yml"
+   }
+  ],
+  "CVE-2024-1709": [
+   {
+    "title": "Potentially Suspicious File Download From File Sharing Domain Via PowerShell.EXE",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules/windows/process_creation/proc_creation_win_powershell_download_susp_file_sharing_domains.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_powershell_download_susp_file_sharing_domains.yml"
+   },
+   {
+    "title": "Suspicious PowerShell IEX Execution Patterns",
+    "author": "Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules/windows/process_creation/proc_creation_win_powershell_iex_patterns.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_powershell_iex_patterns.yml"
+   },
+   {
+    "title": "Remote Access Tool - ScreenConnect Potential Suspicious Remote Command Execution",
+    "author": "Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems), @Kostastsale",
+    "path": "rules/windows/process_creation/proc_creation_win_remote_access_tools_screenconnect_remote_execution_susp.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_remote_access_tools_screenconnect_remote_execution_susp.yml"
+   },
+   {
+    "title": "Remote Access Tool - Simple Help Execution",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules/windows/process_creation/proc_creation_win_remote_access_tools_simple_help.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_remote_access_tools_simple_help.yml"
+   },
+   {
+    "title": "User Added To Highly Privileged Group",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules/windows/process_creation/proc_creation_win_susp_add_user_privileged_group.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_susp_add_user_privileged_group.yml"
+   },
+   {
+    "title": "Weak or Abused Passwords In CLI",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules/windows/process_creation/proc_creation_win_susp_weak_or_abused_passwords.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/process_creation/proc_creation_win_susp_weak_or_abused_passwords.yml"
+   },
+   {
+    "title": "CVE-2024-1708 - ScreenConnect Path Traversal Exploitation",
+    "author": "Matt Anderson, Andrew Schwartz, Caleb Stewart, Huntress",
+    "path": "rules-emerging-threats/2024/Exploits/CVE-2024-1708/file_event_win_exploit_cve_2024_1708_screenconnect.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2024/Exploits/CVE-2024-1708/file_event_win_exploit_cve_2024_1708_screenconnect.yml"
+   },
+   {
+    "title": "ScreenConnect User Database Modification",
+    "author": "Matt Anderson, Andrew Schwartz, Caleb Stewart, Huntress",
+    "path": "rules-emerging-threats/2024/Exploits/CVE-2024-1709/file_event_win_exploit_cve_2024_1709_user_database_modification_screenconnect.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2024/Exploits/CVE-2024-1709/file_event_win_exploit_cve_2024_1709_user_database_modification_screenconnect.yml"
+   },
+   {
+    "title": "CVE-2024-1709 - ScreenConnect Authentication Bypass Exploitation",
+    "author": "Matt Anderson, Huntress",
+    "path": "rules-emerging-threats/2024/Exploits/CVE-2024-1709/web_exploit_cve_2024_1709_screenconnect.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2024/Exploits/CVE-2024-1709/web_exploit_cve_2024_1709_screenconnect.yml"
+   },
+   {
+    "title": "ScreenConnect User Database Modification - Security",
+    "author": "Matt Anderson, Kris Luzadre, Andrew Schwartz, Huntress",
+    "path": "rules-emerging-threats/2024/Exploits/CVE-2024-1709/win_security_exploit_cve_2024_1709_user_database_modification_screenconnect.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2024/Exploits/CVE-2024-1709/win_security_exploit_cve_2024_1709_user_database_modification_screenconnect.yml"
+   },
+   {
+    "title": "ScreenConnect - SlashAndGrab Exploitation Indicators",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2024/TA/SlashAndGrab-Exploitation-In-Wild/file_event_win_apt_unknown_exploitation_indicators.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2024/TA/SlashAndGrab-Exploitation-In-Wild/file_event_win_apt_unknown_exploitation_indicators.yml"
+   },
+   {
+    "title": "Remote Access Tool - ScreenConnect Remote Command Execution - Hunting",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-threat-hunting/windows/process_creation/proc_creation_win_remote_access_tools_screenconnect_child_proc.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-threat-hunting/windows/process_creation/proc_creation_win_remote_access_tools_screenconnect_child_proc.yml"
+   }
+  ],
+  "CVE-2024-21412": [
+   {
+    "title": "DarkGate - Drop DarkGate Loader In C:\\Temp Directory",
+    "author": "Tomasz Dyduch, Josh Nickels",
+    "path": "rules-emerging-threats/2024/Malware/DarkGate/file_event_win_malware_darkgate_autoit3_save_temp.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2024/Malware/DarkGate/file_event_win_malware_darkgate_autoit3_save_temp.yml"
+   }
+  ],
+  "CVE-2024-3094": [
+   {
+    "title": "Potential Exploitation of CVE-2024-3094 - Suspicious SSH Child Process",
+    "author": "Arnim Rupp, Nasreddine Bencherchali, Thomas Patzke",
+    "path": "rules-emerging-threats/2024/Exploits/CVE-2024-3094/proc_creation_lnx_exploit_cve_2024_3094_sshd_child_process.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2024/Exploits/CVE-2024-3094/proc_creation_lnx_exploit_cve_2024_3094_sshd_child_process.yml"
+   }
+  ],
+  "CVE-2024-3400": [
+   {
+    "title": "Potential CVE-2024-3400 Exploitation - Palo Alto GlobalProtect OS Command Injection - File Creation",
+    "author": "Andreas Braathen (mnemonic.io)",
+    "path": "rules-emerging-threats/2024/Exploits/CVE-2024-3400/file_event_paloalto_globalprotect_exploit_cve_2024_3400_command_inject_file_creation.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2024/Exploits/CVE-2024-3400/file_event_paloalto_globalprotect_exploit_cve_2024_3400_command_inject_file_creation.yml"
+   },
+   {
+    "title": "Potential CVE-2024-3400 Exploitation - Palo Alto GlobalProtect OS Command Injection",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2024/Exploits/CVE-2024-3400/paloalto_globalprotect_exploit_cve_2024_3400_command_injection.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2024/Exploits/CVE-2024-3400/paloalto_globalprotect_exploit_cve_2024_3400_command_injection.yml"
+   },
+   {
+    "title": "Python Path Configuration File Creation - Linux",
+    "author": "Andreas Braathen (mnemonic.io)",
+    "path": "rules-threat-hunting/linux/file/file_event/file_event_lnx_python_path_configuration_files.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-threat-hunting/linux/file/file_event/file_event_lnx_python_path_configuration_files.yml"
+   },
+   {
+    "title": "Python Path Configuration File Creation - MacOS",
+    "author": "Andreas Braathen (mnemonic.io)",
+    "path": "rules-threat-hunting/macos/file/file_event/file_event_macos_python_path_configuration_files.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-threat-hunting/macos/file/file_event/file_event_macos_python_path_configuration_files.yml"
+   },
+   {
+    "title": "Python Path Configuration File Creation - Windows",
+    "author": "Andreas Braathen (mnemonic.io), Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-threat-hunting/windows/file/file_event/file_event_win_python_path_configuration_files.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-threat-hunting/windows/file/file_event/file_event_win_python_path_configuration_files.yml"
+   }
+  ],
+  "CVE-2024-35250": [
+   {
+    "title": "Potential CVE-2024-35250 Exploitation Activity",
+    "author": "@eyezuhk Isaac Fernandes",
+    "path": "rules-emerging-threats/2024/Exploits/CVE-2024-35250/image_load_exploit_cve_2024_35250_privilege_escalation.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2024/Exploits/CVE-2024-35250/image_load_exploit_cve_2024_35250_privilege_escalation.yml"
+   }
+  ],
+  "CVE-2024-37085": [
+   {
+    "title": "Potential Exploitation of CVE-2024-37085 - Suspicious Creation Of ESX Admins Group",
+    "author": "frack113",
+    "path": "rules-emerging-threats/2024/Exploits/CVE-2024-37085/proc_creation_win_exploit_cve_2024_37085_esxi_admins_group_creation.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2024/Exploits/CVE-2024-37085/proc_creation_win_exploit_cve_2024_37085_esxi_admins_group_creation.yml"
+   },
+   {
+    "title": "Potential Exploitation of CVE-2024-37085 - Suspicious ESX Admins Group Activity",
+    "author": "Nasreddine Bencherchali (Nextron Systems)",
+    "path": "rules-emerging-threats/2024/Exploits/CVE-2024-37085/win_security_exploit_cve_2024_37085_esxi_admins_group.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2024/Exploits/CVE-2024-37085/win_security_exploit_cve_2024_37085_esxi_admins_group.yml"
+   }
+  ],
+  "CVE-2024-49113": [
+   {
+    "title": "CVE-2024-49113 Exploitation Attempt - LDAP Nightmare",
+    "author": "Samuel Monsempes",
+    "path": "rules-emerging-threats/2024/Exploits/CVE-2024-49113/win_application_error_exploit_cve_2024_49113_ldap_nightmare.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2024/Exploits/CVE-2024-49113/win_application_error_exploit_cve_2024_49113_ldap_nightmare.yml"
+   }
+  ],
+  "CVE-2024-50623": [
+   {
+    "title": "CVE-2024-50623 Exploitation Attempt - Cleo",
+    "author": "Tanner Filip, Austin Worline, Chad Hudson, Matt Anderson",
+    "path": "rules-emerging-threats/2024/Exploits/CVE-2024-50623/proc_creation_win_exploit_cve_2024_50623_cleo.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2024/Exploits/CVE-2024-50623/proc_creation_win_exploit_cve_2024_50623_cleo.yml"
+   }
+  ],
+  "CVE-2025-10035": [
+   {
+    "title": "Potential Exploitation of GoAnywhere MFT Vulnerability",
+    "author": "MSFT (idea), Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-10035/proc_creation_win_exploit_cve_2025_10035.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-10035/proc_creation_win_exploit_cve_2025_10035.yml"
+   }
+  ],
+  "CVE-2025-20333": [
+   {
+    "title": "Cisco ASA Exploitation Activity - Proxy",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-20333/proxy_exploit_cve_2025_20333.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-20333/proxy_exploit_cve_2025_20333.yml"
+   }
+  ],
+  "CVE-2025-20362": [
+   {
+    "title": "Cisco ASA Exploitation Activity - Proxy",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-20333/proxy_exploit_cve_2025_20333.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-20333/proxy_exploit_cve_2025_20333.yml"
+   }
+  ],
+  "CVE-2025-24054": [
+   {
+    "title": "Suspicious Creation of .library-ms File \u2014 Potential CVE-2025-24054 Exploit",
+    "author": "Gene Kazimiarovich",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-24054/file_event_win_exploit_cve_2025_24054_library_ms.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-24054/file_event_win_exploit_cve_2025_24054_library_ms.yml"
+   }
+  ],
+  "CVE-2025-26399": [
+   {
+    "title": "Suspicious Child Process of SolarWinds WebHelpDesk",
+    "author": "Huntress Team, Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-40551/proc_creation_win_exploit_cve_2025_40551.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-40551/proc_creation_win_exploit_cve_2025_40551.yml"
+   }
+  ],
+  "CVE-2025-2825": [
+   {
+    "title": "Suspicious CrushFTP Child Process",
+    "author": "Craig Sweeney, Matt Anderson, Jose Oregon, Tim Kasper, Faith Stratton, Samantha Shaw, Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-31161/proc_creation_win_crushftp_susp_child_processes.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-31161/proc_creation_win_crushftp_susp_child_processes.yml"
+   }
+  ],
+  "CVE-2025-30406": [
+   {
+    "title": "Suspicious Process Spawned by CentreStack Portal AppPool",
+    "author": "Jason Rathbun (Blackpoint Cyber)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-30406/proc_creation_win_exploit_cve_2025_30406_centrestack_portal_child_process.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-30406/proc_creation_win_exploit_cve_2025_30406_centrestack_portal_child_process.yml"
+   }
+  ],
+  "CVE-2025-31161": [
+   {
+    "title": "Suspicious CrushFTP Child Process",
+    "author": "Craig Sweeney, Matt Anderson, Jose Oregon, Tim Kasper, Faith Stratton, Samantha Shaw, Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-31161/proc_creation_win_crushftp_susp_child_processes.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-31161/proc_creation_win_crushftp_susp_child_processes.yml"
+   }
+  ],
+  "CVE-2025-31324": [
+   {
+    "title": "Potential SAP NetWeaver Webshell Creation - Linux",
+    "author": "Elastic (idea), Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-31324/file_event_lnx_sap_netweaver_webshell_creation.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-31324/file_event_lnx_sap_netweaver_webshell_creation.yml"
+   },
+   {
+    "title": "Potential SAP NetWeaver Webshell Creation",
+    "author": "Elastic (idea), Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-31324/file_event_win_sap_netweaver_webshell_creation.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-31324/file_event_win_sap_netweaver_webshell_creation.yml"
+   },
+   {
+    "title": "Suspicious Child Process of SAP NetWeaver - Linux",
+    "author": "Elastic (idea), Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-31324/proc_creation_lnx_sap_netweaver_susp_child_process.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-31324/proc_creation_lnx_sap_netweaver_susp_child_process.yml"
+   },
+   {
+    "title": "Suspicious Child Process of SAP NetWeaver",
+    "author": "Elastic (idea), Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-31324/proc_creation_win_sap_netweaver_susp_child_process.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-31324/proc_creation_win_sap_netweaver_susp_child_process.yml"
+   },
+   {
+    "title": "Potential SAP NetViewer Webshell Command Execution",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-31324/web_lnx_exploit_cve_2025_31324_sap_netviewer_webshell.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-31324/web_lnx_exploit_cve_2025_31324_sap_netviewer_webshell.yml"
+   },
+   {
+    "title": "Potential Java WebShell Upload in SAP NetViewer Server",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-31324/web_lnx_exploit_cve_2025_31324_sap_netviewer_webshell_uploaded.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-31324/web_lnx_exploit_cve_2025_31324_sap_netviewer_webshell_uploaded.yml"
+   }
+  ],
+  "CVE-2025-32463": [
+   {
+    "title": "Linux Sudo Chroot Execution",
+    "author": "Swachchhanda Shrawn Poudel (Nextron Systems)",
+    "path": "rules/linux/process_creation/proc_creation_lnx_chroot_execution.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/linux/process_creation/proc_creation_lnx_chroot_execution.yml"
+   },
+   {
+    "title": "Non-Standard Nsswitch.Conf Creation - Potential CVE-2025-32463 Exploitation",
+    "author": "Swachchhanda Shrawn Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-32463/file_event_lnx_exploit_cve_2025_32463.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-32463/file_event_lnx_exploit_cve_2025_32463.yml"
+   }
+  ],
+  "CVE-2025-33053": [
+   {
+    "title": "Potential Exploitation of RCE Vulnerability CVE-2025-33053 - Image Load",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-33053/image_load_win_exploit_cve_2025_33053.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-33053/image_load_win_exploit_cve_2025_33053.yml"
+   },
+   {
+    "title": "Potential Exploitation of RCE Vulnerability CVE-2025-33053 - Process Access",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-33053/proc_access_win_exploit_cve_2025_33053.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-33053/proc_access_win_exploit_cve_2025_33053.yml"
+   },
+   {
+    "title": "Potential Exploitation of RCE Vulnerability CVE-2025-33053",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-33053/proc_creation_win_exploit_cve_2025_33053.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-33053/proc_creation_win_exploit_cve_2025_33053.yml"
+   }
+  ],
+  "CVE-2025-40536": [
+   {
+    "title": "Suspicious Child Process of SolarWinds WebHelpDesk",
+    "author": "Huntress Team, Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-40551/proc_creation_win_exploit_cve_2025_40551.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-40551/proc_creation_win_exploit_cve_2025_40551.yml"
+   }
+  ],
+  "CVE-2025-40551": [
+   {
+    "title": "Suspicious Child Process of SolarWinds WebHelpDesk",
+    "author": "Huntress Team, Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-40551/proc_creation_win_exploit_cve_2025_40551.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-40551/proc_creation_win_exploit_cve_2025_40551.yml"
+   }
+  ],
+  "CVE-2025-4427": [
+   {
+    "title": "Potential Exploitation of CVE-2025-4427/4428 Ivanti EPMM Pre-Auth RCE",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-4427/web_invanti_epmm_cve_2025_4427_and_cve_2025_4428.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-4427/web_invanti_epmm_cve_2025_4427_and_cve_2025_4428.yml"
+   }
+  ],
+  "CVE-2025-4428": [
+   {
+    "title": "Potential Exploitation of CVE-2025-4427/4428 Ivanti EPMM Pre-Auth RCE",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-4427/web_invanti_epmm_cve_2025_4427_and_cve_2025_4428.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-4427/web_invanti_epmm_cve_2025_4427_and_cve_2025_4428.yml"
+   }
+  ],
+  "CVE-2025-4598": [
+   {
+    "title": "Potential Exploitation of CVE-2025-5054 or CVE-2025-4598",
+    "author": "Milad Cheraghi",
+    "path": "rules-emerging-threats/2025/Exploits/CVE_2025_4598/proc_creation_lnx_exploit_cve_2025_5054_or_cve_2025_4598.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE_2025_4598/proc_creation_lnx_exploit_cve_2025_5054_or_cve_2025_4598.yml"
+   }
+  ],
+  "CVE-2025-49144": [
+   {
+    "title": "Potential Notepad++ CVE-2025-49144 Exploitation",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-49144/proc_creation_win_exploit_cve_2025_49144.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-49144/proc_creation_win_exploit_cve_2025_49144.yml"
+   }
+  ],
+  "CVE-2025-49704": [
+   {
+    "title": "Suspicious File Write to SharePoint Layouts Directory",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules/windows/file/file_event/file_event_win_susp_filewrite_in_sharepoint_layouts_dir.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/file/file_event/file_event_win_susp_filewrite_in_sharepoint_layouts_dir.yml"
+   },
+   {
+    "title": "Potential SharePoint ToolShell CVE-2025-53770 Exploitation - File Create",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-53770/file_event_win_exploit_cve_2025_53770.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-53770/file_event_win_exploit_cve_2025_53770.yml"
+   }
+  ],
+  "CVE-2025-49706": [
+   {
+    "title": "Suspicious File Write to SharePoint Layouts Directory",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules/windows/file/file_event/file_event_win_susp_filewrite_in_sharepoint_layouts_dir.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/file/file_event/file_event_win_susp_filewrite_in_sharepoint_layouts_dir.yml"
+   },
+   {
+    "title": "Potential SharePoint ToolShell CVE-2025-53770 Exploitation - File Create",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-53770/file_event_win_exploit_cve_2025_53770.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-53770/file_event_win_exploit_cve_2025_53770.yml"
+   }
+  ],
+  "CVE-2025-5054": [
+   {
+    "title": "Potential Exploitation of CVE-2025-5054 or CVE-2025-4598",
+    "author": "Milad Cheraghi",
+    "path": "rules-emerging-threats/2025/Exploits/CVE_2025_4598/proc_creation_lnx_exploit_cve_2025_5054_or_cve_2025_4598.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE_2025_4598/proc_creation_lnx_exploit_cve_2025_5054_or_cve_2025_4598.yml"
+   }
+  ],
+  "CVE-2025-53770": [
+   {
+    "title": "Suspicious File Write to SharePoint Layouts Directory",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules/windows/file/file_event/file_event_win_susp_filewrite_in_sharepoint_layouts_dir.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/file/file_event/file_event_win_susp_filewrite_in_sharepoint_layouts_dir.yml"
+   },
+   {
+    "title": "Potential SharePoint ToolShell CVE-2025-53770 Exploitation - File Create",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-53770/file_event_win_exploit_cve_2025_53770.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-53770/file_event_win_exploit_cve_2025_53770.yml"
+   },
+   {
+    "title": "Potential SharePoint ToolShell CVE-2025-53770 Exploitation Indicators",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-53770/proc_creation_win_exploit_cve_2025_53770_indicators.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-53770/proc_creation_win_exploit_cve_2025_53770_indicators.yml"
+   },
+   {
+    "title": "SharePoint ToolShell CVE-2025-53770 Exploitation - Web IIS",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-53770/web_win_iis_exploit_cve_2025_53770.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-53770/web_win_iis_exploit_cve_2025_53770.yml"
+   }
+  ],
+  "CVE-2025-54309": [
+   {
+    "title": "Potential Exploitation of CrushFTP RCE Vulnerability (CVE-2025-54309)",
+    "author": "Nisarg Suthar",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-54309/proc_creation_win_exploit_cve_2025_54309.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-54309/proc_creation_win_exploit_cve_2025_54309.yml"
+   }
+  ],
+  "CVE-2025-55182": [
+   {
+    "title": "Linux Suspicious Child Process from Node.js - React2Shell",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems), Nasreddine Bencherchali",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-55182/proc_creation_lnx_exploit_cve_2025_55182_susp_nodejs_server_child_process.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-55182/proc_creation_lnx_exploit_cve_2025_55182_susp_nodejs_server_child_process.yml"
+   },
+   {
+    "title": "Windows Suspicious Child Process from Node.js - React2Shell",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems), Nasreddine Bencherchali",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-55182/proc_creation_win_exploit_cve_2025_55182_susp_nodejs_server_child_process.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-55182/proc_creation_win_exploit_cve_2025_55182_susp_nodejs_server_child_process.yml"
+   }
+  ],
+  "CVE-2025-57788": [
+   {
+    "title": "Commvault QLogin with PublicSharingUser and GUID Password (CVE-2025-57788)",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-57788/proc_creation_win_exploit_cve_2025_57788.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-57788/proc_creation_win_exploit_cve_2025_57788.yml"
+   }
+  ],
+  "CVE-2025-57790": [
+   {
+    "title": "Commvault QOperation Path Traversal Webshell Drop (CVE-2025-57790)",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-57790/proc_creation_win_exploit_cve_2025_57790.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-57790/proc_creation_win_exploit_cve_2025_57790.yml"
+   }
+  ],
+  "CVE-2025-57791": [
+   {
+    "title": "Commvault QLogin Argument Injection Authentication Bypass (CVE-2025-57791)",
+    "author": "X__Junior (Nextron Systems), Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-57791/proc_creation_win_exploit_cve_2025_57791.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-57791/proc_creation_win_exploit_cve_2025_57791.yml"
+   }
+  ],
+  "CVE-2025-59287": [
+   {
+    "title": "DNS Query to External Service Interaction Domains",
+    "author": "Florian Roth (Nextron Systems), Matt Kelly (list of domains)",
+    "path": "rules/network/dns/net_dns_external_service_interaction_domains.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/network/dns/net_dns_external_service_interaction_domains.yml"
+   },
+   {
+    "title": "Exploitation Activity of CVE-2025-59287 - WSUS Suspicious Child Process",
+    "author": "Huntress Labs, Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-59287/proc_creation_win_exploit_cve_2025_59287.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-59287/proc_creation_win_exploit_cve_2025_59287.yml"
+   },
+   {
+    "title": "Exploitation Activity of CVE-2025-59287 - WSUS Deserialization",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2025/Exploits/CVE-2025-59287/win_wsus_exploit_cve_2025_59287.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2025/Exploits/CVE-2025-59287/win_wsus_exploit_cve_2025_59287.yml"
+   }
+  ],
+  "CVE-2025-6218": [
+   {
+    "title": "WinRAR Creating Files in Startup Locations",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules/windows/file/file_event/file_event_win_winrar_file_creation_in_startup_folder.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/file/file_event/file_event_win_winrar_file_creation_in_startup_folder.yml"
+   }
+  ],
+  "CVE-2026-21962": [
+   {
+    "title": "RedTail Cryptominer User-Agent",
+    "author": "Marco Pedrinazzi (@pedrinazziM) (InTheCyber)",
+    "path": "rules-emerging-threats/2026/Malware/RedTail-Cryptominer/web_malware_redtail_useragent.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2026/Malware/RedTail-Cryptominer/web_malware_redtail_useragent.yml"
+   }
+  ],
+  "CVE-2026-31431": [
+   {
+    "title": "Linux AF_ALG Socket Creation - Kernel Crypto API Exploit Indicator",
+    "author": "Gene Kazimiarovich",
+    "path": "rules-emerging-threats/2026/Exploits/CVE-2026-31431/lnx_auditd_exploit_cve_2026_31431_af_alg_socket_creation.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2026/Exploits/CVE-2026-31431/lnx_auditd_exploit_cve_2026_31431_af_alg_socket_creation.yml"
+   },
+   {
+    "title": "Authencesn Crypto Module Load via Modprobe - Copy-Fail Indicator",
+    "author": "Gene Kazimiarovich",
+    "path": "rules-emerging-threats/2026/Exploits/CVE-2026-31431/proc_creation_lnx_exploit_cve_2026_31431_copyfail.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2026/Exploits/CVE-2026-31431/proc_creation_lnx_exploit_cve_2026_31431_copyfail.yml"
+   }
+  ],
+  "CVE-2026-33829": [
+   {
+    "title": "Potential CVE-2026-33829 Exploitation - Windows Snipping Tool Remote File Path URI",
+    "author": "Samir Bousseaden, Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2026/Exploits/CVE-2026-33829/proc_creation_win_exploit_cve_2026_33829.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2026/Exploits/CVE-2026-33829/proc_creation_win_exploit_cve_2026_33829.yml"
+   }
+  ],
+  "CVE-2026-41089": [
+   {
+    "title": "LSASS Crash Via Netlogon Stack Buffer Overflow - CVE-2026-41089",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2026/Exploits/CVE-2026-41089/win_application_error_exploit_cve_2026_41089_lsass_netlogon_crash.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2026/Exploits/CVE-2026-41089/win_application_error_exploit_cve_2026_41089_lsass_netlogon_crash.yml"
+   }
+  ],
+  "CVE-2026-54121": [
+   {
+    "title": "Suspicious Machine Account Replication - DcSync Indicator",
+    "author": "Benjamin Delpy, Florian Roth (Nextron Systems), Scott Dermett, Sorina Ionescu",
+    "path": "rules/windows/builtin/security/win_security_ad_replication_machine_account.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules/windows/builtin/security/win_security_ad_replication_machine_account.yml"
+   },
+   {
+    "title": "ADCS - Certighost CDC Chase Certificate Request (CVE-2026-54121)",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2026/Exploits/CVE-2026-54121/win_security_adcs_certighost_cdc_chase_request.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2026/Exploits/CVE-2026-54121/win_security_adcs_certighost_cdc_chase_request.yml"
+   },
+   {
+    "title": "ADCS - Certighost Certificate Issued via CDC Chase (CVE-2026-54121)",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2026/Exploits/CVE-2026-54121/win_security_adcs_certighost_cert_issued_via_chase.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2026/Exploits/CVE-2026-54121/win_security_adcs_certighost_cert_issued_via_chase.yml"
+   },
+   {
+    "title": "ADCS - Certighost Ghost Machine Account Creation",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2026/Exploits/CVE-2026-54121/win_security_adcs_certighost_ghost_machine_account_creation.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2026/Exploits/CVE-2026-54121/win_security_adcs_certighost_ghost_machine_account_creation.yml"
+   },
+   {
+    "title": "DC Machine Account Network Logon from Non-DC Source IP",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-placeholder/windows/builtin/security/win_security_dc_machine_account_logon_non_dc_ip.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-placeholder/windows/builtin/security/win_security_dc_machine_account_logon_non_dc_ip.yml"
+   },
+   {
+    "title": "DC Machine Account TGS Request from Non-DC Source IP",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-placeholder/windows/builtin/security/win_security_dc_machine_account_tgs_non_dc_ip.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-placeholder/windows/builtin/security/win_security_dc_machine_account_tgs_non_dc_ip.yml"
+   },
+   {
+    "title": "DC Machine Account TGT Request from Non-DC Source IP",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-placeholder/windows/builtin/security/win_security_dc_machine_accoutn_tgt_non_dc_ip.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-placeholder/windows/builtin/security/win_security_dc_machine_accoutn_tgt_non_dc_ip.yml"
+   },
+   {
+    "title": "Certificate Services Outbound SMB or LDAP Connection",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-placeholder/windows/network_connection/net_connection_win_certsvc_outbound_smb_ldap.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-placeholder/windows/network_connection/net_connection_win_certsvc_outbound_smb_ldap.yml"
+   }
+  ],
+  "CVE-2026-60137": [
+   {
+    "title": "WordPress Wp2shell REST Batch Endpoint Exploitation",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2026/Exploits/CVE-2026-63030/web_exploit_cve_2026_63030_batch_rest_route_abuse.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2026/Exploits/CVE-2026-63030/web_exploit_cve_2026_63030_batch_rest_route_abuse.yml"
+   },
+   {
+    "title": "WordPress Wp2shell Webshell Plugin Access",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2026/Exploits/CVE-2026-63030/web_exploit_cve_2026_63030_webshell_plugin_access.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2026/Exploits/CVE-2026-63030/web_exploit_cve_2026_63030_webshell_plugin_access.yml"
+   },
+   {
+    "title": "WordPress Wp2shell Exploitation Tool User-Agent",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2026/Exploits/CVE-2026-63030/web_exploit_cve_2026_63030_wp2shell_tool_useragent.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2026/Exploits/CVE-2026-63030/web_exploit_cve_2026_63030_wp2shell_tool_useragent.yml"
+   }
+  ],
+  "CVE-2026-63030": [
+   {
+    "title": "WordPress Wp2shell REST Batch Endpoint Exploitation",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2026/Exploits/CVE-2026-63030/web_exploit_cve_2026_63030_batch_rest_route_abuse.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2026/Exploits/CVE-2026-63030/web_exploit_cve_2026_63030_batch_rest_route_abuse.yml"
+   },
+   {
+    "title": "WordPress Wp2shell Webshell Plugin Access",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2026/Exploits/CVE-2026-63030/web_exploit_cve_2026_63030_webshell_plugin_access.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2026/Exploits/CVE-2026-63030/web_exploit_cve_2026_63030_webshell_plugin_access.yml"
+   },
+   {
+    "title": "WordPress Wp2shell Exploitation Tool User-Agent",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "path": "rules-emerging-threats/2026/Exploits/CVE-2026-63030/web_exploit_cve_2026_63030_wp2shell_tool_useragent.yml",
+    "url": "https://github.com/SigmaHQ/sigma/blob/ccbb0369507f796db0b0ae6854c8a2be471b9d84/rules-emerging-threats/2026/Exploits/CVE-2026-63030/web_exploit_cve_2026_63030_wp2shell_tool_useragent.yml"
+   }
+  ]
+ }
+}

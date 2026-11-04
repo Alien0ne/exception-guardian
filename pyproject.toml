@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "exception-guardian"
+version = "0.1.0"
+description = "Finds stale Tenable accept/recast rules and scan exclusions, then guards them with Sigma detections and a human approval gate."
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+authors = [{ name = "Alien0ne" }]
+dependencies = [
+  "requests>=2.31",
+  "pyyaml>=6.0",
+  "pytenable>=1.5",
+  "pysigma>=1.5,<2",
+  "pysigma-backend-splunk==2.1.0",
+  "pysigma-backend-kusto==1.0.1",
+]
+
+[project.urls]
+Repository = "https://github.com/Alien0ne/exception-guardian"
+Issues = "https://github.com/Alien0ne/exception-guardian/issues"
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+exception-guardian = "exception_guardian.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/exception_guardian"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

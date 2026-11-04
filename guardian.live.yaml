@@ -1,0 +1,26 @@
+# Live run against your own Tenable tenant (read-only: `find` only reads rules, exclusions and assets).
+# Keys come from the git-ignored .env (copy .env.example): TENABLE_ACCESS_KEY, TENABLE_SECRET_KEY, and for
+# Security Center TENABLE_SC_HOST, TENABLE_SC_ACCESS_KEY, TENABLE_SC_SECRET_KEY.
+sources:
+  - name: tenable-vm
+    base_url: https://cloud.tenable.com
+  - name: tenable-sc   # host from TENABLE_SC_HOST. No Security Center? Delete this line, or the run is PARTIAL
+assets:
+  base_url: https://cloud.tenable.com
+
+revoke_epss: 0.5
+review_max_age_days: 365
+review_epss_delta: 0.1
+internal_keywords: [internal, not internet, no external, isolated, air-gapped, intranet]
+
+exposure:
+  internet_tags: ["Exposure:Internet"]   # change to your own tag for internet-facing hosts
+
+# Your DC names and addresses for SigmaHQ placeholders, kept out of git: see guardian.yaml for the shape.
+# No file yet? `exception-guardian dcs` finds them from the scan evidence
+placeholders_file: placeholders.local.yaml
+
+siem_targets: [splunk, sentinel, defender]
+offline: false
+intel_snapshot_dir: samples/intel
+sample_logs_dir: samples/logs   # the repo's labelled sample logs, alongside the ones Claude writes per run

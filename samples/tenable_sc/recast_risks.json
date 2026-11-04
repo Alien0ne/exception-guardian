@@ -1,0 +1,44 @@
+{
+  "_source_doc": "https://docs.tenable.com/security-center/api/Recast-Risk-Rule.htm",
+  "rules": [
+    {
+      "id": "SC-RR-102",
+      "repository": {
+        "id": "1",
+        "name": "Internal"
+      },
+      "organization": {
+        "id": "1",
+        "name": "Example Org"
+      },
+      "user": {
+        "id": "3",
+        "username": "sc-analyst"
+      },
+      "plugin": {
+        "id": "214552",
+        "name": "Plugin for CVE-2025-21502"
+      },
+      "hostType": "ip",
+      "hostValue": "192.0.2.42",
+      "port": "any",
+      "protocol": "any",
+      "comments": "Not reachable",
+      "expires": "1822348800",
+      "status": "0",
+      "createdTime": "1790812800",
+      "modifiedTime": "1790812800",
+      "x_cves": [
+        "CVE-2025-21502"
+      ],
+      "newSeverity": {
+        "id": "2",
+        "name": "Medium"
+      },
+      "severity": {
+        "id": "3",
+        "name": "High"
+      }
+    }
+  ]
+}

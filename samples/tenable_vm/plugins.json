@@ -1,0 +1,9 @@
+{
+  "_source_doc": "https://developer.tenable.com/reference/io-plugins-details (GET /plugins/plugin/{id})",
+  "_note": "Sample plugin details for the mock. Plugin ids are illustrative, not real Tenable plugin ids. CVEs appear as repeated 'cve' attributes.",
+  "plugins": [
+    {"id": 214006, "name": "Sample: Laravel Livewire < 3.6.4 Code Injection", "family_name": "CGI abuses",
+     "attributes": [{"attribute_name": "risk_factor", "attribute_value": "Critical"},
+                    {"attribute_name": "cve", "attribute_value": "CVE-2025-54068"}]}
+  ]
+}
