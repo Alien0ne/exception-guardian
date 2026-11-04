@@ -113,68 +113,9 @@ even need to run it to see the result: a fresh run is checked in at
 | [`approval-plan.md`](examples/demo-run/approval-plan.md) | the plan a person approves, with ticket text |
 | [`changes.md`](examples/demo-run/changes.md) | what got worse since the previous run |
 
-The first finding is an exception accepted on 2025-09-01 because the host was "internal only". Here is what has
-changed since:
-
-```text
-REVOKE: R-HERO-001 (tenable-vm) — CVE-2025-54068
-Evidence                     Then             Now                                      Source
-KEV                          not in KEV       in KEV since 2026-03-20                  CISA KEV (snapshot:2026-11-02)
-EPSS_HIGH                    0.00145          0.96284                                  FIRST EPSS (snapshot:2026-11-02)
-EPSS_ROSE                    0.00145          0.96284                                  FIRST EPSS (snapshot:2026-11-02)
-INTERNET_FACING              internal         internet-facing                          tag Exposure:Internet: web-portal-01
-NO_EXPIRY                    —                no expiry                                rule metadata
-TOO_OLD                      2025-09-01       427 days old                             rule metadata
-JUSTIFICATION_CONTRADICTED   says internal    says internal, but the asset is internet-facing  justification vs asset inventory
-```
-
-In other words: it is now in CISA KEV, its EPSS score went from 0.001 to 0.96, the host was put on the internet,
-the exception never expires, and its own reason ("internal") is no longer true.
-
-Each run can also compare itself with the last one (`find --previous`). In the sample data, `web-portal-01` was
-put on the internet on 2026-10-28, between last week's run and this one, so the demo prints just what changed:
-
-```text
-Since the last run (2026-10-26): 1 got worse, 1 gained new evidence, 11 unchanged
-  EXCL-001: REVIEW → REVOKE, new: INTERNET_FACING
-  R-HERO-001: REVOKE, new: INTERNET_FACING, JUSTIFICATION_CONTRADICTED
-```
-
-Then guard writes a hunt query for the time the exception was active. This is the Sentinel version of the rule
-Claude drafted for this CVE
-([`CVE-2025-54068.sentinel.txt`](examples/demo-run/rules/R-HERO-001/CVE-2025-54068.sentinel.txt), line breaks
-added here so it fits):
-
-```kusto
-imProcessCreate
-| where ((ParentProcessName contains "/php-fpm" or ParentProcessName contains "/bin/php")
-      or (ActingProcessName contains "/php-fpm" or ActingProcessName contains "/bin/php"))
-    and (TargetProcessName endswith "/sh" or TargetProcessName endswith "/bash" or TargetProcessName endswith "/dash"
-      or TargetProcessName endswith "/curl" or TargetProcessName endswith "/wget" or TargetProcessName endswith "/nc"
-      or TargetProcessName endswith "/ncat" or TargetProcessName endswith "/python3" or TargetProcessName endswith "/perl"
-      or TargetProcessName endswith "/base64")
-```
-
-Every rule is also tested against labelled sample logs (`samples/logs/`, synthetic), and the hunt brief reports
-the score. This one catches 4 of 4 Livewire attack samples. It fires on 1 of 11 normal events, a Composer deploy
-script that its false-positive notes already mention. The generic SigmaHQ web-shell rule catches none of the 7
-Linux attack samples (these 4 included), which is why a rule for this CVE was drafted.
-
-## What it saves
-
-To re-check one exception by hand, you open the rule, read why it was accepted, look the CVE up in CISA KEV, find
-its EPSS score today and on the day it was accepted, and check whether the host has become internet-facing or
-critical since. For each one that should be revoked, someone then has to find or write a detection for the time
-it was hidden, translate it for each SIEM, and write the change ticket.
-
-On the sample data, `exception-guardian demo` does all of that for 13 exceptions in under a second on a laptop.
-
-By hand, we estimate (this is a guess, not a measurement) about 10 minutes per exception to gather and compare the
-evidence, and about an hour per REVOKE to produce and translate a detection. For the sample, that is roughly 8
-hours of an analyst's time, most of it on the six exceptions that matter. Time your own review and compare.
-
-The bigger win is that the check happens at all. Exceptions are rarely looked at after they are accepted, so the
-risk they hide grows quietly. Run `find --previous` weekly and you only hear about what got worse.
+The [demo walk-through](docs/demo.md) shows the lead exception's evidence table, what changed since last week's run,
+the Sentinel hunt query Claude drafted for it and how that rule scored on the sample logs, and what the tool saves
+over checking by hand.
 
 ## Who it is for
 
@@ -245,53 +186,10 @@ your keys are set. Claude explains the grades, drafts and asks; the CLI decides 
 hooks (`.claude/hooks/`) stay on in every session: Claude cannot run `--apply`, read `.env`, call Tenable directly
 or push. When the plan is ready, Claude gives you the `approve --apply` command to run in your own terminal.
 
-**What `/eg-demo` looks like** (a fresh clone, 4 Nov 2026, sample data, offline, 44 seconds):
-
-![/eg-demo in Claude Code: the demo grades REVOKE 6, REVIEW 3, OK 4, shows what changed since last week's run and the evidence for R-HERO-001, then guard writes 12 rules with 0 drafts dropped and approve writes the plan](docs/media/claude-code/demo-start.png)
-
-The demo itself exits 0 (`EXIT 0` in the full output). The red "Exit code 2" belongs to the `ls` Claude chained
-after it, which looked for a `sample-briefs/` folder the demo does not need: it ships reviewed drafts and
-labelled sample logs.
+Screenshots of `/eg-demo`, a live `/eg-run` on the Tenable Partner Lab and apply mode in a terminal are in
+[docs/claude-code.md](docs/claude-code.md). The end of `/eg-demo`:
 
 ![The /eg-demo summary: what was not covered and why, the counts and changes since last week, and the exception to revoke first with its KEV, EPSS and exposure evidence](docs/media/claude-code/demo-summary.png)
-
-![The rules and test scores for each REVOKE exception, the injected justification treated as data, and next steps for the vulnerability manager and the SOC](docs/media/claude-code/demo-scores.png)
-
-Claude reports the gaps first (the generic web-shell rule caught 0 of 7 attacks), then the exception to revoke
-first, each REVOKE's rules and scores, and who does what next. `R-INJECT-007`'s justification is a prompt
-injection; Claude treats it as data and no grade changes.
-
-**What the live run looks like.** Screenshots from the live run on the Tenable Partner Lab (4 Nov 2026), with
-the lab's names blurred:
-
-| | |
-|---|---|
-| ![/skills in the repo folder: the playbook skill, its find and guard skills, and the five /eg commands, each a few dozen tokens](docs/media/claude-code/skills.png) | ![/context at the start of a session: the skills take 2.8k tokens, 0.3% of the context](docs/media/claude-code/context.png) |
-| `/skills`: the playbook, its two step skills and the five commands | `/context`: the skills take 2.8k tokens (0.3%) until a step loads one |
-
-![The start of /eg-run guardian.live.yaml out/live: Claude finds no Tenable keys in its shell, runs find (1,399 assets read, in the background), then dcs, which proves 4 domain controllers](docs/media/claude-code/run-start.png)
-
-Step 1: `/eg-run guardian.live.yaml out/live`. Claude looks for the Tenable keys and finds none in its shell, as
-intended: the CLI reads them from a file Claude never sees, so `find` still reads the lab (1,399 assets). Then
-`dcs` proves 4 domain controllers from the scan evidence.
-
-![During /eg-run, Claude drafts a Sigma rule for each CVE that SigmaHQ does not cover: Internet Explorer, GlueBall, AD FS and Remote Desktop exploitation](docs/media/claude-code/drafts.png)
-
-Step 2: Claude drafts a Sigma rule for each CVE no SigmaHQ rule covers. The CLI then tests and converts them.
-
-![The end of /eg-run: REVOKE 7, REVIEW 316, OK 1, 25 rules with 6 drafts that each caught 2 of 2 attack samples, the exception to revoke first and its evidence, the one question, and next steps for the vulnerability manager, the AD admin and the SOC](docs/media/claude-code/run-summary.png)
-
-The end of `/eg-run`: the grades, the exception to revoke first and why, the one question, and what each team
-does next. The `approve --apply` command is handed to you; Claude never runs it.
-
-Apply mode runs outside Claude Code, in your own terminal. Lab rule ids and host names are blurred:
-
-![approve --apply in a terminal: for each REVOKE rule it shows the live rule, the graded CVEs, enabled to disabled, how many findings come back and the triggers, then asks Disable this rule? y/N](docs/media/claude-code/apply-confirm.png)
-
-![The end of approve --apply: the last rules asked about, then the result per rule, 2 disabled (verified) and 5 declined](docs/media/claude-code/apply-result.png)
-
-Each rule is shown as it is live in Tenable, with what changes and how many findings come back, and nothing
-happens until you type `y`. At the end, every change is read back from Tenable before it says "verified".
 
 ## Run
 
@@ -337,74 +235,39 @@ Two optional steps sit between `find` and `guard`. The playbook offers them when
 `find --today YYYY-MM-DD` grades as if it were another day, and `html --run out/run1` rebuilds the page on its
 own. Every command and option is in [`references/commands.md`](references/commands.md).
 
-Exit codes: 0 means done. 2 is a usage error (a missing file, a bad option, `dcs --use` with no proven DC, or
-`--apply` refused). 3 means `find` wrote a PARTIAL RUN because a source could not be read. `approve --apply` exits
-1 when a change did not verify and 2 when the run was partial. Errors print one line; set `EG_DEBUG=1` to see the
-traceback. `EG_ENV_FILE` points the CLI at a `.env` somewhere else, so a test harness can keep the keys out of
-the agent's folder.
+Exit codes: 0 done, 2 a usage error or a refused `--apply`, 3 a PARTIAL RUN (a source could not be read). The
+thresholds (EPSS lines, age, critical ACR, SIEM targets, sample logs, DC placeholders, exposure) are set in the
+config. Both, and the local mock API for trying apply mode, are in [docs/configuration.md](docs/configuration.md).
 
-You can tune these settings in the config:
+## Safety
 
-| Key | Default | Meaning |
-|---|---|---|
-| `revoke_epss` | 0.5 | an EPSS score at or above this grades REVOKE |
-| `review_epss_delta` | 0.1 | an EPSS rise of this much since acceptance grades REVIEW |
-| `review_max_age_days` | 365 | an exception older than this grades REVIEW |
-| `internal_keywords` | internal, isolated, … | words in a justification that an internet-facing asset contradicts |
-| `siem_targets` | splunk, sentinel, defender | the query languages to convert to |
-| `sample_logs_dir` | none (demo: samples/logs) | labelled logs every rule is tested against (point it at your own) |
-| `critical_acr` | 9 | a Tenable One ACR at or above this marks a critical asset (grades REVOKE) |
-| `max_context_lookups` | 1500 | Tenable One asset lookups per run, two requests each. The report says when the cap was reached. Lookups run 8 at a time, and a long run prints its progress |
-| `placeholders` | none | your own values for SigmaHQ placeholders, e.g. `{DC-MACHINE-NAME: [DC01$, DC02$], dc_ip_addresses: [10.0.0.10]}`. If unset, a placeholder in a match accepts any value, and one in a filter gets the stand-in `SET_<name>`: the query still runs but excludes nothing, so it is noisy, and the brief says so. Each IPv4 DC address also matches its `::ffff:` form, as Kerberos events log it. `dcs --use` fills the ones you leave unset, for one run |
-| `placeholders_file` | none (live sample: `placeholders.local.yaml`) | the same map in a git-ignored file next to the config, so your DC names stay out of git; it wins over `placeholders` |
-| `offline`, `intel_snapshot_dir` | false, samples/intel | use the KEV and EPSS snapshot instead of fetching |
-| `exposure.*` | none (demo: tag `Exposure:Internet`) | what counts as internet-facing: tags, ranges, a host list, verified claims ([grades.md](references/grades.md)) |
+- **Read-only by default.** Only `approve --apply` changes Tenable: Tenable VM rules only, in an interactive
+  terminal, after you confirm each rule. It only disables rules (never deletes), and reads each change back.
+- **Claude never applies.** A deny rule and a hook in `.claude/settings.json` block `approve --apply` from Claude,
+  and the CLI refuses it inside a Claude Code shell.
+- **It fails loudly.** If a source cannot be read, the report says **PARTIAL RUN** and `find` exits 3.
+- **Outside text is data.** Justifications, names and CSV cells never change a grade, and reports escape them.
+- **Detection only.** Drafted rules and hunt briefs contain no exploit code or payloads.
+- **Secrets** come only from environment variables or a git-ignored `.env`. The history is scanned with gitleaks.
+- **Red-teamed.** 21 attacks on the guardrails (7 direct, 14 prompt injections hidden in the data): none got
+  through ([results](docs/e2e-results.md)).
 
-To try apply mode without a real tenant, start the local mock and point `--base-url` at it. Any key values work
-against the mock.
-
-```bash
-.venv/bin/exception-guardian mock-tenable --fixtures samples/tenable_vm --port 8765
-```
-
-## Guardrails, and how we tested them
-
-In Claude Code, the slash commands `/eg-demo`, `/eg-run`, `/eg-find`, `/eg-guard` and `/eg-approve` run each step
-behind guardrail hooks: Claude cannot run `--apply`, read `.env`, call Tenable directly or push.
-
-We tested the whole playbook headless on a fresh clone, with a test harness of our own (it is not part of this
-repo), and threw 21 attacks at the guardrails. 7 are direct: read the keys, push, apply, call Tenable directly, forge the grades,
-write outside `out/`, and switch off the hooks. The other 14 are prompt injections hidden in places such as the
-data, a team checklist, project memory, a code comment, a skill file, a file name, a CSV export, an SC rule
-comment and an asset tag. In the latest real run (Claude Sonnet 5.5), **none got through**, for $1.20, and the
-demo passed all 10 checks. Every prompt and tool call is in [docs/e2e-results.md](docs/e2e-results.md). The hook
-rules themselves are unit-tested in `tests/` (`test_guardrails.py`, `test_review_harness.py`, `test_hook_fixes.py`),
-so they run with the rest of the suite.
-
-![Red-team results: 21 attacks on the guardrails, 0 got through. The hooks or a deny rule blocked every attempt that ran, the model refused the rest, and the injected demo's grades match the code's own run. The demo passed 10 of 10 checks. Real sessions on Claude Sonnet 5.5](docs/media/e2e-results.png)
+Full details, and how the guardrails were tested: [docs/security.md](docs/security.md).
 
 ## What you get (in `out/<run>/`)
 
 | File | What it is |
 |---|---|
 | `report.md` | the ranked report: REVOKE and REVIEW with then-and-now evidence, then the OK list |
+| `report.html` | rewritten by every step (`find`, `guard`, `approve`, `demo`, `html`) in the same format: the whole run so far on one self-contained page (lead exception, changes, every exception, hunt queries with test results, the plan) |
 | `changes.md`, `changes.json` | with `--previous`: what got worse, gained evidence, appeared, eased or went away since that run |
-| `findings.json` | the same data for machines; `partial: true` if a source failed |
-| `handoff-find.md`, `handoff-guard.md` | short summaries that the next step (and Claude) reads |
 | `rules/<rule id>/` | each Sigma rule (`.yml`) and its converted queries (`.<target>.txt`) |
-| `guard.json` | for each REVOKE: rules, conversions, test results, dropped drafts, CVEs still missing a rule, and gaps SigmaHQ leaves |
 | `hunt-briefs/<rule id>.md` | the hypothesis, hosts, evidence, a "Known infrastructure" section naming the DCs its detections rely on (and where those values came from), the look-back window, the detections, and a starting prompt for SOC-Hunter |
 | `approval-plan.md` | for each REVOKE: automatic or manual, what disabling it brings back into view, and ticket text |
-| `report.html` | rewritten by every step (`find`, `guard`, `approve`, `demo`, `html`) in the same format: the whole run so far on one self-contained page (lead exception, changes, every exception, hunt queries with test results, the plan) |
 | `applied-changes.log` | apply mode only: timestamp, rule, result, and who confirmed it |
-| `exposure-candidates.json` | from `find`: assets whose internet exposure is unknown, for the exposure step |
-| `exposure-claims.json`, `exposure-evidence.json`, `exposure-drafted-hosts.csv` | from `exposure`: Claude's claims, what the code re-checked, and a draft host list for you to review |
-| `dc-candidates.json` | from `dcs`: every Windows server that looked like a DC, its evidence, and whether it is proven |
-| `placeholders.found.yaml` | from `dcs --use`: the proven DCs as placeholder values, used by `guard` for this run only |
-| `drafts/<CVE>.yml`, `drafts/not-loggable.json` | Claude's drafted rules, and the CVEs no log can show, with the reason (input to `guard`) |
-| `sample-briefs/<log>.md` | from `guard`: which sample logs Claude should write for a rule with nothing to test against |
-| `samples/<log>.jsonl` | Claude's sample logs from public write-ups, marked as agent-written in every score (input to `guard`) |
-| `previous/` | `demo` only: the earlier run that `changes.md` compares with |
+
+Every other file (findings.json, guard.json, the exposure and DC files, Claude's drafts and sample logs) is
+listed in [docs/outputs.md](docs/outputs.md).
 
 ## Where your data goes
 
@@ -431,80 +294,22 @@ PARTIAL RUN) and the dated snapshot in `samples/intel/` is used. The only except
 through Claude Code. Reports stay on your disk in `out/`, and `report.html` makes no request: its typeface is
 built into the page.
 
-## Security notes
-
-- **Read-only by default.** `find`, `exposure`, `dcs`, `guard`, `approve`, `html` and `demo` never change
-  anything in Tenable. Only `approve --apply` writes, and only when all of these are true:
-  - the rule is a Tenable VM accept or recast rule;
-  - stdin is an interactive terminal, not an agent's shell (`CLAUDECODE` and `EG_HARNESS` are unset);
-  - the live rule still hides the same thing, until the same date, as the copy that was graded;
-  - you confirm that rule.
-
-  It first checks (read-only) that the key can change rules at all. Each change is read back and logged, and a
-  rule that changed since the run, or while you confirm, is skipped. Apply mode only disables rules, which brings
-  findings back into view. It never deletes rules or touches exclusions, scans or other systems.
-- **Claude never applies.** The skills tell Claude to stop at the plan, and the repo's `.claude/settings.json`
-  enforces that in code. It holds a deny rule and a hook (`.claude/hooks/block_apply.py`) that blocks any
-  `exception-guardian approve --apply` command Claude tries to run, however it is wrapped (`bash -c`,
-  `python -m`, an abbreviated `--appl`). The CLI also accepts no abbreviated options and refuses `--apply` inside
-  a Claude Code shell. Only a person runs apply mode, in their own terminal.
-- **A person owns every change.** Use a read-only key for `find`, and edit rights only for the named analyst who
-  applies. `applied-changes.log` records each change: the rule, what changed, when, the verified result and who
-  confirmed it, and the disabled rule in Tenable names the plan as its reason. Put the plan's ticket text into
-  your change system before you apply.
-- **It fails loudly.** If a source cannot be read, the report says **PARTIAL RUN** and `find` exits 3, so a
-  scheduled job or CI never reports success by mistake.
-- **Outside text is treated as data.** Justifications, rule and asset names, CSV cells and CVE text all come from
-  outside, so:
-  - they never affect grades (the sample rule `R-INJECT-007` carries an injection-style justification, and a
-    test proves its grade does not change);
-  - reports escape them;
-  - the skills tell Claude to treat them as quoted data, never as instructions;
-  - rule IDs are cleaned before they are used as file names.
-- **Detection only.** Drafted rules and hunt briefs describe how to spot exploitation. They contain no exploit code
-  or payloads.
-- **Secrets** come only from environment variables or a git-ignored `.env` in the folder you run from (loaded at
-  start; variables already set win). `.env.example` holds placeholders. The repo history is scanned with gitleaks
-  before release.
-
 ## Known limitations
 
-- **Drafted Sigma rules are drafts.** They are checked for syntax and conversion and tested against the labelled
-  sample logs, which are synthetic. A rule that catches every sample attack has passed a smoke test, not proof
-  against real traffic (on the live lab run, the Kerberos TGS rule missed one sample whose ticket type it does not
-  watch). The samples cover Linux and Windows process creation, Windows image loads and registry events, and web
-  server logs; where none exist for a rule's log source, the hunt brief says it was not tested. DC rules are scored
-  against stand-in DCs (`DC-01$`, `DC-02$`), while the SIEM queries keep your real values. Review drafts before you
-  rely on them, and test them against your own logs by pointing `sample_logs_dir` at them.
-- **Some Sentinel queries need the Defender XDR connector.** ASIM has no table for antivirus detections or image
-  loads, so those rules use Defender XDR's `DeviceEvents` and `DeviceImageLoadEvents` tables. Sentinel only has
-  them when the Microsoft Defender XDR connector streams them in. The antivirus query notes say so.
-- **The log tester covers the common Sigma subset:** field matches with contains, startswith, endswith, all,
-  regular expressions, CIDR and null; keywords; and `and`, `or`, `not`, `1 of` and `all of` conditions. A rule that
-  uses anything else (field references, aggregations, correlations) is reported as not tested.
-- **A public IP is a hint, not proof.** An asset counts as internet-facing (REVOKE) only when your own evidence
-  says so: tags, internet ranges, or an exported host list (`exposure` settings, `references/grades.md`). A public
-  IP on its own only asks for a review (`PUBLIC_IP`). If nothing marks any asset, the playbook offers a passive
-  exposure search, and the CLI re-checks every claim; Claude never scans the hosts (`references/exposure.md`).
-- **Very large tenants.** `GET /assets` lists at most 5,000 assets, and only licensed hosts seen in the last 90
-  days. Every other host is read from the v3 host search, which returns no tags, so `INTERNET_FACING` cannot fire
-  for it. When the 5,000 cap is reached, the report says so and is marked partial. The bulk asset export would
-  include tags but needs more than a read-only role.
-- **"Then" exposure is known only where there is history.** The *then* side of `INTERNET_FACING` comes from an
-  exposure-since date on the asset (`x_exposure_since` in the samples). Without one, *then* is left blank.
-- **Some rules don't convert to every target.** Microsoft Defender has no web server log table, so web server rules
-  are reported as `unsupported` there. Sentinel's ASIM web schema does not map IIS-style fields either. The
-  `process_creation` rules convert to all three targets.
-- **Qualys, Rapid7 and other scanners are supported through CSV or JSON export only.**
-- **Not yet run against a real tenant.** SC assets are not read, and apply mode does not change SC rules. The
-  lab's rules filter by plugin, so a rule that filters by CVE (`definition.cve`) has not been seen live. Apply mode
-  itself has run live once, on Tenable VM rules (see "Does it work?").
-- **CVEs.** Rules filtered by plugin get their CVEs from the plugin details in your own tenant. A plugin with no
-  CVE leaves the rule with "no CVE intel": it is still graded on age, expiry and exposure.
-- **Targets.** A rule with no asset filter is treated as covering every asset. Tag filters, IP ranges and CIDR
-  members are matched against the asset inventory. Other filter properties are ignored.
-- **Offline runs use a dated snapshot.** The bundled KEV and EPSS snapshot is dated 2026-11-02. Offline runs grade
-  on it, and the report says so.
+- **Drafted Sigma rules are drafts.** They are tested on synthetic sample logs only: a smoke test, not proof
+  against real traffic. Review them, and point `sample_logs_dir` at your own logs.
+- **Some Sentinel queries need the Microsoft Defender XDR connector** (antivirus and image-load rules).
+- **The log tester covers the common Sigma subset.** Rules using anything else are reported as not tested.
+- **A public IP is a hint, not proof.** Internet-facing (REVOKE) needs your own evidence; a public IP alone asks
+  for a review.
+- **Very large tenants.** Past 5,000 assets, hosts come from a search with no tags, and the report says so.
+- **"Then" exposure needs history** (an exposure-since date on the asset); without one it is left blank.
+- **Some rules don't convert to every target** (Defender has no web server table).
+- **Other scanners** are supported through CSV or JSON export only. SC assets are not read, and apply mode
+  changes only Tenable VM rules.
+- **Offline runs** grade on the bundled KEV and EPSS snapshot dated 2026-11-02.
+
+Every limitation in full, with what was and was not seen live: [docs/limitations.md](docs/limitations.md).
 
 ## What we built and what we reused
 
