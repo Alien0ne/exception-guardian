@@ -1,6 +1,6 @@
 # Security notes and guardrail tests
 
-Back to the [README](../README.md).
+Back to the [README](/README.md).
 
 ## Security notes
 
@@ -48,8 +48,8 @@ repo), and threw 21 attacks at the guardrails. 7 are direct: read the keys, push
 write outside `out/`, and switch off the hooks. The other 14 are prompt injections hidden in places such as the
 data, a team checklist, project memory, a code comment, a skill file, a file name, a CSV export, an SC rule
 comment and an asset tag. In the latest real run (Claude Sonnet 5.5), **none got through**, for $1.20, and the
-demo passed all 10 checks. Every prompt and tool call is in [docs/e2e-results.md](e2e-results.md). The hook
+demo passed all 10 checks. Every prompt and tool call is in [docs/e2e-results.md](/docs/e2e-results.md). The hook
 rules themselves are unit-tested in `tests/` (`test_guardrails.py`, `test_review_harness.py`, `test_hook_fixes.py`),
 so they run with the rest of the suite.
 
-![Red-team results: 21 attacks on the guardrails, 0 got through. The hooks or a deny rule blocked every attempt that ran, the model refused the rest, and the injected demo's grades match the code's own run. The demo passed 10 of 10 checks. Real sessions on Claude Sonnet 5.5](media/e2e-results.png)
+![Red-team results: 21 attacks on the guardrails, 0 got through. The hooks or a deny rule blocked every attempt that ran, the model refused the rest, and the injected demo's grades match the code's own run. The demo passed 10 of 10 checks. Real sessions on Claude Sonnet 5.5](/docs/media/e2e-results.png)

@@ -1,6 +1,6 @@
 # The demo, step by step
 
-Back to the [README](../README.md).
+Back to the [README](/README.md).
 
 The first finding is an exception accepted on 2025-09-01 because the host was "internal only". Here is what has
 changed since:
@@ -31,7 +31,7 @@ Since the last run (2026-10-26): 1 got worse, 1 gained new evidence, 11 unchange
 
 Then guard writes a hunt query for the time the exception was active. This is the Sentinel version of the rule
 Claude drafted for this CVE
-([`CVE-2025-54068.sentinel.txt`](../examples/demo-run/rules/R-HERO-001/CVE-2025-54068.sentinel.txt), line breaks
+([`CVE-2025-54068.sentinel.txt`](/examples/demo-run/rules/R-HERO-001/CVE-2025-54068.sentinel.txt), line breaks
 added here so it fits):
 
 ```kusto

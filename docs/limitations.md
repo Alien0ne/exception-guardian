@@ -1,6 +1,6 @@
 # Known limitations, in full
 
-Back to the [README](../README.md).
+Back to the [README](/README.md).
 
 - **Drafted Sigma rules are drafts.** They are checked for syntax and conversion and tested against the labelled
   sample logs, which are synthetic. A rule that catches every sample attack has passed a smoke test, not proof

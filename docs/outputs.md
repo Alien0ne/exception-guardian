@@ -1,6 +1,6 @@
 # Every file a run writes
 
-Back to the [README](../README.md).
+Back to the [README](/README.md).
 
 ## What you get (in `out/<run>/`)
 
