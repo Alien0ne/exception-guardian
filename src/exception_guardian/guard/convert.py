@@ -152,14 +152,41 @@ def negated_placeholders(yaml_text: str) -> list[str]:
     return list(dict.fromkeys(out))
 
 
+# SigmaHQ rules whose filter would hide the attack once filled with real values, by rule id. The CertiGhost rules
+# drop any event whose Attributes contain a known DC, but the attack's Attributes also hold `rmd:<the DC being
+# attacked>`, so real DC values filtered out every real attack (live run 5 Nov 2026: both scored 0/1 after
+# `dcs --use`). These placeholders keep the stand-in, which excludes nothing.
+SELF_BLINDING = {
+    "c4a1f389-2e6b-4d9a-8f0c-b73e5a12d947": ("known_cdcs",),  # CertiGhost cdc chase request (4886)
+    "8b7e2c54-1f93-4a6d-b8e0-3c9d7f25a168": ("known_cdcs",),  # CertiGhost certificate issued via chase (4887)
+}
+_BLIND_NOTE = ("{names} {verb} left out of this rule's filter: the filter checks the whole Attributes field, and in "
+               "the attack that field also holds rmd:<the DC being attacked>, so your DC values would drop every "
+               "real attack. Expect requests that really come from your DCs too.")
+
+
+def _rule_id(yaml_text: str) -> str:
+    m = re.search(r"^id:\s*([0-9a-fA-F-]{36})\s*$", yaml_text, re.M)
+    return m.group(1).lower() if m else ""
+
+
 def stand_in(yaml_text: str, fill: dict | None) -> tuple[dict, str | None]:
     """A placeholder in a filter that the config leaves unset gets a stand-in value (`SET_<name>`) that no event
     holds: the filter then excludes nothing, so the query runs and also returns the events the filter was meant to
-    drop (live run 4 Nov 2026: three DC machine-account rules had no query at all). Returns the fill and a note."""
+    drop (live run 4 Nov 2026: three DC machine-account rules had no query at all). A rule in SELF_BLINDING keeps the
+    stand-in even when the value is set. Returns the fill and a note."""
     fill = dict(fill or {})
+    blind = [h for h in SELF_BLINDING.get(_rule_id(yaml_text), ()) if h in fill]
+    for h in blind:
+        del fill[h]
     need = [h for h in negated_placeholders(yaml_text) if h not in fill]
     if not need:
         return fill, None
+    if blind:
+        for h in need:
+            fill[h] = [f"SET_{h}"]
+        names = ", ".join(f"%{h}%" for h in need)
+        return fill, _BLIND_NOTE.format(names=names, verb="is" if len(need) == 1 else "are")
     for h in need:
         fill[h] = [f"SET_{h}"]
     names = ", ".join(f"%{h}%" for h in need)
