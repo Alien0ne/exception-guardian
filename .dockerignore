@@ -1,0 +1,11 @@
+.env
+.git
+.venv
+out
+*.local.yaml
+guardian.live.yaml
+__pycache__
+.pytest_cache
+.ruff_cache
+.claude
+docs/media

@@ -13,7 +13,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from shellwords import commands  # noqa: E402
 
 TOOL = re.compile(r"exception[-_]guardian")
-APPLY = re.compile(r"^--ap(p(l(y)?)?)?(=|$)")  # --apply and every abbreviation argparse would once have taken
+# --apply and --undo (it re-enables rules, a change to Tenable all the same), and every abbreviation of either
+APPLY = re.compile(r"^--(ap(p(l(y)?)?)?|un(d(o)?)?)(=|$)")
 
 
 # the CLI refuses --apply while these are set; a command that names them is trying to unset or fake them
@@ -32,11 +33,11 @@ def _raw(command: str) -> bool:
         return True
     if not TOOL.search(command):
         return False
-    if "--ap" in command:
+    if "--ap" in command or "--un" in command:
         return True
-    if EXPANDS.search(STATUS.sub("", command)) and re.search(r"appr|--a", command):
+    if EXPANDS.search(STATUS.sub("", command)) and re.search(r"appr|--a|--u", command):
         return True
-    return bool(IMPORTS.search(command) and re.search(r"\bapply\b", command))
+    return bool(IMPORTS.search(command) and re.search(r"\b(apply|undo)\b", command))
 
 
 def blocked(command: str) -> bool:
@@ -61,9 +62,9 @@ def main() -> int:
         print(f"Blocked: the --apply hook could not read this tool call ({type(exc).__name__}).", file=sys.stderr)
         return 2
     if hit:
-        print("Blocked: `exception-guardian approve --apply` changes Tenable rules, and so does any way around it "
-              "(expansion, importing apply, unsetting CLAUDECODE). Write the plan without --apply and ask the person "
-              "to run --apply themselves, in their own terminal.", file=sys.stderr)
+        print("Blocked: `exception-guardian approve --apply` and `--undo` change Tenable rules, and so does any way "
+              "around them (expansion, importing apply or undo, unsetting CLAUDECODE). Write the plan without them "
+              "and ask the person to run --apply or --undo themselves, in their own terminal.", file=sys.stderr)
         return 2
     return 0
 

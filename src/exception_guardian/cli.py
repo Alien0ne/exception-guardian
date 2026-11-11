@@ -75,7 +75,13 @@ def cmd_find(a) -> int:
         if not _evidence.is_file():
             raise UsageError(f"--exposure-claims {_evidence} is not a file")
         cfg = replace(cfg, exposure=replace(cfg.exposure, claims_file=str(_evidence)))
-    res = run_find(cfg, Path(a.out), _today(a.today), previous=Path(a.previous) if a.previous else None)
+    save = getattr(a, "save_intel", None)
+    if save and cfg.offline:
+        raise UsageError("--save-intel saves what an online run fetched: an offline run fetches nothing")
+    res = run_find(cfg, Path(a.out), _today(a.today), previous=Path(a.previous) if a.previous else None,
+                   save_intel=Path(save) if save else None)
+    if save:
+        print(f"intel snapshot: {save} (set intel_snapshot_dir to it for an offline run)")
     fj = Path(a.out) / "findings.json"  # guard reads the same config (placeholders) unless told otherwise
     fj.write_text(json.dumps({**json.loads(fj.read_text()), "config": str(Path(a.config).resolve())}, indent=2))
     counts = {g: sum(1 for r in res if r.grade.value == g) for g in ("REVOKE", "REVIEW", "OK")}
@@ -92,6 +98,58 @@ def cmd_find(a) -> int:
         print("warning: no exception was read from any source, so there is nothing to grade. Check the config's "
               "sources", file=sys.stderr)
     return _partial_exit(Path(a.out))
+
+
+def _earlier_run(runs: Path, day: str) -> Path | None:
+    """The newest dated run folder (YYYY-MM-DD, with a findings.json) before `day`."""
+    import re
+    dated = sorted(p for p in runs.iterdir() if p.is_dir() and re.fullmatch(r"\d{4}-\d{2}-\d{2}", p.name)
+                   and p.name < day and (p / "findings.json").is_file()) if runs.is_dir() else []
+    return dated[-1] if dated else None
+
+
+def cmd_recheck(a) -> int:
+    """One scheduled pass: grade into <runs>/<today>, compare with the newest earlier run there, write the plans.
+    It only reads the scanners; nothing is ever applied from here."""
+    from .approval import write_plan
+    day = _today(a.today).isoformat()
+    runs = Path(a.runs)
+    out, prev = runs / day, _earlier_run(runs, day)
+    find_args = argparse.Namespace(config=a.config, out=str(out), today=day, offline=a.offline,
+                                   previous=str(prev) if prev else None, exposure_claims=None)
+    code = cmd_find(find_args)
+    if prev is None:
+        print(f"no earlier run in {runs}, so there is nothing to compare with yet")
+    print(f"approval plan: {write_plan(out)} (nothing applied)")
+    if (out / "review-plan.md").is_file():
+        print(f"review plan: {out / 'review-plan.md'}")
+    _refresh_html(out)
+    return code
+
+
+def cmd_notify(a) -> int:
+    from .notify import build_message, post
+    run = _run_dir(a.run)
+    if a.dry_run:
+        print(build_message(run))
+        return 0
+    agent = [v for v in AGENT_VARS if os.environ.get(v)]
+    if agent:
+        print(f"refusing to post: this shell belongs to an agent session ({', '.join(agent)} is set). A person or a "
+              "scheduler posts; use --dry-run to see the message", file=sys.stderr)
+        return 2
+    url = os.environ.get("EG_WEBHOOK_URL", "").strip()
+    if not url:
+        print("notify needs the webhook address in EG_WEBHOOK_URL (the environment or .env). It is never taken from "
+              "the command line, so it stays out of shell history and process lists", file=sys.stderr)
+        return 2
+    try:
+        post(run, url)
+    except RuntimeError as exc:
+        print(f"not posted: {exc}", file=sys.stderr)
+        return 1
+    print("posted the run summary to the webhook")
+    return 0
 
 
 EXIT_PARTIAL = 3
@@ -153,23 +211,26 @@ AGENT_VARS = ("CLAUDECODE", "EG_HARNESS")  # set in every Claude Code shell, and
 
 
 def cmd_approve(a) -> int:
-    from .approval import apply, write_plan
+    from .approval import apply, undo, write_plan
     run = _run_dir(a.run)
+    flag = "--apply" if a.apply else "--undo" if a.undo else None
     agent = [v for v in AGENT_VARS if os.environ.get(v)]
-    if a.apply and agent:
-        print(f"refusing --apply: this shell belongs to an agent session ({', '.join(agent)} is set). Run --apply "
+    if flag and agent:
+        print(f"refusing {flag}: this shell belongs to an agent session ({', '.join(agent)} is set). Run {flag} "
               "yourself, in your own terminal", file=sys.stderr)
         return 2
     plan = write_plan(run)
     print(f"approval plan: {plan}")
+    if (run / "review-plan.md").is_file():
+        print(f"review plan: {run / 'review-plan.md'} (per owner; nothing in it is applied)")
     _refresh_html(run)
-    if not a.apply:
+    if not flag:
         return 0
     if not a.base_url:
-        print("--apply needs --base-url", file=sys.stderr)
+        print(f"{flag} needs --base-url", file=sys.stderr)
         return 2
     if not sys.stdin.isatty():
-        print("refusing --apply: it asks you to confirm each rule, so it needs an interactive TTY", file=sys.stderr)
+        print(f"refusing {flag}: it asks you to confirm each rule, so it needs an interactive TTY", file=sys.stderr)
         return 2
     from .tenable_client import TenableVMClient
     client = TenableVMClient.from_env(a.base_url)
@@ -177,23 +238,27 @@ def cmd_approve(a) -> int:
     try:
         access = preflight(client)  # read-only: can this key change rules at all?
     except RuntimeError as exc:
-        print(f"refusing --apply: {exc}", file=sys.stderr)
+        print(f"refusing {flag}: {exc}", file=sys.stderr)
         return 2
     if access and "Tenable decides" in access:
         print(f"note: {access}. A refused change is logged and the next rule is offered.", file=sys.stderr)
+    ask = "Disable this rule? [y/N] " if a.apply else "Re-enable this rule? [y/N] "
 
     def confirm(diff: str) -> bool:
         print("\n" + diff)
-        return input("Disable this rule? [y/N] ").strip().lower() in ("y", "yes")
+        return input(ask).strip().lower() in ("y", "yes")
 
     try:
-        outcomes = apply(run, client, confirm)
+        outcomes = (apply if a.apply else undo)(run, client, confirm)
     except RuntimeError as exc:  # a partial run, or a rule that did not verify: stop, say why, keep the log
         print(str(exc), file=sys.stderr)
         log = run / "applied-changes.log"
         if log.is_file():
             print(f"log: {log}")
         return 2 if "partial" in str(exc) else 1
+    if a.undo and not outcomes:
+        print("nothing to undo: this run's applied-changes.log shows no rule that apply disabled and left disabled")
+        return 0
     for o in outcomes:
         print(f"{o['rule_id']}: {o['result']}")
     print(f"log: {run / 'applied-changes.log'}")
@@ -345,7 +410,21 @@ def build_parser() -> argparse.ArgumentParser:
     f.add_argument("--previous", help="an earlier find output directory: also write changes.md (what got worse since)")
     f.add_argument("--exposure-claims", help="an exposure-evidence.json from the exposure command: use its verified "
                                              "claims (overrides exposure.claims_file)")
+    f.add_argument("--save-intel", metavar="DIR", help="also save the KEV, EPSS and exploit intel this online run "
+                                                       "fetched as a dated snapshot, for offline runs")
     f.set_defaults(fn=cmd_find)
+    rc = sub.add_parser("recheck", allow_abbrev=False, help="one scheduled pass: grade into <runs>/<today>, compare "
+                                                            "with the last run there, write the plans (read-only)")
+    rc.add_argument("--config", default="guardian.yaml")
+    rc.add_argument("--runs", required=True, help="the folder that holds one dated run folder per pass")
+    rc.add_argument("--today", type=_iso_day, help="grade as of this day (YYYY-MM-DD); default today")
+    rc.add_argument("--offline", action="store_true", help="no network: use the intel snapshot")
+    rc.set_defaults(fn=cmd_recheck)
+    nt = sub.add_parser("notify", allow_abbrev=False, help="post a run's short summary to the chat webhook in "
+                                                           "EG_WEBHOOK_URL (counts and rule ids only)")
+    nt.add_argument("--run", required=True)
+    nt.add_argument("--dry-run", action="store_true", help="print the message, post nothing")
+    nt.set_defaults(fn=cmd_notify)
     g = sub.add_parser("guard", allow_abbrev=False, help="detections, SIEM queries and hunt briefs for REVOKE exceptions")
     g.add_argument("--run", required=True, help="a find output directory")
     g.add_argument("--drafts", help="drafted Sigma rules (default: <run>/drafts)")
@@ -353,7 +432,10 @@ def build_parser() -> argparse.ArgumentParser:
     g.set_defaults(fn=cmd_guard)
     ap = sub.add_parser("approve", allow_abbrev=False, help="write the approval plan; --apply disables confirmed Tenable VM rules")
     ap.add_argument("--run", required=True)
-    ap.add_argument("--apply", action="store_true", help="opt-in: disable rules after per-rule confirmation")
+    change = ap.add_mutually_exclusive_group()
+    change.add_argument("--apply", action="store_true", help="opt-in: disable rules after per-rule confirmation")
+    change.add_argument("--undo", action="store_true",
+                        help="opt-in: re-enable the rules this run's --apply disabled, after per-rule confirmation")
     ap.add_argument("--base-url", help="Tenable VM API base URL, e.g. https://cloud.tenable.com")
     ap.set_defaults(fn=cmd_approve)
     d = sub.add_parser("dcs", allow_abbrev=False, help="find the domain controllers in the scan evidence (read-only) "

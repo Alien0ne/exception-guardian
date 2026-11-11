@@ -62,6 +62,30 @@ def _num(v) -> float | None:
         return None
 
 
+def _epoch_day(v) -> date | None:
+    """Security Center's firstSeen (seconds since 1970, as text) as a day, or None."""
+    try:
+        return datetime.fromtimestamp(int(v), timezone.utc).date()
+    except (TypeError, ValueError, OverflowError, OSError):
+        return None
+
+
+def add_first_seen(rows: list[dict], hosts: list[dict]) -> None:
+    """Put each host's firstSeen (the hosts list has it, the host summary does not) on its summary row: joined on
+    the host id (hosts.uuid = sumip.hostUUID), else on an address only one host has."""
+    by_id = {str(h["uuid"]): h.get("firstSeen") for h in hosts if isinstance(h, dict) and h.get("uuid")}
+    count: dict[str, int] = {}
+    for h in hosts:
+        if isinstance(h, dict) and h.get("ipAddress"):
+            count[str(h["ipAddress"])] = count.get(str(h["ipAddress"]), 0) + 1
+    by_ip = {str(h["ipAddress"]): h.get("firstSeen") for h in hosts
+             if isinstance(h, dict) and count.get(str(h.get("ipAddress"))) == 1}
+    for r in rows:
+        seen = by_id.get(str(r.get("hostUUID") or "")) or by_ip.get(str(r.get("ip") or ""))
+        if seen:
+            r["firstSeen"] = seen
+
+
 def parse_hosts(rows: list[dict], critical_acr: float = 9) -> list[Asset]:
     """SC hosts from the vulnerability analysis tool `sumip`: one row per IP and repository."""
     from ..assets import _public
@@ -78,7 +102,7 @@ def parse_hosts(rows: list[dict], critical_acr: float = 9) -> list[Asset]:
                          internet_facing=False, exposure_since=None,
                          critical=(acr >= critical_acr) if acr is not None else None, on_attack_path=None,
                          public_ips=_public([ip]), origin="sc", acr=acr, aes=_num(r.get("assetExposureScore")),
-                         context_source="Tenable SC host summary"))
+                         context_source="Tenable SC host summary", first_seen=_epoch_day(r.get("firstSeen"))))
     return out
 
 
@@ -143,5 +167,12 @@ def read(params: dict) -> list[RiskException]:
         except Exception as exc:
             LAST_WARNINGS.append(f"source tenable-sc hosts failed: not read ({type(exc).__name__}: {exc}), so SC rules "
                                  "were graded without host context")
+        if LAST_HOSTS:
+            try:  # read-only; older Security Center versions have no hosts list, and the run is whole without it
+                add_first_seen(LAST_HOSTS, list(itertools.islice(
+                    sc.hosts.list(fields=["uuid", "ipAddress", "firstSeen"], limit=1000), cap)))
+            except Exception as exc:
+                LAST_WARNINGS.append(f"tenable-sc first-seen dates were not read ({type(exc).__name__}: "
+                                     f"{str(exc)[:120]}), so NEW_ASSETS cannot fire for Security Center rules")
         return rules
     return parse(accept, RuleType.ACCEPT) + parse(recast, RuleType.RECAST)

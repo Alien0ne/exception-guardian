@@ -14,6 +14,9 @@ Back to the [README](/README.md).
 | `guard.json` | for each REVOKE: rules, conversions, test results, dropped drafts, CVEs still missing a rule, and gaps SigmaHQ leaves |
 | `hunt-briefs/<rule id>.md` | the hypothesis, hosts, evidence, a "Known infrastructure" section naming the DCs its detections rely on (and where those values came from), the look-back window, the detections, and a starting prompt for SOC-Hunter |
 | `approval-plan.md` | for each REVOKE: automatic or manual, what disabling it brings back into view, and ticket text |
+| `review-plan.md` | for each owner: their REVIEW rules (review now, then housekeeping) and the action each one asks for |
+| `tickets.json` | one entry per REVOKE rule and one per owner with REVIEW rules (`kind`, `title`, `owner`, `rule_ids`, `mode`, `body`) |
+| `sc-rule-backups.json` | only when a Security Center rule is graded REVOKE: a copy of each, to create it again after a wrong delete |
 | `report.html` | rewritten by every step (`find`, `guard`, `approve`, `demo`, `html`) in the same format: the whole run so far on one self-contained page (lead exception, changes, every exception, hunt queries with test results, the plan) |
 | `applied-changes.log` | apply mode only: timestamp, rule, result, and who confirmed it |
 | `exposure-candidates.json` | from `find`: assets whose internet exposure is unknown, for the exposure step |

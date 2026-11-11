@@ -53,7 +53,7 @@ BASH_RULES = [
      "call Tenable and Security Center only through exception-guardian, whose live calls are read-only"),
 ]
 _HARNESS_NET = re.compile(r"\b(" + _NET_TOOLS + r")\b", re.I)
-_GRADED = re.compile(r"(^|/)(findings\.json|guard\.json|report\.(html|md)|approval-plan\.md|changes\.(json|md)|"
+_GRADED = re.compile(r"(^|/)(findings\.json|guard\.json|report\.(html|md)|approval-plan\.md|review-plan\.md|tickets\.json|sc-rule-backups\.json|changes\.(json|md)|"
                      r"applied-changes\.log|exposure-evidence\.json|exposure-drafted-hosts\.csv|handoff-\w+\.md|"
                      r"dc-candidates\.json|placeholders\.found\.yaml)$|"
                      r"(^|/)(rules|hunt-briefs|sample-briefs|previous)/")

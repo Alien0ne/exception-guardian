@@ -19,6 +19,7 @@ finding stayed hidden from the vulnerability queue.
 | KEV | not in KEV | in KEV since 2026-08-17 | CISA KEV (snapshot:2026-11-02) |
 | EPSS_HIGH | 0.00021 | 0.6015 | FIRST EPSS (snapshot:2026-11-02) |
 | EPSS_ROSE | 0.00021 | 0.6015 | FIRST EPSS (snapshot:2026-11-02) |
+| EXPLOIT_PUBLIC | — | public exploit: Nuclei template http/cves/2025/CVE-2025-62593.yaml | Nuclei (snapshot:2026-11-11) |
 | ATTACK_PATH | — | on attack path | asset inventory: ml-ray-head-01 |
 | NO_EXPIRY | — | no expiry | rule metadata |
 

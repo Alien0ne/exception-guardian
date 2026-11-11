@@ -16,11 +16,116 @@ EPSS_HISTORY_START = date(2021, 4, 14)  # FIRST keeps EPSS scores from this day 
 BATCH = 100
 
 
+RETRY_CODES = (429, 500, 502, 503, 504)
+BACKOFF = (1.0, 3.0)  # waits before the second and third try
+MAX_WAIT = 30.0  # a Retry-After longer than this is not waited out
+
+
+def _sleep(seconds: float) -> None:
+    import time
+    time.sleep(seconds)
+
+
 def _http_get(url: str) -> dict:
+    """One live GET. A busy server (429, 5xx) is tried three times; a network that is down is not retried, so an
+    offline machine falls back to the snapshot at once."""
     import requests
-    resp = requests.get(url, timeout=10)
-    resp.raise_for_status()
-    return resp.json()
+    for attempt in range(len(BACKOFF) + 1):
+        resp = requests.get(url, timeout=10)
+        if resp.status_code in RETRY_CODES and attempt < len(BACKOFF):
+            try:
+                wait = float(resp.headers.get("Retry-After", ""))
+            except (TypeError, ValueError):
+                wait = BACKOFF[attempt]
+            _sleep(min(max(wait, 0.0), MAX_WAIT))
+            continue
+        resp.raise_for_status()
+        return resp.json()
+    raise AssertionError("unreachable")
+
+
+CACHE_FILE = "epss-history.json"
+_OFF = ("off", "none", "false", "no", "0")
+
+
+def cache_dir(cfg: Config) -> Path | None:
+    """Where EPSS history is kept: `intel_cache_dir`, else $EG_CACHE_DIR, else the user's cache folder. "off"
+    switches it off."""
+    import os
+    chosen = cfg.intel_cache_dir or os.environ.get("EG_CACHE_DIR") or ""
+    if chosen.strip().lower() in _OFF:
+        return None
+    if chosen:
+        return Path(chosen).expanduser()
+    return Path(os.environ.get("XDG_CACHE_HOME") or Path.home() / ".cache") / "exception-guardian"
+
+
+def _cache_key(cve: str, day: date) -> str:
+    return f"{cve}|{day.isoformat()}"
+
+
+def _load_cache(folder: Path | None) -> dict[str, float | None]:
+    """EPSS on a past day never changes, so it is kept for good. The file is data from disk: anything that is not a
+    score between 0 and 1 (or null, "no score that day") is dropped and asked for again."""
+    if folder is None:
+        return {}
+    try:
+        raw = json.loads((folder / CACHE_FILE).read_text())
+    except (OSError, ValueError):
+        return {}
+    if not isinstance(raw, dict):
+        return {}
+    return {k: v for k, v in raw.items() if v is None or
+            (isinstance(v, (int, float)) and not isinstance(v, bool) and 0 <= v <= 1)}
+
+
+def _save_cache(folder: Path | None, cache: dict) -> None:
+    if folder is None:
+        return
+    import os
+    try:
+        folder.mkdir(parents=True, exist_ok=True)
+        tmp = folder / f"{CACHE_FILE}.{os.getpid()}.tmp"
+        tmp.write_text(json.dumps(cache, sort_keys=True))
+        tmp.replace(folder / CACHE_FILE)  # whole file or nothing: a second run never reads half a write
+    except OSError:
+        pass  # a cache that cannot be written costs requests next time, never a wrong grade
+
+
+def write_snapshot(intel: dict, out_dir: Path, today: date, exploits: dict | None = None) -> Path:
+    """Save the intel a run fetched live as a dated snapshot (kev.json, epss.json, exploits.json) that an offline run
+    reads through intel_snapshot_dir. Only live values are saved: a value that itself came from an older snapshot
+    would be passed off as fresh. `exploits` is the raw feed index ({feed: {cve: entry}})."""
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    kev: dict[str, dict] = {}
+    now: dict[str, float] = {}
+    history: dict[str, dict[str, float]] = {}
+    for (cve, created), v in sorted(intel.items()):
+        if v.source != "live":
+            continue
+        if v.in_kev and v.kev_date_added:
+            kev[cve] = {"cveID": cve, "dateAdded": v.kev_date_added.isoformat(),
+                        "knownRansomwareCampaignUse": "Known" if v.kev_ransomware else "Unknown"}
+        if v.epss_now is not None:
+            now[cve] = v.epss_now
+        if v.epss_at_created is not None and v.epss_then_source is None:
+            history.setdefault(cve, {})[created.isoformat()] = v.epss_at_created
+    live = {cve for (cve, _), v in intel.items() if v.source == "live"}
+    index: dict[str, dict] = {}
+    for feed, entries in (exploits or {}).items():
+        for cve in live & set(entries):
+            index.setdefault(cve, {})[feed] = entries[cve]
+    day = today.isoformat()
+    files = {"kev.json": {"title": "CISA KEV entries for this run's CVEs", "_source": f"{KEV_URL} (subset, fetched {day})",
+                          "count": len(kev), "vulnerabilities": list(kev.values())},
+             "epss.json": {"snapshot_date": day, "_source": f"{EPSS_URL} (fetched {day})", "now": now, "history": history},
+             "exploits.json": {"snapshot_date": day, "index": dict(sorted(index.items()))}}
+    for name, data in files.items():
+        tmp = out_dir / f"{name}.tmp"
+        tmp.write_text(json.dumps(data, indent=1) + "\n")
+        tmp.replace(out_dir / name)
+    return out_dir
 
 
 class _Skipped(Exception):
@@ -115,18 +220,29 @@ def build_intel(created_by_cve: dict[str, list[date]], cfg: Config,
                         then[(cve, created)] = now[cve]
                 elif created >= EPSS_HISTORY_START:
                     by_day.setdefault(created, []).append(cve)
+        folder = cache_dir(cfg)
+        cache = _load_cache(folder)
+        fresh = False
         for day, day_cves in sorted(by_day.items()):
+            known = [c for c in day_cves if _cache_key(c, day) in cache]
+            then.update({(c, day): v for c in known if (v := cache[_cache_key(c, day)]) is not None})
+            day_cves = [c for c in day_cves if _cache_key(c, day) not in cache]
             for i in range(0, len(day_cves), BATCH):
                 chunk = day_cves[i:i + BATCH]
                 try:
                     got = _epss_scores(get(f"{EPSS_URL}?cve={','.join(chunk)}&date={day.isoformat()}"))
                     then.update({(c, day): got[c] for c in chunk if c in got})
+                    cache.update({_cache_key(c, day): got.get(c) for c in chunk})  # None: no score that day
+                    fresh = True
                 except Exception as err:
                     if not isinstance(err, _Skipped):
                         fail(err)
                     then_snapped.update((c, day) for c in chunk)
                     then.update({(c, day): v for c in chunk
                                  if (v := snap_epss["history"].get(c, {}).get(day.isoformat())) is not None})
+
+        if fresh:
+            _save_cache(folder, cache)
 
     out: dict[tuple[str, date], CveIntel] = {}
     for cve in cves:

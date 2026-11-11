@@ -56,20 +56,6 @@
     "origin": "hosts"
   },
   {
-    "id": "00000000-0000-4000-8000-000000000007",
-    "name": "build-01",
-    "ips": [
-      "192.0.2.50"
-    ],
-    "fqdns": [
-      "build-01.example.com"
-    ],
-    "public_ips": [],
-    "tenable_public": null,
-    "internet_facing": false,
-    "origin": "hosts"
-  },
-  {
     "id": "00000000-0000-4000-8000-000000000006",
     "name": "hr-app-03",
     "ips": [
@@ -77,6 +63,20 @@
     ],
     "fqdns": [
       "hr-app-03.example.com"
+    ],
+    "public_ips": [],
+    "tenable_public": null,
+    "internet_facing": false,
+    "origin": "hosts"
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000007",
+    "name": "build-01",
+    "ips": [
+      "192.0.2.50"
+    ],
+    "fqdns": [
+      "build-01.example.com"
     ],
     "public_ips": [],
     "tenable_public": null,

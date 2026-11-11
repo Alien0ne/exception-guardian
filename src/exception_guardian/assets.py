@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import ipaddress
+from dataclasses import replace
 import json
 from datetime import date
 from fnmatch import fnmatchcase
@@ -26,6 +27,19 @@ def _public(ips) -> tuple[str, ...]:
     return tuple(out)
 
 
+def tag_day(v) -> date | None:
+    """The day in a tag's added_at ('2026-06-01T10:00:00.000Z'), or None when it is missing or not a date."""
+    try:
+        return date.fromisoformat(str(v)[:10])
+    except ValueError:
+        return None
+
+
+def _tag_dates(tags, key: str, value: str) -> tuple[tuple[str, date], ...]:
+    return tuple((f"{t[key]}:{t[value]}", d) for t in tags or []
+                 if isinstance(t, dict) and t.get(key) and (d := tag_day(t.get("added_at"))))
+
+
 def parse_assets(rows: list[dict]) -> list[Asset]:
     out = []
     for r in rows:
@@ -38,6 +52,7 @@ def parse_assets(rows: list[dict]) -> list[Asset]:
             # Exposure comes from the config's tags, ranges and host list (exposure.py), never a fixed tag name. A
             # public IP alone is a hint (PUBLIC_IP, REVIEW): some switches carry 128.0.0.x as internal routing.
             internet_facing=False, public_ips=_public(ips), exposure_reason="",
+            tag_dates=_tag_dates(r.get("tags"), "tag_key", "tag_value"), first_seen=tag_day(r.get("first_seen")),
             exposure_since=date.fromisoformat(since) if since else None,
             critical=r.get("x_critical"), on_attack_path=r.get("x_on_attack_path")))
     return out
@@ -66,7 +81,30 @@ def parse_v3_hosts(rows: list[dict]) -> list[Asset]:
         out.append(Asset(id=str(r["id"]), name=str(r.get("name") or r.get("host_name") or r["id"]), os=None, ips=ips,
                          fqdns=(), tags=(), internet_facing=False, exposure_since=None, critical=None,
                          on_attack_path=None, public_ips=_public(ips), origin="host-search",
-                         tenable_public=r.get("is_public")))
+                         tenable_public=r.get("is_public"), first_seen=tag_day(r.get("first_observed"))))
+    return out
+
+
+def parse_export(rows: list[dict]) -> list[Asset]:
+    """Hosts from the bulk asset export (v2 keeps names and addresses under `network`, v1 at the top level). They
+    carry tags, so the config's exposure tags work on them. Deleted and terminated assets are left out."""
+    out = []
+    for r in rows:
+        if not isinstance(r, dict) or not r.get("id"):
+            continue
+        net = r.get("network") if isinstance(r.get("network"), dict) else r
+        times = r.get("timestamps") if isinstance(r.get("timestamps"), dict) else r
+        if times.get("deleted_at") or times.get("terminated_at"):
+            continue
+        ips = tuple(net.get("ipv4s") or []) + tuple(net.get("ipv6s") or [])
+        tags = tuple(f"{t['key']}:{t['value']}" for t in r.get("tags") or []
+                     if isinstance(t, dict) and t.get("key") and t.get("value") is not None)
+        out.append(Asset(id=str(r["id"]), name=str(_first(net.get("hostnames")) or _first(net.get("netbios_names"))
+                                                   or _first(net.get("fqdns")) or r["id"]),
+                         os=_first(r.get("operating_systems")), ips=ips, fqdns=tuple(net.get("fqdns") or []), tags=tags,
+                         internet_facing=False, exposure_since=None, critical=None, on_attack_path=None,
+                         public_ips=_public(ips), tag_dates=_tag_dates(r.get("tags"), "key", "value"),
+                         first_seen=tag_day(times.get("first_seen"))))
     return out
 
 
@@ -84,21 +122,39 @@ def load_assets(params: dict) -> list[Asset]:
         rows, total = client.list_assets_with_total()
         hosts = parse_assets(rows)
         at_cap = len(rows) >= client.ASSET_LIST_CAP or (total is not None and total > len(rows))
+        export_failed = ""
+        mode = params.get("export", True)  # True: only past the cap, "always": every run, False: never
+        if mode == "always" or (at_cap and mode):
+            # past the list's cap, the bulk export is the only read that returns every host with its tags
+            try:
+                seen = {a.id for a in hosts}
+                hosts += [a for a in parse_export(client.export_assets()) if a.id not in seen]
+                at_cap = False
+            except Exception as exc:
+                if not at_cap:
+                    LAST_WARNINGS.append(f"asset export failed (hosts outside the asset list have no tags): "
+                                         f"{type(exc).__name__}: {str(exc)[:120]}")
+                export_failed = f"; the bulk asset export failed ({type(exc).__name__}: {str(exc)[:120]})"
         try:
             v3, capped = client.list_hosts_v3()
             seen = {a.id for a in hosts}
-            extra = [a for a in parse_v3_hosts(v3) if a.id not in seen]
+            found = parse_v3_hosts(v3)
+            # the asset list carries no first-seen date: the host search does, for the same hosts
+            first = {a.id: a.first_seen for a in found if a.first_seen}
+            hosts = [replace(a, first_seen=first[a.id]) if a.first_seen is None and a.id in first else a for a in hosts]
+            extra = [a for a in found if a.id not in seen]
             hosts += extra
             if at_cap:
                 LAST_WARNINGS.append(
                     f"source assets (tags) failed: the asset list stops at 5,000, so {len(extra)} more hosts came from "
-                    "the host search without tags, so INTERNET_FACING cannot fire for them (PUBLIC_IP still can)")
+                    "the host search without tags, so INTERNET_FACING cannot fire for them (PUBLIC_IP still can)"
+                    + export_failed)
             if capped:
                 LAST_WARNINGS.append("source assets (host search) failed: stopped at 50,000 hosts, and the rest were not read")
         except Exception as exc:
             if at_cap:
                 LAST_WARNINGS.append(f"source assets failed: the asset list stops at 5,000 and the host search failed "
-                                     f"({exc}), so hosts past the first 5,000 are missing")
+                                     f"({exc}), so hosts past the first 5,000 are missing" + export_failed)
             else:
                 LAST_WARNINGS.append(f"asset host search failed (hosts not seen in 90 days were not read): {exc}")
         try:

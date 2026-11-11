@@ -19,6 +19,7 @@ finding stayed hidden from the vulnerability queue.
 | KEV | already in KEV when accepted | in KEV since 2026-03-20 | CISA KEV (snapshot:2026-11-02) |
 | EPSS_HIGH | 0.48851 | 0.96284 | FIRST EPSS (snapshot:2026-11-02) |
 | EPSS_ROSE | 0.48851 | 0.96284 | FIRST EPSS (snapshot:2026-11-02) |
+| EXPLOIT_PUBLIC | — | public exploit: Nuclei template http/cves/2025/CVE-2025-54068.yaml | Nuclei (snapshot:2026-11-11) |
 
 ## Look-back window
 

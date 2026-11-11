@@ -1,0 +1,86 @@
+{
+  "today": "2026-11-02",
+  "tickets": [
+    {
+      "kind": "revoke",
+      "title": "Revoke risk exception R-HERO-001 (tenable-vm, accept)",
+      "owner": "secops-lead@example.com",
+      "rule_ids": [
+        "R-HERO-001"
+      ],
+      "mode": "auto",
+      "body": "Revoke risk exception R-HERO-001 (tenable-vm, accept)\n\nWhy: graded REVOKE by Exception Guardian on 2026-11-02.\nTriggers: KEV, EPSS_HIGH, EPSS_ROSE, EXPLOIT_PUBLIC, INTERNET_FACING, NO_EXPIRY, TOO_OLD, JUSTIFICATION_CONTRADICTED\nCVEs: CVE-2025-54068\nTargets: web-portal-01\nOwner: secops-lead@example.com\n\nDisabling this rule re-surfaces: 3 findings\n\nHunt brief (evidence and queries): examples/demo-run/hunt-briefs/R-HERO-001.md"
+    },
+    {
+      "kind": "revoke",
+      "title": "Revoke risk exception R-RAY-002 (tenable-vm, recast)",
+      "owner": "secops-lead@example.com",
+      "rule_ids": [
+        "R-RAY-002"
+      ],
+      "mode": "auto",
+      "body": "Revoke risk exception R-RAY-002 (tenable-vm, recast)\n\nWhy: graded REVOKE by Exception Guardian on 2026-11-02.\nTriggers: KEV, EPSS_HIGH, EPSS_ROSE, EXPLOIT_PUBLIC, ATTACK_PATH, NO_EXPIRY\nCVEs: CVE-2025-62593\nTargets: ml-ray-head-01\nOwner: secops-lead@example.com\n\nDisabling this rule re-surfaces: 2 findings\n\nHunt brief (evidence and queries): examples/demo-run/hunt-briefs/R-RAY-002.md"
+    },
+    {
+      "kind": "revoke",
+      "title": "Revoke risk exception CSV-Q-201 (csv:other-scanner, accept)",
+      "owner": "ml-owner@example.com",
+      "rule_ids": [
+        "CSV-Q-201"
+      ],
+      "mode": "manual",
+      "body": "Revoke risk exception CSV-Q-201 (csv:other-scanner, accept)\n\nWhy: graded REVOKE by Exception Guardian on 2026-11-02.\nTriggers: KEV, EPSS_HIGH, EPSS_ROSE, EXPLOIT_PUBLIC, ATTACK_PATH, NO_EXPIRY\nCVEs: CVE-2025-62593\nTargets: ml-ray-head-01.example.com\nOwner: ml-owner@example.com\n\nDisabling this rule re-surfaces: unknown number of findings (source does not report it)\n\nHunt brief (evidence and queries): examples/demo-run/hunt-briefs/CSV-Q-201.md"
+    },
+    {
+      "kind": "revoke",
+      "title": "Revoke risk exception R-CRUSH-003 (tenable-vm, accept)",
+      "owner": "secops-lead@example.com",
+      "rule_ids": [
+        "R-CRUSH-003"
+      ],
+      "mode": "auto",
+      "body": "Revoke risk exception R-CRUSH-003 (tenable-vm, accept)\n\nWhy: graded REVOKE by Exception Guardian on 2026-11-02.\nTriggers: KEV, EPSS_HIGH, EPSS_ROSE, EXPLOIT_PUBLIC, ATTACK_PATH\nCVEs: CVE-2025-31161\nTargets: ftp-01\nOwner: secops-lead@example.com\n\nDisabling this rule re-surfaces: 1 finding\n\nHunt brief (evidence and queries): examples/demo-run/hunt-briefs/R-CRUSH-003.md"
+    },
+    {
+      "kind": "revoke",
+      "title": "Revoke risk exception R-INJECT-007 (tenable-vm, accept)",
+      "owner": "secops-lead@example.com",
+      "rule_ids": [
+        "R-INJECT-007"
+      ],
+      "mode": "auto",
+      "body": "Revoke risk exception R-INJECT-007 (tenable-vm, accept)\n\nWhy: graded REVOKE by Exception Guardian on 2026-11-02.\nTriggers: KEV, EPSS_HIGH, EPSS_ROSE, EXPLOIT_PUBLIC\nCVEs: CVE-2025-54068\nTargets: web-portal-02\nOwner: secops-lead@example.com\n\nDisabling this rule re-surfaces: 1 finding\n\nHunt brief (evidence and queries): examples/demo-run/hunt-briefs/R-INJECT-007.md"
+    },
+    {
+      "kind": "revoke",
+      "title": "Revoke risk exception EXCL-001 (tenable-vm, exclusion)",
+      "owner": "unknown",
+      "rule_ids": [
+        "EXCL-001"
+      ],
+      "mode": "manual",
+      "body": "Revoke risk exception EXCL-001 (tenable-vm, exclusion)\n\nWhy: graded REVOKE by Exception Guardian on 2026-11-02.\nTriggers: INTERNET_FACING, NO_EXPIRY, TOO_OLD\nCVEs: none\nTargets: web-portal-01.example.com, 203.0.113.10\nOwner: unknown\n\nDisabling this rule re-surfaces: unknown number of findings (source does not report it)\n\nHunt brief (evidence and queries): examples/demo-run/hunt-briefs/EXCL-001.md"
+    },
+    {
+      "kind": "review",
+      "title": "Review 2 risk exceptions (secops-lead@example.com)",
+      "owner": "secops-lead@example.com",
+      "mode": "manual",
+      "body": "Risk exceptions to review, graded by Exception Guardian on 2026-11-02.\nOwner: secops-lead@example.com\n\nReview now (1):\n- R-EXPIRED-006 (tenable-vm, CVEs CVE-2025-30204)\n    - covers 1: 1 first seen since (2026-03-10): confirm the acceptance was meant to cover them, or narrow the rule\n    - expired 2026-06-30, still enabled: disable it or set a new expiry\n\nHousekeeping (1):\n- R-REVIEW-005 (tenable-vm, CVEs CVE-2025-25193)\n    - set an expiry date\n    - 519 days old: re-confirm it or retire it",
+      "rule_ids": [
+        "R-EXPIRED-006",
+        "R-REVIEW-005"
+      ]
+    },
+    {
+      "kind": "review",
+      "title": "Review 1 risk exception (sc-analyst)",
+      "owner": "sc-analyst",
+      "mode": "manual",
+      "body": "Risk exceptions to review, graded by Exception Guardian on 2026-11-02.\nOwner: sc-analyst\n\nHousekeeping (1):\n- SC-AR-101 (tenable-sc, CVEs CVE-2025-22868)\n    - set an expiry date\n    - 531 days old: re-confirm it or retire it",
+      "rule_ids": [
+        "SC-AR-101"
+      ]
+    }
+  ]
+}

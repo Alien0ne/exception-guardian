@@ -41,10 +41,27 @@
           "source": "justification vs asset inventory"
         }
       ]
+    },
+    {
+      "rule_id": "R-EXPIRED-006",
+      "source": "tenable-vm",
+      "rule_type": "accept",
+      "cves": [
+        "CVE-2025-30204"
+      ],
+      "was": "REVIEW",
+      "now": "REVIEW",
+      "new_triggers": [
+        {
+          "code": "NEW_ASSETS",
+          "now": "covers 1: 1 first seen since (2026-03-10)",
+          "source": "Tenable first-seen date: hr-app-03"
+        }
+      ]
     }
   ],
   "new": [],
   "eased": [],
   "gone": [],
-  "unchanged": 11
+  "unchanged": 10
 }

@@ -14,7 +14,7 @@ Ticket text:
 Revoke risk exception R-HERO-001 (tenable-vm, accept)
 
 Why: graded REVOKE by Exception Guardian on 2026-11-02.
-Triggers: KEV, EPSS_HIGH, EPSS_ROSE, INTERNET_FACING, NO_EXPIRY, TOO_OLD, JUSTIFICATION_CONTRADICTED
+Triggers: KEV, EPSS_HIGH, EPSS_ROSE, EXPLOIT_PUBLIC, INTERNET_FACING, NO_EXPIRY, TOO_OLD, JUSTIFICATION_CONTRADICTED
 CVEs: CVE-2025-54068
 Targets: web-portal-01
 Owner: secops-lead@example.com
@@ -35,7 +35,7 @@ Ticket text:
 Revoke risk exception R-RAY-002 (tenable-vm, recast)
 
 Why: graded REVOKE by Exception Guardian on 2026-11-02.
-Triggers: KEV, EPSS_HIGH, EPSS_ROSE, ATTACK_PATH, NO_EXPIRY
+Triggers: KEV, EPSS_HIGH, EPSS_ROSE, EXPLOIT_PUBLIC, ATTACK_PATH, NO_EXPIRY
 CVEs: CVE-2025-62593
 Targets: ml-ray-head-01
 Owner: secops-lead@example.com
@@ -56,7 +56,7 @@ Ticket text:
 Revoke risk exception CSV-Q-201 (csv:other-scanner, accept)
 
 Why: graded REVOKE by Exception Guardian on 2026-11-02.
-Triggers: KEV, EPSS_HIGH, EPSS_ROSE, ATTACK_PATH, NO_EXPIRY
+Triggers: KEV, EPSS_HIGH, EPSS_ROSE, EXPLOIT_PUBLIC, ATTACK_PATH, NO_EXPIRY
 CVEs: CVE-2025-62593
 Targets: ml-ray-head-01.example.com
 Owner: ml-owner@example.com
@@ -77,7 +77,7 @@ Ticket text:
 Revoke risk exception R-CRUSH-003 (tenable-vm, accept)
 
 Why: graded REVOKE by Exception Guardian on 2026-11-02.
-Triggers: KEV, EPSS_HIGH, EPSS_ROSE, ATTACK_PATH
+Triggers: KEV, EPSS_HIGH, EPSS_ROSE, EXPLOIT_PUBLIC, ATTACK_PATH
 CVEs: CVE-2025-31161
 Targets: ftp-01
 Owner: secops-lead@example.com
@@ -98,7 +98,7 @@ Ticket text:
 Revoke risk exception R-INJECT-007 (tenable-vm, accept)
 
 Why: graded REVOKE by Exception Guardian on 2026-11-02.
-Triggers: KEV, EPSS_HIGH, EPSS_ROSE
+Triggers: KEV, EPSS_HIGH, EPSS_ROSE, EXPLOIT_PUBLIC
 CVEs: CVE-2025-54068
 Targets: web-portal-02
 Owner: secops-lead@example.com
@@ -128,4 +128,6 @@ Disabling this rule re-surfaces: unknown number of findings (source does not rep
 
 Hunt brief (evidence and queries): examples/demo-run/hunt-briefs/EXCL-001.md
 ```
+
+REVIEW rules are not in this plan: `review-plan.md` lists what each owner has to do about theirs.
 

@@ -158,8 +158,12 @@ def _day(s: str) -> str:
     return f"{d.day} {d:%b %Y}"
 
 
-def _grade(g: str) -> str:
+def _grade(g: str, tier: str | None = None) -> str:
     cls = g.lower() if g in GRADE_WORD else "unknown"  # a class name only from the known grades
+    if g == "REVIEW" and tier == "now":
+        return '<span class="grade review">Review now</span>'
+    if g == "REVIEW" and tier == "housekeeping":
+        return '<span class="grade review housekeeping">Housekeeping</span>'
     return f'<span class="grade {cls}">{GRADE_WORD.get(g, e(g))}</span>'
 
 
@@ -391,7 +395,7 @@ def _row(f: dict) -> str:
     body += f'<ul class="notes">{notes}</ul>' if notes else ""
     title = rule_title(x)
     name = _code(title) if title == x["rule_id"] else e(title)
-    return (f'<details name="exceptions"><summary>{_grade(f["grade"])}<span>{name}</span>'
+    return (f'<details name="exceptions"><summary>{_grade(f["grade"], f.get("review_tier"))}<span>{name}</span>'
             f'<span class="hide-s">{e(x["source"])}, {e(x["rule_type"])}</span>'
             f'<span class="hide-s">{_cves(x["cves"], none="no CVE")}</span>'
             f'<span class="n hide-s">{n}</span><span class="plus" aria-hidden="true"></span></summary>'
@@ -424,7 +428,7 @@ def _group(fs: list[dict]) -> str:
             f'<code>report.md</code>.</p>' if len(fs) > GROUP_ROWS else "")
     shared = _evidence([{**t, "now": t["now"] if t["code"] != "TOO_OLD" else "older than the age limit"}
                         for t in {t["code"]: t for t in first["triggers"]}.values()])
-    return (f'<details class="group" name="exceptions"><summary>{_grade(first["grade"])}<span>{len(fs)} {e(src)} rules with the '
+    return (f'<details class="group" name="exceptions"><summary>{_grade(first["grade"], first.get("review_tier"))}<span>{len(fs)} {e(src)} rules with the '
             f'same evidence</span><span class="hide-s">{e(first["exception"]["source"])}</span>'
             f'<span class="hide-s">{_group_cves(fs)}</span>'
             f'<span class="n hide-s">{len(codes)}</span><span class="plus" aria-hidden="true"></span></summary>'
@@ -668,8 +672,10 @@ def render_html(run_dir: Path) -> str:
     else:
         actions = '<a class="btn" href="#next-h">See the next step</a>'
     actions = f'<p class="actions">{actions}</p>' if actions else ""
+    tiers = {t: sum(1 for f in findings if f.get("review_tier") == t) for t in ("now", "housekeeping")}
+    split = f'<dd class="split">{tiers["now"]:,} now, {tiers["housekeeping"]:,} housekeeping</dd>' if any(tiers.values()) else ""
     stats = "".join(f'<div><dt>{label}</dt><dd data-count="{g}"{" class=\"revoke\"" if g == "REVOKE" and counts["REVOKE"] else ""}>'
-                    f'{counts.get(g, len(findings))}</dd></div>'
+                    f'{counts.get(g, len(findings))}</dd>{split if g == "REVIEW" else ""}</div>'
                     for g, label in (("ALL", "Exceptions graded"), ("REVOKE", "Revoke"), ("REVIEW", "Review"),
                                      ("OK", "OK")))
     failed = sum(1 for w in data.get("warnings", []) if w.startswith("source ") and " failed: " in w)

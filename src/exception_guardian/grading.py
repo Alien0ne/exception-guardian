@@ -17,6 +17,22 @@ _EXCLUSION_CODES = {"INTERNET_FACING", "PUBLIC_IP", "ATTACK_PATH", "NO_EXPIRY", 
 _PLACEHOLDER = {"n/a", "na", "none", "tbd", "todo", "test", "testing", "temp", "x", "xx", "xxx", "asdf", "null", "nil"}
 
 
+#: REVIEW triggers that are evidence of risk. A REVIEW rule with any of them is reviewed first ("now"); one with
+#: paperwork gaps only (no expiry, old, no reason, blanket) is "housekeeping".
+REVIEW_RISK = ("JUSTIFICATION_CONTRADICTED", "EXPLOIT_PUBLIC", "EPSS_ROSE", "PUBLIC_IP", "PATH_CVE_ELSEWHERE",
+               "EXPIRED_STILL_ENABLED", "NEW_ASSETS")
+
+
+def review_tier(g: GradedException) -> str | None:
+    """"now" or "housekeeping" for a REVIEW finding, None for any other grade."""
+    if g.grade is not Grade.REVIEW:
+        return None
+    codes = {t.code for t in g.triggers}
+    if "BLANKET" in codes:  # a rule on every asset takes in new ones by design: BLANKET already says so
+        codes.discard("NEW_ASSETS")
+    return "now" if codes & set(REVIEW_RISK) else "housekeeping"
+
+
 def no_reason(text: str) -> bool:
     t = " ".join(str(text or "").split()).lower().strip(" .-_*")
     return not any(c.isalnum() for c in t) or t in _PLACEHOLDER
@@ -130,16 +146,39 @@ def grade(exc: RiskException, assets: list[Asset], intel: dict[tuple[str, date],
         if (i.epss_now is not None and i.epss_at_created is not None
                 and i.epss_now - i.epss_at_created >= cfg.review_epss_delta):
             t.append(Trigger("EPSS_ROSE", Grade.REVIEW, _tag(i, many, i.epss_at_created), _tag(i, many, i.epss_now), esrc))
+        if i.exploits:
+            # only Exploit-DB dates its entries, so "then" says only what that date proves
+            then = ("no Exploit-DB entry yet" if i.exploit_first_published and i.exploit_first_published > exc.created
+                    else None)
+            t.append(Trigger("EXPLOIT_PUBLIC", Grade.REVIEW, then, f"{tag}public exploit: {', '.join(i.exploits)}",
+                             f"{', '.join(i.exploit_feeds)} ({i.exploit_source})"))
 
     facing = [a for a in matched if a.internet_facing]
     if facing:
         then = "internal" if all(a.exposure_since and a.exposure_since > exc.created for a in facing) else None
+        if then is None:  # Tenable's own record: the tag that marks each asset was added after the rule was made
+            days = [a.exposure_since or a.exposure_tag_since for a in facing]
+            if all(d and d > exc.created for d in days):
+                then = f"not tagged internet-facing until {min(days).isoformat()}"
         by_reason: dict[str, list[str]] = {}
         for a in facing:
             # what marked it, in the company's own terms: its tag, range or host list
             by_reason.setdefault(a.exposure_reason or "asset inventory", []).append(a.name)
         t.append(Trigger("INTERNET_FACING", Grade.REVOKE, then, "internet-facing",
                          " and ".join(f"{why}: {', '.join(names)}" for why, names in by_reason.items())))
+    new = sorted((a for a in matched if a.first_seen and a.first_seen > exc.created), key=lambda a: (a.first_seen, a.name))
+    if new:
+        # Tenable first saw these hosts after the risk was accepted: nobody accepted it for them
+        undated = sum(1 for a in matched if a.first_seen is None)
+        old = len(matched) - len(new) - undated
+        latest = new[-1].first_seen.isoformat()
+        t.append(Trigger("NEW_ASSETS", Grade.REVIEW,
+                         None if undated else f"covered {old} asset{'' if old == 1 else 's'}" if old
+                         else "covered no asset Tenable had seen yet",
+                         f"covers {len(matched)}: {len(new)} first seen since "
+                         f"({'latest ' if len(new) > 1 else ''}{latest})"
+                         + (f", {undated} with no first-seen date" if undated else ""),
+                         "Tenable first-seen date: " + _few(a.name for a in new)))
     public = [a for a in matched if (a.public_ips or a.tenable_public or a.public_dns) and not a.internet_facing]
     if public and not facing:
         ips = _few(dict.fromkeys(ip for a in public for ip in a.public_ips))

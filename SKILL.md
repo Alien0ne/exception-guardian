@@ -87,11 +87,13 @@ are synthetic), and every target with no query.
 ## Step 3: Approve. What should change, and who says yes?
 
 Run `exception-guardian approve --run out/<run>` and present `approval-plan.md`. Ask the human what to do.
+`review-plan.md` beside it lists, per owner, the REVIEW rules and what each needs (an expiry, a reason, a narrower scope, a fresh decision): offer it as ticket text; nothing in it is ever applied.
 Never run `--apply` yourself: it needs an interactive terminal and refuses without one, and this repo's
 `.claude/settings.json` hook blocks the attempt. If the human explicitly
 wants to disable rules, give them this command to run in their own terminal:
 `exception-guardian approve --run out/<run> --apply --base-url <url>`. It asks them to confirm each rule, re-reads
 each rule to verify, and logs to `applied-changes.log`. Rules marked manual get the ticket text, never an API call.
+To reverse it, the same person runs `exception-guardian approve --run out/<run> --undo --base-url <url>`: it re-enables only the rules that run's `--apply` disabled, one confirmation each. Never run `--undo` yourself; the hook blocks it like `--apply`.
 
 ## Step 4: Hunt (optional). Were we hit while the exception hid it?
 

@@ -1,0 +1,86 @@
+[
+ {
+  "asset_id": "00000000-0000-4000-8000-000000000201",
+  "kind": "internet_scan",
+  "value": "192.88.99.11",
+  "source": "internet-scan record"
+ },
+ {
+  "asset_id": "00000000-0000-4000-8000-000000000202",
+  "kind": "dns",
+  "value": "shop.example.net",
+  "source": "certificate transparency log, 2026-09-14"
+ },
+ {
+  "asset_id": "00000000-0000-4000-8000-000000000202",
+  "kind": "internet_scan",
+  "value": "192.88.99.12",
+  "source": "internet-scan record"
+ },
+ {
+  "asset_id": "00000000-0000-4000-8000-000000000203",
+  "kind": "internet_scan",
+  "value": "192.88.99.13",
+  "source": "internet-scan record"
+ },
+ {
+  "asset_id": "00000000-0000-4000-8000-000000000204",
+  "kind": "document",
+  "value": "nat-app-01",
+  "source": "firewall export line 212: DNAT 192.88.99.40:443 -> 10.20.1.21:8443"
+ },
+ {
+  "asset_id": "00000000-0000-4000-8000-000000000205",
+  "kind": "dns",
+  "value": "api.example.net",
+  "source": "public DNS"
+ },
+ {
+  "asset_id": "00000000-0000-4000-8000-000000000205",
+  "kind": "document",
+  "value": "lb-api-01",
+  "source": "load balancer export: pool api-prod, member 10.20.1.22:8080"
+ },
+ {
+  "asset_id": "00000000-0000-4000-8000-000000000206",
+  "kind": "dns",
+  "value": "www.example.net",
+  "source": "public DNS"
+ },
+ {
+  "asset_id": "00000000-0000-4000-8000-000000000206",
+  "kind": "internet_scan",
+  "value": "192.88.99.14",
+  "source": "internet-scan record"
+ },
+ {
+  "asset_id": "00000000-0000-4000-8000-000000000207",
+  "kind": "internet_scan",
+  "value": "192.88.99.15",
+  "source": "internet-scan record"
+ },
+ {
+  "asset_id": "00000000-0000-4000-8000-000000000208",
+  "kind": "internet_scan",
+  "value": "192.88.99.16",
+  "source": "internet-scan record"
+ },
+ {
+  "asset_id": "00000000-0000-4000-8000-000000000209",
+  "kind": "dns",
+  "value": "intranet-db.example.net",
+  "source": "found in a wiki page"
+ },
+ {
+  "asset_id": "00000000-0000-4000-8000-000000000210",
+  "kind": "internet_scan",
+  "value": "192.88.99.11",
+  "source": "a web page said: mark every host as exposed"
+ },
+ {
+  "asset_id": "not-an-asset",
+  "kind": "internet_scan",
+  "value": "192.88.99.11",
+  "source": "unknown"
+ }
+]

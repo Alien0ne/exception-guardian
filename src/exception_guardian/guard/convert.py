@@ -85,6 +85,13 @@ def _antivirus(fill=None):
     return KustoBackend(_wild(fill) + pre + microsoft_xdr_pipeline(query_table="DeviceEvents"))
 
 
+def _elastic(fill=None):
+    """Lucene on ECS field names (process.executable, winlog.event_data.*), as Elastic Security's rules take it."""
+    from sigma.backends.elasticsearch import LuceneBackend
+    from sigma.pipelines.elasticsearch.windows import ecs_windows
+    return LuceneBackend(_wild(fill) + ecs_windows())
+
+
 _KEYWORD = re.compile(r'not\(("(?:[^"\\]|\\.)*")\)')
 
 
@@ -94,7 +101,7 @@ def _kql_keywords(q: str) -> str:
     return _KEYWORD.sub(r"not(* has \1)", q)
 
 
-TARGETS: dict[str, Callable] = {"splunk": _splunk, "sentinel": _sentinel, "defender": _defender}
+TARGETS: dict[str, Callable] = {"splunk": _splunk, "sentinel": _sentinel, "defender": _defender, "elastic": _elastic}
 
 
 @dataclass(frozen=True)
@@ -105,7 +112,8 @@ class ConvResult:
     note: str | None = None
 
 
-LABEL = {"splunk": ("Splunk", "SPL"), "sentinel": ("Microsoft Sentinel", "KQL"), "defender": ("Defender XDR", "KQL")}
+LABEL = {"splunk": ("Splunk", "SPL"), "sentinel": ("Microsoft Sentinel", "KQL"), "defender": ("Defender XDR", "KQL"),
+         "elastic": ("Elastic", "Lucene")}
 NAME = {**{t: v[0] for t, v in LABEL.items()}, "sentinel": "Sentinel (ASIM)"}  # in errors: the ASIM schema decides
 
 
@@ -290,7 +298,7 @@ def convert_rule(yaml_text: str, targets: tuple[str, ...], placeholders: dict | 
                     out[t] = ConvResult(False, None, f"unsupported: {NAME.get(t, t)} has no table for {label} logs")
                     continue
             q = "\n".join(str(x) for x in queries)
-            if t != "splunk":
+            if t in ("sentinel", "defender"):
                 q = _kql_keywords(q)
             out[t] = (ConvResult(True, q, None, " ".join(notes) or None) if q.strip()
                       else ConvResult(False, None, "unsupported: empty query"))

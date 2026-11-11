@@ -5,6 +5,7 @@ import re
 from collections import Counter
 from datetime import date
 
+from .grading import review_tier
 from .models import Grade, GradedException
 
 _SPECIAL = "\\`*_<>[]|"
@@ -103,9 +104,23 @@ def render_report(findings: list[GradedException], warnings: list[str], today: d
     if read is not None:
         out += [read_line(read), ""]
     out += ["| Grade | Count |", "|---|---|"]
-    out += [f"| {g.value} | {by_grade.get(g.value, 0)} |" for g in (Grade.REVOKE, Grade.REVIEW, Grade.OK)]
+    tiers = Counter(review_tier(g) for g in findings)
+    split = f" ({tiers['now']:,} to review now, {tiers['housekeeping']:,} housekeeping)" if by_grade.get("REVIEW") else ""
+    out += [f"| {g.value} | {by_grade.get(g.value, 0)}{split if g is Grade.REVIEW else ''} |"
+            for g in (Grade.REVOKE, Grade.REVIEW, Grade.OK)]
     out += ["", "| Source | Exceptions |", "|---|---|"]
     out += [f"| {md_escape(s)} | {n} |" for s, n in sorted(by_source.items())]
+    if by_grade.get("REVIEW"):
+        owners: dict[str, Counter] = {}
+        for g in findings:
+            if g.grade is Grade.REVIEW:
+                owners.setdefault(g.exception.owner or "unknown", Counter())[review_tier(g)] += 1
+        out += ["", "## Review work by owner", "",
+                "Review now: the rule has evidence of risk (exploit code is public, EPSS rose, a public IP, an attack path elsewhere, a "
+                "contradicted reason, or it is past its expiry). Housekeeping: paperwork gaps only (no expiry, old, "
+                "no reason, covers every asset).", "", "| Owner | Review now | Housekeeping |", "|---|---|---|"]
+        out += [f"| {md_escape(o)} | {c['now']} | {c['housekeeping']} |"
+                for o, c in sorted(owners.items(), key=lambda kv: (-kv[1]["now"], -kv[1]["housekeeping"], kv[0]))]
     if warnings:
         out += ["", "## Warnings", ""] + [f"- {md_ticks(w)}" for w in warnings]
     out += ["", f"Long CVE and asset lists show the first {LIST_SHOWN}; findings.json has every one.", "",
@@ -114,7 +129,8 @@ def render_report(findings: list[GradedException], warnings: list[str], today: d
         if g.grade is Grade.OK:
             continue
         e = g.exception
-        out += [f"## {g.grade.value}: {md_escape(e.rule_id)} ({md_escape(e.source)}, {e.rule_type.value})", "",
+        tier = f" ({review_tier(g)})" if g.grade is Grade.REVIEW else ""
+        out += [f"## {g.grade.value}{tier}: {md_escape(e.rule_id)} ({md_escape(e.source)}, {e.rule_type.value})", "",
                 f"- CVEs: {md_escape(_short(e.cves)) or 'none'}",
                 f"- Targets: {md_escape(', '.join(e.targets)) or 'none'}"
                 + (f" → matched assets: {md_escape(_short(a.name for a in g.assets))}" if g.assets else ""),

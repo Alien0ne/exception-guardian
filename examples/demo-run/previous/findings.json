@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-04T17:07:58+00:00",
+  "generated": "2026-11-11T08:59:03+00:00",
   "today": "2026-10-26",
   "partial": false,
   "warnings": [
@@ -110,6 +110,13 @@
           "source": "FIRST EPSS (snapshot:2026-11-02)"
         },
         {
+          "code": "EXPLOIT_PUBLIC",
+          "grade": "REVIEW",
+          "then": null,
+          "now": "public exploit: Nuclei template http/cves/2025/CVE-2025-62593.yaml",
+          "source": "Nuclei (snapshot:2026-11-11)"
+        },
+        {
           "code": "ATTACK_PATH",
           "grade": "REVOKE",
           "then": null,
@@ -151,6 +158,9 @@
           "attack_paths": null,
           "critical_paths": null,
           "context_source": "",
+          "tag_dates": [],
+          "exposure_tag_since": null,
+          "first_seen": null,
           "public_dns": []
         }
       ],
@@ -163,10 +173,19 @@
           "epss_now": 0.6015,
           "epss_at_created": 0.00021,
           "source": "snapshot:2026-11-02",
-          "epss_then_source": null
+          "epss_then_source": null,
+          "exploits": [
+            "Nuclei template http/cves/2025/CVE-2025-62593.yaml"
+          ],
+          "exploit_feeds": [
+            "Nuclei"
+          ],
+          "exploit_source": "snapshot:2026-11-11",
+          "exploit_first_published": null
         }
       ],
-      "notes": []
+      "notes": [],
+      "review_tier": null
     },
     {
       "exception": {
@@ -226,6 +245,13 @@
           "source": "FIRST EPSS (snapshot:2026-11-02)"
         },
         {
+          "code": "EXPLOIT_PUBLIC",
+          "grade": "REVIEW",
+          "then": null,
+          "now": "public exploit: Nuclei template http/cves/2025/CVE-2025-62593.yaml",
+          "source": "Nuclei (snapshot:2026-11-11)"
+        },
+        {
           "code": "ATTACK_PATH",
           "grade": "REVOKE",
           "then": null,
@@ -267,6 +293,9 @@
           "attack_paths": null,
           "critical_paths": null,
           "context_source": "",
+          "tag_dates": [],
+          "exposure_tag_since": null,
+          "first_seen": null,
           "public_dns": []
         }
       ],
@@ -279,10 +308,19 @@
           "epss_now": 0.6015,
           "epss_at_created": 0.0001,
           "source": "snapshot:2026-11-02",
-          "epss_then_source": null
+          "epss_then_source": null,
+          "exploits": [
+            "Nuclei template http/cves/2025/CVE-2025-62593.yaml"
+          ],
+          "exploit_feeds": [
+            "Nuclei"
+          ],
+          "exploit_source": "snapshot:2026-11-11",
+          "exploit_first_published": null
         }
       ],
-      "notes": []
+      "notes": [],
+      "review_tier": null
     },
     {
       "exception": {
@@ -372,6 +410,13 @@
           "source": "FIRST EPSS (snapshot:2026-11-02)"
         },
         {
+          "code": "EXPLOIT_PUBLIC",
+          "grade": "REVIEW",
+          "then": null,
+          "now": "public exploit: Exploit-DB 52295 (published 2025-05-18), Nuclei template http/cves/2025/CVE-2025-31161.yaml",
+          "source": "Exploit-DB, Nuclei (snapshot:2026-11-11)"
+        },
+        {
           "code": "ATTACK_PATH",
           "grade": "REVOKE",
           "then": null,
@@ -406,6 +451,9 @@
           "attack_paths": null,
           "critical_paths": null,
           "context_source": "",
+          "tag_dates": [],
+          "exposure_tag_since": null,
+          "first_seen": null,
           "public_dns": []
         }
       ],
@@ -418,10 +466,21 @@
           "epss_now": 0.99969,
           "epss_at_created": 0.87967,
           "source": "snapshot:2026-11-02",
-          "epss_then_source": null
+          "epss_then_source": null,
+          "exploits": [
+            "Exploit-DB 52295 (published 2025-05-18)",
+            "Nuclei template http/cves/2025/CVE-2025-31161.yaml"
+          ],
+          "exploit_feeds": [
+            "Exploit-DB",
+            "Nuclei"
+          ],
+          "exploit_source": "snapshot:2026-11-11",
+          "exploit_first_published": "2025-05-18"
         }
       ],
-      "notes": []
+      "notes": [],
+      "review_tier": null
     },
     {
       "exception": {
@@ -510,6 +569,13 @@
           "source": "FIRST EPSS (snapshot:2026-11-02)"
         },
         {
+          "code": "EXPLOIT_PUBLIC",
+          "grade": "REVIEW",
+          "then": null,
+          "now": "public exploit: Nuclei template http/cves/2025/CVE-2025-54068.yaml",
+          "source": "Nuclei (snapshot:2026-11-11)"
+        },
+        {
           "code": "NO_EXPIRY",
           "grade": "REVIEW",
           "then": null,
@@ -551,6 +617,9 @@
           "attack_paths": null,
           "critical_paths": null,
           "context_source": "",
+          "tag_dates": [],
+          "exposure_tag_since": null,
+          "first_seen": null,
           "public_dns": []
         }
       ],
@@ -563,10 +632,19 @@
           "epss_now": 0.96284,
           "epss_at_created": 0.00145,
           "source": "snapshot:2026-11-02",
-          "epss_then_source": null
+          "epss_then_source": null,
+          "exploits": [
+            "Nuclei template http/cves/2025/CVE-2025-54068.yaml"
+          ],
+          "exploit_feeds": [
+            "Nuclei"
+          ],
+          "exploit_source": "snapshot:2026-11-11",
+          "exploit_first_published": null
         }
       ],
-      "notes": []
+      "notes": [],
+      "review_tier": null
     },
     {
       "exception": {
@@ -654,6 +732,13 @@
           "then": "0.48851",
           "now": "0.96284",
           "source": "FIRST EPSS (snapshot:2026-11-02)"
+        },
+        {
+          "code": "EXPLOIT_PUBLIC",
+          "grade": "REVIEW",
+          "then": null,
+          "now": "public exploit: Nuclei template http/cves/2025/CVE-2025-54068.yaml",
+          "source": "Nuclei (snapshot:2026-11-11)"
         }
       ],
       "assets": [
@@ -683,6 +768,9 @@
           "attack_paths": null,
           "critical_paths": null,
           "context_source": "",
+          "tag_dates": [],
+          "exposure_tag_since": null,
+          "first_seen": null,
           "public_dns": []
         }
       ],
@@ -695,10 +783,145 @@
           "epss_now": 0.96284,
           "epss_at_created": 0.48851,
           "source": "snapshot:2026-11-02",
-          "epss_then_source": null
+          "epss_then_source": null,
+          "exploits": [
+            "Nuclei template http/cves/2025/CVE-2025-54068.yaml"
+          ],
+          "exploit_feeds": [
+            "Nuclei"
+          ],
+          "exploit_source": "snapshot:2026-11-11",
+          "exploit_first_published": null
         }
       ],
-      "notes": []
+      "notes": [],
+      "review_tier": null
+    },
+    {
+      "exception": {
+        "source": "tenable-vm",
+        "rule_id": "R-EXPIRED-006",
+        "rule_type": "accept",
+        "cves": [
+          "CVE-2025-30204"
+        ],
+        "plugin_ids": [],
+        "targets": [
+          "hr-app-03"
+        ],
+        "original_severity": "HIGH",
+        "new_severity": null,
+        "owner": "secops-lead@example.com",
+        "created": "2026-01-15",
+        "updated": "2026-01-15",
+        "expires": "2026-06-30",
+        "justification": "Temporary",
+        "status": "enabled",
+        "revised_findings": 1,
+        "raw": {
+          "rule_id": "R-EXPIRED-006",
+          "rule_name": "Accept - CVE-2025-30204 - hr-app-03",
+          "container_id": "00000000-0000-4000-8000-000000000900",
+          "created_by": "00000000-0000-4000-8000-000000000800",
+          "updated_by": "00000000-0000-4000-8000-000000000800",
+          "created_at": "2026-01-15T09:00:00.000Z",
+          "updated_at": "2026-01-15T09:00:00.000Z",
+          "last_processed_at": "2026-11-01T06:00:00.000Z",
+          "resource_type": "HOST",
+          "filter": {
+            "and": [
+              {
+                "property": "definition.cve",
+                "operator": "eq",
+                "value": [
+                  "CVE-2025-30204"
+                ]
+              },
+              {
+                "property": "asset.name",
+                "operator": "eq",
+                "value": [
+                  "hr-app-03"
+                ]
+              }
+            ]
+          },
+          "rule_value": {
+            "action": "ACCEPT",
+            "comment": "Temporary",
+            "false_positive": false,
+            "original_severity": "HIGH"
+          },
+          "disabled_details": {
+            "disabled": false
+          },
+          "x_owner": "secops-lead@example.com",
+          "x_revised_findings": 1,
+          "expires_at": "2026-06-30T09:00:00.000Z"
+        },
+        "revised_findings_capped": false
+      },
+      "grade": "REVIEW",
+      "triggers": [
+        {
+          "code": "EXPIRED_STILL_ENABLED",
+          "grade": "REVIEW",
+          "then": null,
+          "now": "expired 2026-06-30, still enabled",
+          "source": "rule metadata"
+        }
+      ],
+      "assets": [
+        {
+          "id": "00000000-0000-4000-8000-000000000006",
+          "name": "hr-app-03",
+          "os": "Linux Debian 12",
+          "ips": [
+            "192.0.2.43"
+          ],
+          "fqdns": [
+            "hr-app-03.example.com"
+          ],
+          "tags": [
+            "App:HR"
+          ],
+          "internet_facing": false,
+          "exposure_since": null,
+          "critical": null,
+          "on_attack_path": null,
+          "public_ips": [],
+          "origin": "hosts",
+          "exposure_reason": "",
+          "tenable_public": null,
+          "acr": null,
+          "aes": null,
+          "attack_paths": null,
+          "critical_paths": null,
+          "context_source": "",
+          "tag_dates": [],
+          "exposure_tag_since": null,
+          "first_seen": null,
+          "public_dns": []
+        }
+      ],
+      "intel": [
+        {
+          "cve": "CVE-2025-30204",
+          "in_kev": false,
+          "kev_date_added": null,
+          "kev_ransomware": false,
+          "epss_now": 0.00811,
+          "epss_at_created": 0.00102,
+          "source": "snapshot:2026-11-02",
+          "epss_then_source": null,
+          "exploits": [],
+          "exploit_feeds": [],
+          "exploit_source": "",
+          "exploit_first_published": null
+        }
+      ],
+      "notes": [],
+      "review_tier": "now"
     },
     {
       "exception": {
@@ -778,13 +1001,17 @@
           "attack_paths": null,
           "critical_paths": null,
           "context_source": "",
+          "tag_dates": [],
+          "exposure_tag_since": null,
+          "first_seen": null,
           "public_dns": []
         }
       ],
       "intel": [],
       "notes": [
         "no CVE intel"
-      ]
+      ],
+      "review_tier": "housekeeping"
     },
     {
       "exception": {
@@ -886,6 +1113,9 @@
           "attack_paths": null,
           "critical_paths": null,
           "context_source": "",
+          "tag_dates": [],
+          "exposure_tag_since": null,
+          "first_seen": null,
           "public_dns": []
         }
       ],
@@ -898,10 +1128,15 @@
           "epss_now": 0.0087,
           "epss_at_created": 0.00063,
           "source": "snapshot:2026-11-02",
-          "epss_then_source": null
+          "epss_then_source": null,
+          "exploits": [],
+          "exploit_feeds": [],
+          "exploit_source": "",
+          "exploit_first_published": null
         }
       ],
-      "notes": []
+      "notes": [],
+      "review_tier": "housekeeping"
     },
     {
       "exception": {
@@ -1010,6 +1245,9 @@
           "attack_paths": null,
           "critical_paths": null,
           "context_source": "",
+          "tag_dates": [],
+          "exposure_tag_since": null,
+          "first_seen": null,
           "public_dns": []
         }
       ],
@@ -1022,128 +1260,15 @@
           "epss_now": 0.00391,
           "epss_at_created": 0.00035,
           "source": "snapshot:2026-11-02",
-          "epss_then_source": null
+          "epss_then_source": null,
+          "exploits": [],
+          "exploit_feeds": [],
+          "exploit_source": "",
+          "exploit_first_published": null
         }
       ],
-      "notes": []
-    },
-    {
-      "exception": {
-        "source": "tenable-vm",
-        "rule_id": "R-EXPIRED-006",
-        "rule_type": "accept",
-        "cves": [
-          "CVE-2025-30204"
-        ],
-        "plugin_ids": [],
-        "targets": [
-          "hr-app-03"
-        ],
-        "original_severity": "HIGH",
-        "new_severity": null,
-        "owner": "secops-lead@example.com",
-        "created": "2026-01-15",
-        "updated": "2026-01-15",
-        "expires": "2026-06-30",
-        "justification": "Temporary",
-        "status": "enabled",
-        "revised_findings": 1,
-        "raw": {
-          "rule_id": "R-EXPIRED-006",
-          "rule_name": "Accept - CVE-2025-30204 - hr-app-03",
-          "container_id": "00000000-0000-4000-8000-000000000900",
-          "created_by": "00000000-0000-4000-8000-000000000800",
-          "updated_by": "00000000-0000-4000-8000-000000000800",
-          "created_at": "2026-01-15T09:00:00.000Z",
-          "updated_at": "2026-01-15T09:00:00.000Z",
-          "last_processed_at": "2026-11-01T06:00:00.000Z",
-          "resource_type": "HOST",
-          "filter": {
-            "and": [
-              {
-                "property": "definition.cve",
-                "operator": "eq",
-                "value": [
-                  "CVE-2025-30204"
-                ]
-              },
-              {
-                "property": "asset.name",
-                "operator": "eq",
-                "value": [
-                  "hr-app-03"
-                ]
-              }
-            ]
-          },
-          "rule_value": {
-            "action": "ACCEPT",
-            "comment": "Temporary",
-            "false_positive": false,
-            "original_severity": "HIGH"
-          },
-          "disabled_details": {
-            "disabled": false
-          },
-          "x_owner": "secops-lead@example.com",
-          "x_revised_findings": 1,
-          "expires_at": "2026-06-30T09:00:00.000Z"
-        },
-        "revised_findings_capped": false
-      },
-      "grade": "REVIEW",
-      "triggers": [
-        {
-          "code": "EXPIRED_STILL_ENABLED",
-          "grade": "REVIEW",
-          "then": null,
-          "now": "expired 2026-06-30, still enabled",
-          "source": "rule metadata"
-        }
-      ],
-      "assets": [
-        {
-          "id": "00000000-0000-4000-8000-000000000006",
-          "name": "hr-app-03",
-          "os": "Linux Debian 12",
-          "ips": [
-            "192.0.2.43"
-          ],
-          "fqdns": [
-            "hr-app-03.example.com"
-          ],
-          "tags": [
-            "App:HR"
-          ],
-          "internet_facing": false,
-          "exposure_since": null,
-          "critical": null,
-          "on_attack_path": null,
-          "public_ips": [],
-          "origin": "hosts",
-          "exposure_reason": "",
-          "tenable_public": null,
-          "acr": null,
-          "aes": null,
-          "attack_paths": null,
-          "critical_paths": null,
-          "context_source": "",
-          "public_dns": []
-        }
-      ],
-      "intel": [
-        {
-          "cve": "CVE-2025-30204",
-          "in_kev": false,
-          "kev_date_added": null,
-          "kev_ransomware": false,
-          "epss_now": 0.00811,
-          "epss_at_created": 0.00102,
-          "source": "snapshot:2026-11-02",
-          "epss_then_source": null
-        }
-      ],
-      "notes": []
+      "notes": [],
+      "review_tier": "housekeeping"
     },
     {
       "exception": {
@@ -1238,6 +1363,9 @@
           "attack_paths": null,
           "critical_paths": null,
           "context_source": "",
+          "tag_dates": [],
+          "exposure_tag_since": null,
+          "first_seen": null,
           "public_dns": []
         }
       ],
@@ -1250,12 +1378,17 @@
           "epss_now": 0.00811,
           "epss_at_created": 0.00723,
           "source": "snapshot:2026-11-02",
-          "epss_then_source": null
+          "epss_then_source": null,
+          "exploits": [],
+          "exploit_feeds": [],
+          "exploit_source": "",
+          "exploit_first_published": null
         }
       ],
       "notes": [
         "recast raises severity, so it hides nothing"
-      ]
+      ],
+      "review_tier": null
     },
     {
       "exception": {
@@ -1350,6 +1483,9 @@
           "attack_paths": null,
           "critical_paths": null,
           "context_source": "",
+          "tag_dates": [],
+          "exposure_tag_since": null,
+          "first_seen": null,
           "public_dns": []
         }
       ],
@@ -1362,10 +1498,15 @@
           "epss_now": 0.00811,
           "epss_at_created": 0.00693,
           "source": "snapshot:2026-11-02",
-          "epss_then_source": null
+          "epss_then_source": null,
+          "exploits": [],
+          "exploit_feeds": [],
+          "exploit_source": "",
+          "exploit_first_published": null
         }
       ],
-      "notes": []
+      "notes": [],
+      "review_tier": null
     },
     {
       "exception": {
@@ -1460,6 +1601,9 @@
           "attack_paths": null,
           "critical_paths": null,
           "context_source": "",
+          "tag_dates": [],
+          "exposure_tag_since": null,
+          "first_seen": null,
           "public_dns": []
         }
       ],
@@ -1472,10 +1616,15 @@
           "epss_now": 0.00986,
           "epss_at_created": 0.01007,
           "source": "snapshot:2026-11-02",
-          "epss_then_source": null
+          "epss_then_source": null,
+          "exploits": [],
+          "exploit_feeds": [],
+          "exploit_source": "",
+          "exploit_first_published": null
         }
       ],
-      "notes": []
+      "notes": [],
+      "review_tier": null
     },
     {
       "exception": {
@@ -1523,12 +1672,17 @@
           "epss_now": 0.00792,
           "epss_at_created": 0.00792,
           "source": "snapshot:2026-11-02",
-          "epss_then_source": null
+          "epss_then_source": null,
+          "exploits": [],
+          "exploit_feeds": [],
+          "exploit_source": "",
+          "exploit_first_published": null
         }
       ],
       "notes": [
         "ASSET_UNKNOWN"
-      ]
+      ],
+      "review_tier": null
     }
   ]
 }

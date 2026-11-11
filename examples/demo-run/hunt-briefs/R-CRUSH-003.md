@@ -19,6 +19,7 @@ finding stayed hidden from the vulnerability queue.
 | KEV | already in KEV when accepted | in KEV since 2025-04-07, ransomware use | CISA KEV (snapshot:2026-11-02) |
 | EPSS_HIGH | 0.87967 | 0.99969 | FIRST EPSS (snapshot:2026-11-02) |
 | EPSS_ROSE | 0.87967 | 0.99969 | FIRST EPSS (snapshot:2026-11-02) |
+| EXPLOIT_PUBLIC | — | public exploit: Exploit-DB 52295 (published 2025-05-18), Nuclei template http/cves/2025/CVE-2025-31161.yaml | Exploit-DB, Nuclei (snapshot:2026-11-11) |
 | ATTACK_PATH | — | critical asset | asset inventory: ftp-01 |
 
 ## Look-back window

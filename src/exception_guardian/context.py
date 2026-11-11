@@ -88,7 +88,8 @@ def enrich_context(assets: list[Asset], exceptions, client, critical_acr: float,
             hit = next((t for t in extra if tag_key(t) in facing), None)
             if hit and not a.internet_facing:
                 k, _, v = hit.partition(":")
-                a = replace(a, internet_facing=True, exposure_reason=f"tag {k.strip()}:{v.strip()}")
+                a = replace(a, internet_facing=True, exposure_reason=f"tag {k.strip()}:{v.strip()}",
+                            exposure_tag_since=getattr(tags.get(a.id), "added", {}).get(hit))
         c = ctx.get(a.id)
         if not c:
             out.append(a)

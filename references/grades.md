@@ -12,15 +12,29 @@ Every trigger carries **then** (the state when the exception was accepted, blank
 | **REVIEW** | nothing proves it is dangerous yet, but the decision has gone stale or contradicts itself | the owner re-confirms or retires it |
 | **OK** | no trigger fired | nothing; it is graded again on the next run |
 
+### REVIEW comes in two tiers
+
+A large tenant grades most rules REVIEW (316 of 324 on the live run), so REVIEW is split by what fired:
+
+| Tier | Fires when | What it means |
+|---|---|---|
+| **now** | any of `JUSTIFICATION_CONTRADICTED`, `EXPLOIT_PUBLIC`, `EPSS_ROSE`, `PUBLIC_IP`, `PATH_CVE_ELSEWHERE`, `EXPIRED_STILL_ENABLED`, `NEW_ASSETS` (unless the rule is also `BLANKET`, where new assets are expected) | there is evidence the risk changed, or the rule outlived its own expiry: the owner looks at it first |
+| **housekeeping** | only `NO_EXPIRY`, `TOO_OLD`, `NO_JUSTIFICATION`, `BLANKET` | paperwork gaps: set an expiry, write the reason, narrow the scope |
+
+The tier is `review_tier` in `findings.json` (`null` for REVOKE and OK). `report.md` counts both tiers, labels each
+REVIEW heading, and lists the review work per owner. The tier is fixed by the trigger codes; it is never a judgment.
+
 ## Triggers
 
 | Code | Grade | Fires when | Then → now (as written) | Source |
 |---|---|---|---|---|
 | `KEV` | REVOKE | a CVE is in CISA KEV | "not in KEV" (added after acceptance) or "already in KEV when accepted" → "in KEV since <date>", plus ", ransomware use" if flagged | CISA KEV (live or snapshot:<date>) |
 | `EPSS_HIGH` | REVOKE | EPSS now ≥ `revoke_epss` (0.5) | EPSS at acceptance → EPSS now | FIRST EPSS |
-| `INTERNET_FACING` | REVOKE | a matched asset is marked internet-facing: one of `exposure.internet_tags` (none by default), an address in `exposure.internet_ranges`, or a name, FQDN or IP in `exposure.internet_hosts_file` | "internal" if every such asset became exposed after acceptance, else blank → "internet-facing" | the reason: `tag Zone:DMZ: <names>`, `internet range <cidr>: <names>`, `host list <file> (<source>): <names>` |
+| `INTERNET_FACING` | REVOKE | a matched asset is marked internet-facing: one of `exposure.internet_tags` (none by default), an address in `exposure.internet_ranges`, or a name, FQDN or IP in `exposure.internet_hosts_file` | "internal" if every such asset became exposed after acceptance; "not tagged internet-facing until <date>" if Tenable shows the exposure tag was added to every such asset after acceptance; else blank → "internet-facing" | the reason: `tag Zone:DMZ: <names>`, `internet range <cidr>: <names>`, `host list <file> (<source>): <names>` |
 | `ATTACK_PATH` | REVOKE | a matched asset is on a Tenable One attack path, or its ACR is at least `critical_acr` (9) | blank → "on 3 attack paths (1 critical), ACR 9 of 10" (live) or "on attack path" / "critical asset" (asset list flags) | `Tenable One inventory: <asset>` or `Tenable VM asset: <asset>` (live), `asset inventory: <asset>` |
 | `ATTACK_PATH_CVE` | REVOKE | a Tenable One attack path uses one of the exception's CVEs and reaches a covered asset, or crosses a network (CIDR node) a covered asset's IP is in | blank → "<CVE> is used in an attack path: a → 10.1.48.0/22 → b (priority 6.26), and host (10.1.48.38) is on 10.1.48.0/22" (or "…, and the path reaches host"); up to 3 paths, the rest counted in a note | `Tenable One attack paths: <path name>` |
+| `EXPLOIT_PUBLIC` | REVIEW | exploit code for a CVE is public: a Metasploit exploit module, an Exploit-DB entry or a Nuclei template (`exploit_feeds`) | "no Exploit-DB entry yet" when the earliest Exploit-DB entry is dated after acceptance, else blank → "public exploit: Metasploit module exploit/…, Exploit-DB 52295 (published 2025-05-18), Nuclei template http/cves/…" | the feeds that list it, e.g. `Exploit-DB, Nuclei (live)` or `(snapshot:<date>)` |
+| `NEW_ASSETS` | REVIEW | Tenable first saw a matched asset after the rule was created, so nobody accepted the risk for that host. Needs the asset's first-seen date: Tenable VM's host search (`first_observed`) and bulk export carry it, and Security Center's hosts list (`firstSeen`, joined to the host summary); a Security Center too old to have a hosts list gives none, and the run says so | "covered <n> assets", or "covered no asset Tenable had seen yet" (blank if any matched asset has no date) → "covers <n>: <m> first seen since (latest <date>)", plus ", <k> with no first-seen date" | Tenable first-seen date, naming the new assets |
 | `EPSS_ROSE` | REVIEW | EPSS rose by ≥ `review_epss_delta` (0.1) since acceptance | EPSS at acceptance → EPSS now | FIRST EPSS |
 | `PUBLIC_IP` | REVIEW | a matched asset has a public IP, or Tenable's `is_public` flag, but is not marked internet-facing (and no matched asset is) | blank → "has a public IP (<ips>), but it is not marked internet-facing" (past 3 IPs or names: "a, b, c and 17 more"), with "and Tenable marks it public" when the flag is set | asset inventory: <asset names> |
 | `PATH_CVE_ELSEWHERE` | REVIEW | a Tenable One attack path uses one of the CVEs, but touches none of the covered assets or their networks | blank → "<CVE> is used in <n> attack paths elsewhere, e.g. a → b (priority 7.2)" | `Tenable One attack paths: <path name>` |
@@ -58,6 +72,11 @@ The justification is read for two things only: the `internal_keywords` claim, an
 (`NO_JUSTIFICATION`). Nothing else in a justification can change a grade. A short real reason ("Lab", "Accepted by
 CAB") is not flagged: the grader cannot judge whether a reason is good, only whether one was given.
 
+Public exploit code is REVIEW, not REVOKE: it shows an attack is easy to run, not that anyone ran it (that is
+`KEV`). Only Exploit-DB dates its entries, so "then" is filled only from that date. A feed that cannot be read is a
+note in the report (`exploit feeds: …`), not a failed source, because it can only cost REVIEW evidence. The feeds are
+fetched once a day and kept in `intel_cache_dir`.
+
 ## Special cases
 
 - **Exclusions** (scan exclusions hide assets, not CVEs) are graded only on `INTERNET_FACING`, `PUBLIC_IP`,
@@ -70,7 +89,7 @@ CAB") is not flagged: the grader cannot judge whether a reason is good, only whe
 
 ## Order in the report
 
-REVOKE first, then REVIEW, then OK. Within a grade: the strongest single REVOKE reason first (`KEV`, then
+REVOKE first, then REVIEW, then OK. Within REVIEW: a contradicted justification first, then the most risk triggers (the "now" tier), then housekeeping. Within a grade: the strongest single REVOKE reason first (`KEV`, then
 `ATTACK_PATH_CVE`, `INTERNET_FACING`, `EPSS_HIGH`, `ATTACK_PATH`), then the most REVOKE triggers, then the oldest
 exception, then by rule id. So a CVE exploited in the wild leads a rule with several weaker reasons.
 

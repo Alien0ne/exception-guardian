@@ -1,0 +1,49 @@
+{
+ "_note": "Canned answers for the two checks the exposure command makes itself, so the test needs no network.",
+ "dns": {
+  "shop.example.net": [
+   "192.88.99.12"
+  ],
+  "www.example.net": [
+   "192.88.99.14"
+  ],
+  "api.example.net": [
+   "192.88.99.50"
+  ],
+  "intranet-db.example.net": [
+   "10.20.2.31"
+  ]
+ },
+ "internet_scan": {
+  "192.88.99.11": {
+   "ports": [
+    80,
+    443
+   ],
+   "last_update": "2026-10-28T04:10:00"
+  },
+  "192.88.99.12": {
+   "ports": [
+    443
+   ],
+   "last_update": "2026-10-20T11:00:00"
+  },
+  "192.88.99.13": {
+   "ports": [
+    443,
+    4433
+   ],
+   "last_update": "2026-10-30T08:00:00"
+  },
+  "192.88.99.15": {
+   "ports": [
+    21
+   ],
+   "last_update": "2026-05-01T08:00:00"
+  },
+  "192.88.99.16": {
+   "ports": [],
+   "last_update": "2026-10-29T08:00:00"
+  }
+ }
+}

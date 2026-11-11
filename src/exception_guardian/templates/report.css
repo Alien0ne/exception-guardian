@@ -89,6 +89,7 @@ code.trig { overflow-wrap: normal; }  /* breaks at the <wbr> after each undersco
 .stats > div + div { border-left: var(--rule-hair) solid var(--line); }
 .stats dt { color: var(--color-muted); white-space: nowrap; }
 .stats dd { margin: 0; color: var(--color-ink); font-size: 3.5rem; font-weight: 300; letter-spacing: -0.03em; font-variation-settings: "SHRP" 100; line-height: 1; font-variant-numeric: tabular-nums; }
+.stats dd.split { font-size: var(--text-xs); font-weight: 400; letter-spacing: 0; line-height: 1.4; color: var(--color-muted); font-variation-settings: normal; }
 .stats dd.revoke { color: var(--stat-revoke); }
 [data-theme="light"] .stats dd.revoke { justify-self: start; background: var(--color-accent); color: var(--color-accent-ink); border-radius: var(--radius-card); padding-inline: 0.12em; }
 
@@ -123,6 +124,7 @@ td.src, td.nowrap { white-space: nowrap; }
 .grade { display: inline-block; font-size: var(--text-xs); font-weight: 500; line-height: 1.2; padding: var(--space-2xs) var(--space-sm); border-radius: var(--radius-label); border: var(--rule-hair) solid var(--line); color: var(--color-ink-2); white-space: nowrap; }
 .grade.revoke { background: var(--grade-revoke); border-color: var(--grade-revoke); color: var(--grade-revoke-ink); }
 .grade.ok { color: var(--color-muted); }
+.grade.housekeeping { color: var(--color-muted); }
 
 /* accordion, as on their FAQ: bordered boxes stacked */
 .ledger .head { display: grid; grid-template-columns: 7rem minmax(0, 1.4fr) minmax(0, 1.2fr) minmax(0, 1.4fr) 5rem 28px; gap: var(--space-md); padding: 0 var(--space-lg) var(--space-sm); color: var(--color-muted); font-size: var(--text-sm); }

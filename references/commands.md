@@ -14,6 +14,7 @@ Grade every exception and write the report.
 | `--config <file>` | settings file (default `guardian.yaml`) |
 | `--out <dir>` | the run folder to create (required) |
 | `--today <YYYY-MM-DD>` | grade as of this date (default: today) |
+| `--save-intel <dir>` | also save the KEV, EPSS and exploit intel this online run fetched, for this run's CVEs, as a dated snapshot. Point `intel_snapshot_dir` at it and an offline run grades on that day's intel instead of the bundled sample |
 | `--offline` | no network: KEV and EPSS come from the dated snapshot in `intel_snapshot_dir`; sources that need the network are skipped and the run is marked partial |
 | `--previous <dir>` | an earlier run folder: also write `changes.md` / `changes.json` (what got worse since) |
 | `--exposure-claims <file>` | an `exposure-evidence.json` from the `exposure` command: grade with its verified claims (overrides `exposure.claims_file`) |
@@ -84,18 +85,51 @@ Write the approval plan; with `--apply`, disable confirmed Tenable VM rules.
 |---|---|
 | `--run <dir>` | a run folder (required) |
 | `--apply` | opt-in: disable each auto rule after a per-rule confirmation. Needs an interactive terminal; refuses otherwise |
-| `--base-url <url>` | Tenable VM API base URL for `--apply`, e.g. `https://cloud.tenable.com` |
+| `--undo` | opt-in: re-enable the rules this run's `--apply` disabled, after a per-rule confirmation. Same limits as `--apply` (a person's own terminal); cannot be combined with it |
+| `--base-url <url>` | Tenable VM API base URL for `--apply` and `--undo`, e.g. `https://cloud.tenable.com` |
 
 Writes: `approval-plan.md` (per REVOKE exception: mode auto or manual, how many findings disabling re-surfaces,
-and ready ticket text), `report.html`; with `--apply`, `applied-changes.log`.
+and ready ticket text), `sc-rule-backups.json` (only when a Security Center rule is graded REVOKE: a copy of each, because Security Center cannot disable a rule and a person has to delete it), `tickets.json` (the same ticket text as data, one entry per REVOKE rule and one per owner with REVIEW rules, for a script that files tickets; nothing here files one), `review-plan.md` (per owner: their REVIEW rules, "review now" first, and the action each trigger asks for; never applied), `report.html`; with `--apply`, `applied-changes.log`.
 
 Exit code with `--apply`: `2` when it refuses before changing anything (no `--base-url`, no interactive terminal,
 an agent's shell, a key that cannot change rules, or a partial run), `1` when a rule changed while you were
 confirming, or a disabled rule does not read back as disabled or cannot be read back (it stops there, and the log
 says what was done). Rules that changed since the run are skipped and logged.
 
+`--undo` reads this run's `applied-changes.log` and offers only rules whose latest entry is a disable. It skips a rule that is already enabled, one whose disabled reason is not the one `--apply` wrote (someone disabled it again since), and one whose filter, action, severity or expiry changed since the run. Each re-enable is read back and logged as `re-enabled (verified)`. Exit codes are the same as `--apply`.
+
 Keys: the CLI reads `TENABLE_*` keys from the environment, then from `.env` in the working directory, or from the
 file `EG_ENV_FILE` names.
+
+### `recheck`
+
+One scheduled pass, for cron or CI: grade into `<runs>/<today>`, compare with the newest earlier dated run in the
+same folder (`changes.md`), and write the approval and review plans. It only reads; nothing is ever applied.
+
+| Flag | Meaning |
+|---|---|
+| `--config <file>` | settings file (default `guardian.yaml`) |
+| `--runs <dir>` | the folder that holds one dated run folder (`YYYY-MM-DD`) per pass (required) |
+| `--today <YYYY-MM-DD>` | grade as of this day; default today |
+| `--offline` | no network: use the intel snapshot |
+
+Writes everything `find` and `approve` write. Exit code: as `find` (`3` on a partial run). See
+[`docs/scheduling.md`](../docs/scheduling.md) for a cron line and a GitHub Actions job.
+
+### `notify`
+
+Post a run's short summary to a chat webhook (Slack and Teams incoming webhooks both take it). The message holds
+counts, rule ids, CVE ids and trigger codes only; a justification or any other free text from the scanner is
+never sent.
+
+| Flag | Meaning |
+|---|---|
+| `--run <dir>` | a run folder (required) |
+| `--dry-run` | print the message and post nothing |
+
+The address comes only from `EG_WEBHOOK_URL` (environment or `.env`), must be `https://`, and is never printed.
+In an agent's shell only `--dry-run` works: a person or a scheduler posts. Exit code: `2` when it refuses, `1`
+when the webhook did not take the message.
 
 ### `html`
 
@@ -134,15 +168,17 @@ typo can never quietly fall back to a default.
 | Setting | Default | Effect |
 |---|---|---|
 | `sources` | | each source: `name` (`tenable-vm`, `tenable-sc` or `csv`), then `fixture_dir` (samples) or `base_url` / `host` (live); `csv` takes `path` (a `.csv` or `.json` export) and `map` (its column map, like `maps/other-scanner.yaml`) |
-| `assets` | | asset inventory: `fixture` (a JSON file) or `base_url` (live Tenable VM: hosts from `/assets`, which lists at most 5,000 licensed hosts seen in 90 days; any other host from the v3 host search, without tags; web apps from the v3 web app search). A live Tenable VM list is not used for Tenable SC rules; `for_sources: [tenable-vm, csv]` names the sources it covers. With `base_url`, Tenable One attack paths are read too; `attack_paths: <file>` reads them from a sample file instead |
+| `assets` | | asset inventory: `fixture` (a JSON file) or `base_url` (live Tenable VM: hosts from `/assets`, which lists at most 5,000 licensed hosts seen in 90 days; any other host from the v3 host search, without tags; web apps from the v3 web app search). A live Tenable VM list is not used for Tenable SC rules; `for_sources: [tenable-vm, csv]` names the sources it covers. With `base_url`, Tenable One attack paths are read too; `attack_paths: <file>` reads them from a sample file instead. Past the 5,000 cap the hosts come from the bulk asset export, with tags; `export: always` uses it on every run and `export: false` never does |
 | `revoke_epss` | 0.5 | EPSS at or above this is `EPSS_HIGH` (REVOKE) |
 | `review_epss_delta` | 0.1 | an EPSS rise of at least this since acceptance is `EPSS_ROSE` (REVIEW) |
 | `review_max_age_days` | 365 | older exceptions are `TOO_OLD` (REVIEW) |
 | `internal_keywords` | internal, not internet, … | words in a justification that claim the asset is internal |
-| `siem_targets` | splunk, sentinel, defender | which query languages `guard` writes |
+| `siem_targets` | splunk, sentinel, defender | which query languages `guard` writes; add `elastic` for a Lucene query on ECS field names (Elastic Security) |
 | `sample_logs_dir` | none (the demo config sets `samples/logs`) | labelled logs the rules are tested against; point it at your own |
 | `offline` | false | same as `--offline` |
 | `intel_snapshot_dir` | `samples/intel` | the dated KEV/EPSS snapshot used offline or when a fetch fails. An online run works without it |
+| `exploit_feeds` | `[metasploit, exploit-db, nuclei]` | the public exploit feeds read for `EXPLOIT_PUBLIC` (REVIEW). `[]` reads none. Each is fetched once a day and kept in `intel_cache_dir`; offline runs read `exploits.json` in `intel_snapshot_dir` |
+| `intel_cache_dir` | the user's cache folder (`~/.cache/exception-guardian`, or `$EG_CACHE_DIR`) | where EPSS scores on past acceptance dates are kept between runs (`epss-history.json`): they never change, so each is fetched once. Today's EPSS and KEV are always fetched live. `off` keeps nothing |
 | `max_context_lookups` | 1500 | Tenable One asset lookups per run (two requests each, 8 at a time); the report says when the cap was reached |
 | `critical_acr` | 9 | a covered asset whose Tenable ACR (1-10) is at least this is critical (`ATTACK_PATH`, REVOKE) |
 | `exposure.internet_tags` | none | your tag names that mark an asset internet-facing (REVOKE), e.g. `[Exposure:Internet]`. With none set and no range or host list, the report says INTERNET_FACING cannot fire |
@@ -154,4 +190,4 @@ typo can never quietly fall back to a default.
 
 Keys come only from environment variables, the git-ignored `.env`, or the file `EG_ENV_FILE` names: `TENABLE_ACCESS_KEY`,
 `TENABLE_SECRET_KEY` (VM); `TENABLE_SC_HOST`, `TENABLE_SC_ACCESS_KEY`, `TENABLE_SC_SECRET_KEY` (SC);
-`SHODAN_API_KEY` (optional, for the `exposure` command's internet-scan checks).
+`SHODAN_API_KEY` (optional, for the `exposure` command's internet-scan checks); `EG_WEBHOOK_URL` (optional, for `notify`).

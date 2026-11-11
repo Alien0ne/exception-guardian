@@ -16,8 +16,12 @@ from pathlib import Path
 from sigma.collection import SigmaCollection
 from sigma.conditions import (ConditionAND, ConditionFieldEqualsValueExpression, ConditionNOT, ConditionOR,
                               ConditionValueExpression)
-from sigma.types import (Placeholder, SigmaCasedString, SigmaCIDRExpression, SigmaNull, SigmaNumber,
-                         SigmaRegularExpression, SigmaRegularExpressionFlag, SigmaString, SpecialChars)
+from sigma.types import (CompareOperators, Placeholder, SigmaBool, SigmaCasedString, SigmaCIDRExpression,
+                         SigmaCompareExpression, SigmaExists, SigmaExpansion, SigmaFieldReference, SigmaNull,
+                         SigmaNumber, SigmaRegularExpression, SigmaRegularExpressionFlag, SigmaString, SpecialChars)
+
+_COMPARE = {CompareOperators.LT: lambda a, b: a < b, CompareOperators.LTE: lambda a, b: a <= b,
+            CompareOperators.GT: lambda a, b: a > b, CompareOperators.GTE: lambda a, b: a >= b}
 
 _RE_FLAGS = {SigmaRegularExpressionFlag.IGNORECASE: re.IGNORECASE, SigmaRegularExpressionFlag.MULTILINE: re.MULTILINE,
              SigmaRegularExpressionFlag.DOTALL: re.DOTALL}
@@ -98,6 +102,8 @@ def nested_quantifier(src: str) -> bool:
 
 
 def _value_matches(value, actual, keyword: bool = False) -> bool:
+    if type(value).__name__ == "SigmaTimestampPart":  # |hour, |day...: a number subclass that must not be compared
+        raise Unsupported("a time part (|minute, |hour, |day, |week, |month, |year)")  # as a plain number
     if isinstance(value, SigmaNull):
         return actual is None
     if actual is None:
@@ -124,6 +130,15 @@ def _value_matches(value, actual, keyword: bool = False) -> bool:
             return re.search(src, str(actual), flags) is not None
         except re.error as exc:
             raise Unsupported(f"regular expression {exc}") from exc
+    if isinstance(value, SigmaCompareExpression):  # |lt, |lte, |gt, |gte: a field that is not a number never matches
+        try:
+            return _COMPARE[value.op](float(actual), float(value.number.number))
+        except (TypeError, ValueError):
+            return False
+    if isinstance(value, SigmaBool):  # JSON true/false, or the text a log exporter wrote for it
+        return str(actual).strip().lower() == ("true" if value.boolean else "false")
+    if isinstance(value, SigmaExpansion):  # |windash and the like: one value written several ways, any may match
+        return any(_value_matches(v, actual, keyword) for v in value.values)
     if isinstance(value, SigmaCIDRExpression):
         try:
             return ipaddress.ip_address(str(actual)) in value.network
@@ -140,6 +155,16 @@ def _eval(node, event: dict) -> bool:
     if isinstance(node, ConditionNOT):
         return not _eval(node.args[0], event)
     if isinstance(node, ConditionFieldEqualsValueExpression):
+        if isinstance(node.value, SigmaExists):  # the field is there at all, whatever it holds
+            return (node.field in event) == bool(node.value.exists)
+        if isinstance(node.value, SigmaFieldReference):  # two fields of the same event, compared without case
+            a, b = event.get(node.field), event.get(node.value.field)
+            if a is None or b is None:
+                return False
+            a, b = str(a).lower(), str(b).lower()
+            if node.value.starts_with and node.value.ends_with:
+                return b in a
+            return a.startswith(b) if node.value.starts_with else a.endswith(b) if node.value.ends_with else a == b
         return _value_matches(node.value, event.get(node.field))
     if isinstance(node, ConditionValueExpression):  # keyword: anywhere in the event's own fields
         return any(_value_matches(node.value, v, keyword=True) for k, v in event.items() if not k.startswith("_"))

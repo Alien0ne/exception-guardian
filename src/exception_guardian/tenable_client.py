@@ -28,6 +28,11 @@ def rule_fingerprint(rule: dict) -> str:
     return json.dumps({k: rule.get(k) for k in _FINGERPRINT}, sort_keys=True, default=str)
 
 
+class TagList(list):
+    """An asset's tags as key:value strings, with `added`: the day each was added, where Tenable says."""
+    added: dict
+
+
 class TenableVMClient:
     def __init__(self, base_url: str, access_key: str, secret_key: str,
                  sleep: Callable[[float], None] = time.sleep, timeout: float = 30):
@@ -128,6 +133,15 @@ class TenableVMClient:
         body["disabled_details"] = {"disabled": True, "disabled_reason": reason}
         return self._with_status(self._call("PUT", self._rule_path(rule_id), json=body))
 
+    def enable_rule(self, rule_id: str, expected: str | None = None) -> dict:
+        """Undo of disable_rule: the same rule content, with disabled_details.disabled false."""
+        current = self._call("GET", self._rule_path(rule_id))
+        if expected is not None and rule_fingerprint(current) != expected:
+            raise RuntimeError("the rule changed while you were confirming, so it was not re-enabled. Grade it again")
+        body = {k: current[k] for k in _PUT_FIELDS if current.get(k) is not None}
+        body["disabled_details"] = {"disabled": False}
+        return self._with_status(self._call("PUT", self._rule_path(rule_id), json=body))
+
     def plugin_cves(self, plugin_id: str) -> tuple[str, ...]:
         """CVEs of a plugin: GET /plugins/plugin/{id} (https://developer.tenable.com/reference/io-plugins-details).
         CVEs are read from every attribute value, so both repeated `cve` attributes and other layouts work."""
@@ -213,7 +227,11 @@ class TenableVMClient:
         (4 Nov 2026), so the Exposure:Internet tag is only seen here."""
         d = self._call("GET", "/assets/" + quote(str(asset_id), safe="")) or {}
         info = d.get("info", d)
-        return [f"{t['tag_key']}:{t['tag_value']}" for t in info.get("tags") or [] if t.get("tag_key")]
+        from .assets import tag_day
+        out = TagList(f"{t['tag_key']}:{t['tag_value']}" for t in info.get("tags") or [] if t.get("tag_key"))
+        out.added = {f"{t['tag_key']}:{t['tag_value']}": d for t in info.get("tags") or []
+                     if t.get("tag_key") and (d := tag_day(t.get("added_at")))}
+        return out
 
     def attack_paths(self, max_pages: int = 20) -> tuple[list[dict], bool] | None:
         """Tenable One top attack paths, every page (100 per page, the API's minimum). (paths, capped), or None when
@@ -252,6 +270,32 @@ class TenableVMClient:
 
     def list_assets(self) -> list[dict]:
         return self.list_assets_with_total()[0]
+
+    def export_assets(self, chunk_size: int = 1000, max_wait: float = 600, poll: float = 5) -> list[dict]:
+        """Every host with its tags, past the list's 5,000 cap: the bulk asset export (POST /assets/v2/export, then
+        GET status until FINISHED, then each chunk). It starts a read-only export job on the tenant and changes
+        nothing. Raises when the job fails or is not finished within max_wait seconds."""
+        import re
+        uuid = str(self._call("POST", "/assets/v2/export", json={"chunk_size": chunk_size}).get("export_uuid") or "")
+        if not re.fullmatch(r"[0-9A-Za-z-]{1,64}", uuid):
+            raise RuntimeError("the asset export did not return a usable export id")
+        waited = 0.0
+        while True:
+            st = self._call("GET", f"/assets/export/{uuid}/status")
+            status = str(st.get("status") or "")
+            if status == "FINISHED":
+                break
+            if status in ("ERROR", "CANCELLED"):
+                raise RuntimeError(f"the asset export ended as {status}")
+            if waited >= max_wait:
+                raise RuntimeError(f"the asset export was not finished after {int(max_wait)} s (status {status[:20]!r})")
+            self._sleep(poll)
+            waited += poll
+        out: list[dict] = []
+        for chunk in sorted(int(c) for c in st.get("chunks_available") or []):
+            rows = self._call("GET", f"/assets/export/{uuid}/chunks/{chunk}")
+            out += rows if isinstance(rows, list) else []
+        return out
 
     def list_hosts_v3(self, max_pages: int = 250) -> tuple[list[dict], bool]:
         """Every host with findings: POST /api/v3/assets/host/search, 200 per page, `next` in the body. It returns

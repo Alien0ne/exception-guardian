@@ -1,0 +1,55 @@
+{
+ "_note": "What is really true of each host. The tool never reads this file: the test scores its result against it.",
+ "hosts": [
+  {
+   "name": "edge-web-01",
+   "internet_facing": true,
+   "why": "public address with open web ports in a recent internet scan"
+  },
+  {
+   "name": "shop-app-01",
+   "internet_facing": true,
+   "why": "public DNS name and open ports in a recent internet scan"
+  },
+  {
+   "name": "vpn-gw-01",
+   "internet_facing": true,
+   "why": "VPN gateway, open ports in a recent internet scan"
+  },
+  {
+   "name": "nat-app-01",
+   "internet_facing": true,
+   "why": "private address published through a firewall NAT rule"
+  },
+  {
+   "name": "lb-api-01",
+   "internet_facing": true,
+   "why": "private address behind a public load balancer"
+  },
+  {
+   "name": "brochure-01",
+   "internet_facing": true,
+   "why": "public DNS name on its own address, but no internet scan record yet"
+  },
+  {
+   "name": "old-ftp-01",
+   "internet_facing": false,
+   "why": "public address last seen open six months ago: closed since"
+  },
+  {
+   "name": "egress-proxy-01",
+   "internet_facing": false,
+   "why": "public address used for outbound traffic only: no open ports"
+  },
+  {
+   "name": "db-internal-01",
+   "internet_facing": false,
+   "why": "internal database"
+  },
+  {
+   "name": "build-01",
+   "internet_facing": false,
+   "why": "internal build server"
+  }
+ ]
+}

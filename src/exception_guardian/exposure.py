@@ -71,6 +71,7 @@ def apply_exposure(assets: list[Asset], ex: ExposureConfig) -> tuple[list[Asset]
     out = []
     for a in assets:
         why = next((f"tag {t}" for t in a.tags if tag_key(t) in tags), "")
+        since = next((d for t, d in a.tag_dates if tag_key(t) in tags), None) if why else None
         if not why:
             why = next((f"internet range {r}" for r, n in nets for ip in _ips(a) if ip in n), "")
         if not why and hosts:
@@ -81,7 +82,7 @@ def apply_exposure(assets: list[Asset], ex: ExposureConfig) -> tuple[list[Asset]
                     break
         if not why and a.id in seen_open:
             why = seen_open[a.id]
-        out.append(replace(a, internet_facing=bool(why), exposure_reason=why,
+        out.append(replace(a, internet_facing=bool(why), exposure_reason=why, exposure_tag_since=since,
                            public_dns=tuple(dns.get(a.id, ())) or a.public_dns))
     if assets and not any(a.internet_facing for a in out):
         notes.append(NO_EXPOSURE_NOTE)

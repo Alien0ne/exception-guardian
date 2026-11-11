@@ -6,7 +6,8 @@ from pathlib import Path
 
 import yaml
 
-KNOWN_TARGETS = ("splunk", "sentinel", "defender")
+DEFAULT_TARGETS = ("splunk", "sentinel", "defender")
+KNOWN_TARGETS = DEFAULT_TARGETS + ("elastic",)  # elastic is written only when the config asks for it
 
 
 @dataclass(frozen=True)
@@ -34,9 +35,11 @@ class Config:
         "internal", "not internet", "no external", "isolated", "air-gapped", "intranet")
     sources: tuple[SourceConfig, ...] = ()
     assets: dict = field(default_factory=dict)
-    siem_targets: tuple[str, ...] = KNOWN_TARGETS
+    siem_targets: tuple[str, ...] = DEFAULT_TARGETS
     offline: bool = False
     intel_snapshot_dir: str = "samples/intel"
+    exploit_feeds: tuple[str, ...] = ("metasploit", "exploit-db", "nuclei")  # public exploit feeds read; () = none
+    intel_cache_dir: str = ""  # EPSS history kept between runs; "" = $EG_CACHE_DIR or the user's cache folder, "off" = none
     sample_logs_dir: str = ""  # your own sample logs; the demo config points at samples/logs
     exposure: ExposureConfig = ExposureConfig()
     max_context_lookups: int = 1500  # Tenable One assets looked up per run (8 at a time)
@@ -45,7 +48,8 @@ class Config:
 
 
 KNOWN_KEYS = ("revoke_epss", "review_epss_delta", "review_max_age_days", "internal_keywords", "sources", "assets",
-              "siem_targets", "offline", "intel_snapshot_dir", "sample_logs_dir", "max_context_lookups", "critical_acr",
+              "siem_targets", "offline", "intel_snapshot_dir", "intel_cache_dir", "exploit_feeds",
+              "sample_logs_dir", "max_context_lookups", "critical_acr",
               "exposure", "placeholders", "placeholders_file")
 
 
@@ -135,6 +139,14 @@ def load_config(path: str | Path) -> Config:
         kw["offline"] = bool(data["offline"])
     if "intel_snapshot_dir" in data:
         kw["intel_snapshot_dir"] = str(data["intel_snapshot_dir"])
+    if "exploit_feeds" in data:
+        feeds = _items(data["exploit_feeds"], "exploit_feeds")
+        unknown = [f for f in feeds if f not in ("metasploit", "exploit-db", "nuclei")]
+        if unknown:
+            raise ValueError(f"exploit_feeds: unknown feed {', '.join(unknown)} (known: metasploit, exploit-db, nuclei)")
+        kw["exploit_feeds"] = feeds
+    if data.get("intel_cache_dir") is not None:
+        kw["intel_cache_dir"] = "off" if data["intel_cache_dir"] is False else str(data["intel_cache_dir"])
     if "sample_logs_dir" in data:
         kw["sample_logs_dir"] = str(data["sample_logs_dir"])
     if "max_context_lookups" in data:

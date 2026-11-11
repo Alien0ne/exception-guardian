@@ -64,6 +64,9 @@ class Asset:
     attack_paths: int | None = None  # Tenable One attack path analysis: paths through this asset
     critical_paths: int | None = None
     context_source: str = ""  # where acr/aes/paths came from, cited in the report
+    tag_dates: tuple[tuple[str, date], ...] = ()  # (tag, the day Tenable says it was added to this asset)
+    exposure_tag_since: date | None = None  # the day the tag that marks it internet-facing was added
+    first_seen: date | None = None  # the day Tenable first saw the asset (not the day the host was built)
     public_dns: tuple[str, ...] = ()  # verified public DNS names (map-exposure): a hint, like a public IP
 
 
@@ -77,6 +80,10 @@ class CveIntel:
     epss_at_created: float | None
     source: str  # "live" | "snapshot:YYYY-MM-DD"
     epss_then_source: str | None = None  # set when only the value at acceptance came from the snapshot
+    exploits: tuple[str, ...] = ()  # public exploit code, as cited: "Exploit-DB 51000 (published 2025-03-01)"
+    exploit_feeds: tuple[str, ...] = ()  # the feeds that list it: Metasploit, Exploit-DB, Nuclei
+    exploit_source: str = ""  # "live" or "snapshot:<date>"
+    exploit_first_published: date | None = None  # earliest dated Exploit-DB entry, when there is one
 
 
 @dataclass(frozen=True)

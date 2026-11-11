@@ -52,10 +52,10 @@ def test_unsupported_construct_is_reported_not_guessed():
 id: 22222222-2222-4222-8222-222222222222
 logsource: {category: process_creation, product: linux}
 detection:
-    sel: {Image|fieldref: ParentImage}
+    sel: {UtcTime|hour: 3}
     condition: sel
 """
-    s = score_rule(rule, [_ev(Image="/bin/sh", ParentImage="/bin/sh", _label="benign")], ("CVE-2025-54068",))
+    s = score_rule(rule, [_ev(UtcTime="2026-01-01 03:00:00", _label="benign")], ("CVE-2025-54068",))
     assert s["tested"] is False and "unsupported" in s["reason"]
 
 

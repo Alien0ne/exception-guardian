@@ -11,7 +11,7 @@ from . import assets as _assets
 from .assets import load_assets
 from .exposure import apply_exposure
 from .config import Config
-from .grading import grade
+from .grading import REVIEW_RISK, grade, review_tier
 from .intel import build_intel
 from .models import Grade, GradedException
 from .readers import read_all
@@ -31,7 +31,7 @@ def _jsonable(o):
 
 
 def to_dict(g: GradedException) -> dict:
-    return _jsonable(asdict(g))
+    return {**_jsonable(asdict(g)), "review_tier": review_tier(g)}
 
 
 def load_findings(path: str | Path) -> list[dict]:
@@ -53,8 +53,9 @@ def _sort_key(g: GradedException):
     revokes = len({t.code for t in g.triggers if t.grade is Grade.REVOKE})
     best = min((_strength(t) for t in g.triggers if t.grade is Grade.REVOKE), default=9)
     codes = {t.code for t in g.triggers}
-    return (-g.grade.rank, best, -revokes, "JUSTIFICATION_CONTRADICTED" not in codes, g.exception.expires is not None,
-            g.exception.created, g.exception.rule_id)
+    risk = len(codes & set(REVIEW_RISK)) if g.grade is Grade.REVIEW else 0  # REVIEW: risk evidence before paperwork
+    return (-g.grade.rank, best, -revokes, "JUSTIFICATION_CONTRADICTED" not in codes, -risk,
+            g.exception.expires is not None, g.exception.created, g.exception.rule_id)
 
 
 _LOCAL_KEYS = ("fixture_dir", "path", "fixture")
@@ -82,7 +83,8 @@ def drop_stale_exposure_notes(warnings: list[str], *asset_lists) -> list[str]:
     return [w for w in warnings if w != NO_EXPOSURE_NOTE and not any(x in w for x in stale)]
 
 
-def run_find(cfg: Config, out_dir: Path, today: date, previous: Path | None = None) -> list[GradedException]:
+def run_find(cfg: Config, out_dir: Path, today: date, previous: Path | None = None,
+             save_intel: Path | None = None) -> list[GradedException]:
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     sources, warnings = cfg.sources, []
@@ -138,6 +140,20 @@ def run_find(cfg: Config, out_dir: Path, today: date, previous: Path | None = No
                 wanted[c].append(e.created)
     intel, intel_warn = build_intel(wanted, cfg)
     warnings += intel_warn
+    try:
+        from dataclasses import replace
+        from .exploits import load_exploits
+        raw_exploits: dict = {}
+        found, where, notes = load_exploits(sorted(wanted), cfg, today, raw=raw_exploits)
+        warnings += notes
+        intel = {k: replace(v, exploits=x["evidence"], exploit_feeds=x["feeds"], exploit_source=where,
+                            exploit_first_published=x["first_published"]) if (x := found.get(k[0])) else v
+                 for k, v in intel.items()}
+    except Exception as exc:  # exploit evidence is REVIEW only: losing it must not cost the run
+        warnings.append(f"exploit feeds: not read ({type(exc).__name__}: {str(exc)[:120]}), so EXPLOIT_PUBLIC cannot fire")
+    if save_intel is not None:
+        from .intel import write_snapshot
+        write_snapshot(intel, save_intel, today, exploits=locals().get("raw_exploits"))
     from .readers.tenable_sc import LAST_HOSTS, parse_hosts
     sc_assets = parse_hosts(LAST_HOSTS, cfg.critical_acr) if any(s.name == "tenable-sc" for s in sources) else []
     if sc_assets:

@@ -130,7 +130,8 @@ or JSON works through a column map ([ADAPTERS.md](ADAPTERS.md)).
 2. Copy `guardian.yaml`. For Tenable, set `base_url` or `host` and put read-only keys in `.env`. For another
    scanner, export its exceptions and copy `maps/other-scanner.yaml` to map your column names.
 3. Run `find` and read `report.md` or `report.html`. Then run `guard` and `approve` for the REVOKE rows.
-4. Tune the thresholds in your config to match your policy, and schedule `find --previous` weekly.
+4. Tune the thresholds in your config to match your policy, and schedule `recheck` weekly
+   ([docs/scheduling.md](docs/scheduling.md): cron, GitHub Actions, a chat notification).
 
 The grading, the KEV and EPSS checks, the detections and the report work with any scanner. The two Tenable readers
 and apply mode are Tenable-specific, and apply mode only disables Tenable VM rules.
@@ -264,6 +265,8 @@ Full details, and how the guardrails were tested: [docs/security.md](docs/securi
 | `rules/<rule id>/` | each Sigma rule (`.yml`) and its converted queries (`.<target>.txt`) |
 | `hunt-briefs/<rule id>.md` | the hypothesis, hosts, evidence, a "Known infrastructure" section naming the DCs its detections rely on (and where those values came from), the look-back window, the detections, and a starting prompt for SOC-Hunter |
 | `approval-plan.md` | for each REVOKE: automatic or manual, what disabling it brings back into view, and ticket text |
+| `review-plan.md` | for each owner: their REVIEW rules, the urgent ones first, and what to do about each |
+| `tickets.json` | the same tickets as data, for a script of yours that files them |
 | `applied-changes.log` | apply mode only: timestamp, rule, result, and who confirmed it |
 
 Every other file (findings.json, guard.json, the exposure and DC files, Claude's drafts and sample logs) is
@@ -299,15 +302,18 @@ built into the page.
 - **Drafted Sigma rules are drafts.** They are tested on synthetic sample logs only: a smoke test, not proof
   against real traffic. Review them, and point `sample_logs_dir` at your own logs.
 - **Some Sentinel queries need the Microsoft Defender XDR connector** (antivirus and image-load rules).
-- **The log tester covers the common Sigma subset.** Rules using anything else are reported as not tested.
+- **The log tester does not judge time parts or correlation rules.** Those are reported as not tested.
 - **A public IP is a hint, not proof.** Internet-facing (REVOKE) needs your own evidence; a public IP alone asks
   for a review.
-- **Very large tenants.** Past 5,000 assets, hosts come from a search with no tags, and the report says so.
-- **"Then" exposure needs history** (an exposure-since date on the asset); without one it is left blank.
+- **Very large tenants.** Past 5,000 assets, hosts come from the bulk asset export, with tags. If the export
+  fails, they come from a search with no tags, and the report says so.
+- **"Then" exposure comes from the date the exposure tag was added.** Exposure from a range or host list has no
+  date, so it is left blank.
 - **Some rules don't convert to every target** (Defender has no web server table).
-- **Other scanners** are supported through CSV or JSON export only. SC assets are not read, and apply mode
-  changes only Tenable VM rules.
-- **Offline runs** grade on the bundled KEV and EPSS snapshot dated 2026-11-02.
+- **Other scanners** are supported through CSV or JSON export only. Apply mode changes only Tenable VM
+  rules: Security Center cannot disable a rule, so the plan keeps a copy and a person deletes it.
+- **Offline runs** grade on a dated snapshot: the bundled sample (2026-11-02), or a fresh one saved with
+  `find --save-intel`.
 
 Every limitation in full, with what was and was not seen live: [docs/limitations.md](docs/limitations.md).
 

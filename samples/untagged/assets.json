@@ -1,0 +1,177 @@
+{
+ "_note": "Sample asset list for an estate with no tags at all. Addresses in 192.88.99.0/24 stand in for public addresses: it is the retired 6to4 relay range (RFC 7526), so no host owns them.",
+ "assets": [
+  {
+   "id": "00000000-0000-4000-8000-000000000201",
+   "hostname": [
+    "edge-web-01"
+   ],
+   "fqdn": [
+    "edge-web-01.corp.example.com"
+   ],
+   "ipv4": [
+    "10.20.0.11",
+    "192.88.99.11"
+   ],
+   "operating_system": [
+    "Linux Ubuntu 22.04"
+   ],
+   "tags": [],
+   "last_seen": "2026-11-01T06:00:00.000Z"
+  },
+  {
+   "id": "00000000-0000-4000-8000-000000000202",
+   "hostname": [
+    "shop-app-01"
+   ],
+   "fqdn": [
+    "shop-app-01.corp.example.com"
+   ],
+   "ipv4": [
+    "192.88.99.12"
+   ],
+   "operating_system": [
+    "Linux Ubuntu 22.04"
+   ],
+   "tags": [],
+   "last_seen": "2026-11-01T06:00:00.000Z"
+  },
+  {
+   "id": "00000000-0000-4000-8000-000000000203",
+   "hostname": [
+    "vpn-gw-01"
+   ],
+   "fqdn": [
+    "vpn-gw-01.corp.example.com"
+   ],
+   "ipv4": [
+    "192.88.99.13"
+   ],
+   "operating_system": [
+    "Linux Ubuntu 22.04"
+   ],
+   "tags": [],
+   "last_seen": "2026-11-01T06:00:00.000Z"
+  },
+  {
+   "id": "00000000-0000-4000-8000-000000000204",
+   "hostname": [
+    "nat-app-01"
+   ],
+   "fqdn": [
+    "nat-app-01.corp.example.com"
+   ],
+   "ipv4": [
+    "10.20.1.21"
+   ],
+   "operating_system": [
+    "Linux Ubuntu 22.04"
+   ],
+   "tags": [],
+   "last_seen": "2026-11-01T06:00:00.000Z"
+  },
+  {
+   "id": "00000000-0000-4000-8000-000000000205",
+   "hostname": [
+    "lb-api-01"
+   ],
+   "fqdn": [
+    "lb-api-01.corp.example.com"
+   ],
+   "ipv4": [
+    "10.20.1.22"
+   ],
+   "operating_system": [
+    "Linux Ubuntu 22.04"
+   ],
+   "tags": [],
+   "last_seen": "2026-11-01T06:00:00.000Z"
+  },
+  {
+   "id": "00000000-0000-4000-8000-000000000206",
+   "hostname": [
+    "brochure-01"
+   ],
+   "fqdn": [
+    "brochure-01.corp.example.com"
+   ],
+   "ipv4": [
+    "192.88.99.14"
+   ],
+   "operating_system": [
+    "Linux Ubuntu 22.04"
+   ],
+   "tags": [],
+   "last_seen": "2026-11-01T06:00:00.000Z"
+  },
+  {
+   "id": "00000000-0000-4000-8000-000000000207",
+   "hostname": [
+    "old-ftp-01"
+   ],
+   "fqdn": [
+    "old-ftp-01.corp.example.com"
+   ],
+   "ipv4": [
+    "192.88.99.15"
+   ],
+   "operating_system": [
+    "Linux Ubuntu 22.04"
+   ],
+   "tags": [],
+   "last_seen": "2026-11-01T06:00:00.000Z"
+  },
+  {
+   "id": "00000000-0000-4000-8000-000000000208",
+   "hostname": [
+    "egress-proxy-01"
+   ],
+   "fqdn": [
+    "egress-proxy-01.corp.example.com"
+   ],
+   "ipv4": [
+    "192.88.99.16"
+   ],
+   "operating_system": [
+    "Linux Ubuntu 22.04"
+   ],
+   "tags": [],
+   "last_seen": "2026-11-01T06:00:00.000Z"
+  },
+  {
+   "id": "00000000-0000-4000-8000-000000000209",
+   "hostname": [
+    "db-internal-01"
+   ],
+   "fqdn": [
+    "db-internal-01.corp.example.com"
+   ],
+   "ipv4": [
+    "10.20.2.31"
+   ],
+   "operating_system": [
+    "Linux Ubuntu 22.04"
+   ],
+   "tags": [],
+   "last_seen": "2026-11-01T06:00:00.000Z"
+  },
+  {
+   "id": "00000000-0000-4000-8000-000000000210",
+   "hostname": [
+    "build-01"
+   ],
+   "fqdn": [
+    "build-01.corp.example.com"
+   ],
+   "ipv4": [
+    "10.20.2.32"
+   ],
+   "operating_system": [
+    "Linux Ubuntu 22.04"
+   ],
+   "tags": [],
+   "last_seen": "2026-11-01T06:00:00.000Z"
+  }
+ ],
+ "total": 10
+}

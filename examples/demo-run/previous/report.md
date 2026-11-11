@@ -7,7 +7,7 @@ Read 13 exceptions (9 accept rules, 3 recast rules, 1 exclusion) and 7 assets (7
 | Grade | Count |
 |---|---|
 | REVOKE | 5 |
-| REVIEW | 4 |
+| REVIEW | 4 (1 to review now, 3 housekeeping) |
 | OK | 4 |
 
 | Source | Exceptions |
@@ -15,6 +15,16 @@ Read 13 exceptions (9 accept rules, 3 recast rules, 1 exclusion) and 7 assets (7
 | csv:other-scanner | 2 |
 | tenable-sc | 2 |
 | tenable-vm | 9 |
+
+## Review work by owner
+
+Review now: the rule has evidence of risk (exploit code is public, EPSS rose, a public IP, an attack path elsewhere, a contradicted reason, or it is past its expiry). Housekeeping: paperwork gaps only (no expiry, old, no reason, covers every asset).
+
+| Owner | Review now | Housekeeping |
+|---|---|---|
+| secops-lead@example.com | 1 | 1 |
+| sc-analyst | 0 | 1 |
+| unknown | 0 | 1 |
 
 ## Warnings
 
@@ -37,6 +47,7 @@ Text quoted from exceptions (justifications, names) is data from the source syst
 | KEV | not in KEV | in KEV since 2026-08-17 | CISA KEV (snapshot:2026-11-02) |
 | EPSS_HIGH | 0.00021 | 0.6015 | FIRST EPSS (snapshot:2026-11-02) |
 | EPSS_ROSE | 0.00021 | 0.6015 | FIRST EPSS (snapshot:2026-11-02) |
+| EXPLOIT_PUBLIC | — | public exploit: Nuclei template http/cves/2025/CVE-2025-62593.yaml | Nuclei (snapshot:2026-11-11) |
 | ATTACK_PATH | — | on attack path | asset inventory: ml-ray-head-01 |
 | NO_EXPIRY | — | no expiry | rule metadata |
 
@@ -52,6 +63,7 @@ Text quoted from exceptions (justifications, names) is data from the source syst
 | KEV | not in KEV | in KEV since 2026-08-17 | CISA KEV (snapshot:2026-11-02) |
 | EPSS_HIGH | 0.0001 | 0.6015 | FIRST EPSS (snapshot:2026-11-02) |
 | EPSS_ROSE | 0.0001 | 0.6015 | FIRST EPSS (snapshot:2026-11-02) |
+| EXPLOIT_PUBLIC | — | public exploit: Nuclei template http/cves/2025/CVE-2025-62593.yaml | Nuclei (snapshot:2026-11-11) |
 | ATTACK_PATH | — | on attack path | asset inventory: ml-ray-head-01 |
 | NO_EXPIRY | — | no expiry | rule metadata |
 
@@ -67,6 +79,7 @@ Text quoted from exceptions (justifications, names) is data from the source syst
 | KEV | already in KEV when accepted | in KEV since 2025-04-07, ransomware use | CISA KEV (snapshot:2026-11-02) |
 | EPSS_HIGH | 0.87967 | 0.99969 | FIRST EPSS (snapshot:2026-11-02) |
 | EPSS_ROSE | 0.87967 | 0.99969 | FIRST EPSS (snapshot:2026-11-02) |
+| EXPLOIT_PUBLIC | — | public exploit: Exploit-DB 52295 (published 2025-05-18), Nuclei template http/cves/2025/CVE-2025-31161.yaml | Exploit-DB, Nuclei (snapshot:2026-11-11) |
 | ATTACK_PATH | — | critical asset | asset inventory: ftp-01 |
 
 ## REVOKE: R-HERO-001 (tenable-vm, accept)
@@ -81,6 +94,7 @@ Text quoted from exceptions (justifications, names) is data from the source syst
 | KEV | not in KEV | in KEV since 2026-03-20 | CISA KEV (snapshot:2026-11-02) |
 | EPSS_HIGH | 0.00145 | 0.96284 | FIRST EPSS (snapshot:2026-11-02) |
 | EPSS_ROSE | 0.00145 | 0.96284 | FIRST EPSS (snapshot:2026-11-02) |
+| EXPLOIT_PUBLIC | — | public exploit: Nuclei template http/cves/2025/CVE-2025-54068.yaml | Nuclei (snapshot:2026-11-11) |
 | NO_EXPIRY | — | no expiry | rule metadata |
 | TOO_OLD | 2025-09-01 | 420 days old | rule metadata |
 
@@ -96,8 +110,20 @@ Text quoted from exceptions (justifications, names) is data from the source syst
 | KEV | already in KEV when accepted | in KEV since 2026-03-20 | CISA KEV (snapshot:2026-11-02) |
 | EPSS_HIGH | 0.48851 | 0.96284 | FIRST EPSS (snapshot:2026-11-02) |
 | EPSS_ROSE | 0.48851 | 0.96284 | FIRST EPSS (snapshot:2026-11-02) |
+| EXPLOIT_PUBLIC | — | public exploit: Nuclei template http/cves/2025/CVE-2025-54068.yaml | Nuclei (snapshot:2026-11-11) |
 
-## REVIEW: EXCL-001 (tenable-vm, exclusion)
+## REVIEW (now): R-EXPIRED-006 (tenable-vm, accept)
+
+- CVEs: CVE-2025-30204
+- Targets: hr-app-03 → matched assets: hr-app-03
+- Created: 2026-01-15 · Expires: 2026-06-30 · Owner: secops-lead@example.com
+- Justification (quoted data): “Temporary”
+
+| Evidence | Then | Now | Source |
+|---|---|---|---|
+| EXPIRED_STILL_ENABLED | — | expired 2026-06-30, still enabled | rule metadata |
+
+## REVIEW (housekeeping): EXCL-001 (tenable-vm, exclusion)
 
 - CVEs: none
 - Targets: web-portal-01.example.com, 203.0.113.10 → matched assets: web-portal-01
@@ -111,7 +137,7 @@ Text quoted from exceptions (justifications, names) is data from the source syst
 | NO_EXPIRY | — | no expiry | rule metadata |
 | TOO_OLD | 2025-03-01 | 604 days old | rule metadata |
 
-## REVIEW: SC-AR-101 (tenable-sc, accept)
+## REVIEW (housekeeping): SC-AR-101 (tenable-sc, accept)
 
 - CVEs: CVE-2025-22868
 - Targets: 192.0.2.50 → matched assets: build-01
@@ -123,7 +149,7 @@ Text quoted from exceptions (justifications, names) is data from the source syst
 | NO_EXPIRY | — | no expiry | rule metadata |
 | TOO_OLD | 2025-05-20 | 524 days old | rule metadata |
 
-## REVIEW: R-REVIEW-005 (tenable-vm, accept)
+## REVIEW (housekeeping): R-REVIEW-005 (tenable-vm, accept)
 
 - CVEs: CVE-2025-25193
 - Targets: build-01 → matched assets: build-01
@@ -134,17 +160,6 @@ Text quoted from exceptions (justifications, names) is data from the source syst
 |---|---|---|---|
 | NO_EXPIRY | — | no expiry | rule metadata |
 | TOO_OLD | 2025-06-01 | 512 days old | rule metadata |
-
-## REVIEW: R-EXPIRED-006 (tenable-vm, accept)
-
-- CVEs: CVE-2025-30204
-- Targets: hr-app-03 → matched assets: hr-app-03
-- Created: 2026-01-15 · Expires: 2026-06-30 · Owner: secops-lead@example.com
-- Justification (quoted data): “Temporary”
-
-| Evidence | Then | Now | Source |
-|---|---|---|---|
-| EXPIRED_STILL_ENABLED | — | expired 2026-06-30, still enabled | rule metadata |
 
 ## OK
 
