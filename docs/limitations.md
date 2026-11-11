@@ -37,7 +37,7 @@ Back to the [README](/README.md).
 - **Security Center rules are never changed by apply mode.** Security Center can delete a rule but not disable
   it, and a delete cannot be undone, so it stays a person's step: the plan says so and `sc-rule-backups.json`
   keeps a copy of each REVOKE rule to create it again from.
-- **`NEW_ASSETS` goes by the day Tenable first saw a host,** not the day the host was built. A long-running
+- **`NEW_ASSETS` goes by the day the scanner first saw a host,** not the day the host was built. A long-running
   server that was scanned for the first time last month reads as new. On a blanket rule new
   hosts are expected, so there it does not move the rule to "review now".
 - **Public exploit feeds are a signal, not proof of attack.** `EXPLOIT_PUBLIC` (REVIEW) means Metasploit,

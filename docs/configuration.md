@@ -26,7 +26,9 @@ You can tune these settings in the config:
 | `max_context_lookups` | 1500 | Tenable One asset lookups per run, two requests each. The report says when the cap was reached. Lookups run 8 at a time, and a long run prints its progress |
 | `placeholders` | none | your own values for SigmaHQ placeholders, e.g. `{DC-MACHINE-NAME: [DC01$, DC02$], dc_ip_addresses: [10.0.0.10]}`. If unset, a placeholder in a match accepts any value, and one in a filter gets the stand-in `SET_<name>`: the query still runs but excludes nothing, so it is noisy, and the brief says so. Each IPv4 DC address also matches its `::ffff:` form, as Kerberos events log it. `dcs --use` fills the ones you leave unset, for one run |
 | `placeholders_file` | none (live sample: `placeholders.local.yaml`) | the same map in a git-ignored file next to the config, so your DC names stay out of git; it wins over `placeholders` |
-| `offline`, `intel_snapshot_dir` | false, samples/intel | use the KEV and EPSS snapshot instead of fetching |
+| `offline`, `intel_snapshot_dir` | false, samples/intel | use the KEV, EPSS and exploit snapshot instead of fetching (`find --save-intel` writes a fresh one) |
+| `exploit_feeds` | metasploit, exploit-db, nuclei | the public exploit lists read for `EXPLOIT_PUBLIC` (REVIEW); `[]` reads none |
+| `assets` | none | the asset list rules are matched against: live Tenable VM (`base_url`), or any scanner's CSV or JSON asset export with a column map (`path` and `map`, see [ADAPTERS.md](/ADAPTERS.md)) |
 | `exposure.*` | none (demo: tag `Exposure:Internet`) | what counts as internet-facing: tags, ranges, a host list, verified claims ([grades.md](/references/grades.md)) |
 
 ## Trying apply mode without a tenant

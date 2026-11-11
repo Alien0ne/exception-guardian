@@ -14,9 +14,9 @@ re-checks every risk exception against today's data and tells you which ones no 
 
 1. **Find.** It reads every exception you have: Tenable Vulnerability Management accept and recast rules and scan
    exclusions, Tenable Security Center accepted and recast risks, or any other scanner's CSV or JSON export. Then
-   it grades each one **REVOKE**, **REVIEW** or **OK** against CISA KEV, FIRST EPSS, the asset's exposure and
-   Tenable One attack paths. Every reason comes with what was true *then*, what is true *now*, and where that
-   came from.
+   it grades each one **REVOKE**, **REVIEW** or **OK** against CISA KEV, FIRST EPSS, public exploit feeds, the
+   asset's exposure and Tenable One attack paths. The assets come from Tenable or from any scanner's asset
+   export. Every reason comes with what was true *then*, what is true *now*, and where that came from.
 2. **Exposure** (optional). If nothing in your data says which hosts face the internet, Claude can look for
    passive evidence, such as public DNS and an internet-scan service's existing records. The tool re-checks
    every claim before it counts, and a person approves the list.
@@ -44,7 +44,8 @@ answer. Claude runs the tool, explains what it found, drafts the missing detecti
 - **REVIEW** when the decision has gone stale or contradicts itself: the EPSS score rose by 0.1 or more, it never
   expires, it is over a year old, it expired but is still switched on, it gives no reason (or a reason the asset
   contradicts), it covers every asset, it covers a host with a public IP that nothing marks as internet-facing,
-  or one of its CVEs is on an attack path somewhere else.
+  one of its CVEs is on an attack path somewhere else, exploit code for one of its CVEs is public, or it now
+  covers hosts the scanner first saw after the risk was accepted.
 - **OK** when none of that applies. It is checked again on the next run.
 
 ## Does it work?
@@ -73,8 +74,8 @@ accept a risk tells you little about next year
 ([study and data](docs/evidence/kev-epss-study.md), re-run it with `scripts/kev_epss_study.py`).
 
 **Where it fits.** Most vulnerability tools rank findings. This one re-checks the decisions that *hide*
-findings: accepted risks, recast rules and scan exclusions. It brings Tenable VM, Tenable SC and any CSV export
-together, ranks the decisions by today's evidence, cites a source for every grade, and changes nothing without a
+findings: accepted risks, recast rules and scan exclusions. It brings Tenable VM, Tenable SC and any other
+scanner's exports together, ranks the decisions by today's evidence, cites a source for every grade, and changes nothing without a
 person.
 
 ## How it works
@@ -120,9 +121,11 @@ over checking by hand.
 ## Who it is for
 
 Vulnerability management and SOC teams that accept or recast findings, or exclude hosts from scans, and want each
-of those decisions re-checked when the threat or the asset changes. It is built for Tenable VM and Tenable
-Security Center, but the grading does not depend on the scanner: anything that can export its exceptions to CSV
-or JSON works through a column map ([ADAPTERS.md](ADAPTERS.md)).
+of those decisions re-checked when the threat or the asset changes. It reads Tenable VM and Tenable Security
+Center directly, but the grading does not depend on the scanner: anything that can export its exceptions and its
+assets to CSV or JSON works through two column maps ([ADAPTERS.md](ADAPTERS.md)). Rapid7 InsightVM has a
+ready-made kit (maps, export queries and a sample config in `samples/rapid7/`), and Microsoft Defender has a map
+for its device inventory export.
 
 **Try it on your own data in five minutes:**
 
@@ -235,8 +238,18 @@ Two optional steps sit between `find` and `guard`. The playbook offers them when
 .venv/bin/exception-guardian dcs      --run out/run1 --use   # after a person's yes: guard uses them for this run
 ```
 
-`find --today YYYY-MM-DD` grades as if it were another day, and `html --run out/run1` rebuilds the page on its
-own. Every command and option is in [`references/commands.md`](references/commands.md).
+To run it every week, `recheck` does the whole read-only pass in one command and `notify` posts the short result
+to a chat webhook ([docs/scheduling.md](docs/scheduling.md)):
+
+```bash
+.venv/bin/exception-guardian recheck --config my-guardian.yaml --runs out/     # grades into out/<today>, compares with the last run
+.venv/bin/exception-guardian notify  --run "out/$(date +%F)"                   # counts and rule ids only, to EG_WEBHOOK_URL
+```
+
+`approve --run out/run1 --undo` switches back on the rules that run's `--apply` disabled, one confirmation each.
+`find --save-intel <dir>` keeps the KEV, EPSS and exploit data an online run fetched, so a later offline run can
+grade on it. `find --today YYYY-MM-DD` grades as if it were another day, and `html --run out/run1` rebuilds the
+page on its own. Every command and option is in [`references/commands.md`](references/commands.md).
 
 Exit codes: 0 done, 2 a usage error or a refused `--apply`, 3 a PARTIAL RUN (a source could not be read). The
 thresholds (EPSS lines, age, critical ACR, SIEM targets, sample logs, DC placeholders, exposure) are set in the
@@ -244,10 +257,12 @@ config. Both, and the local mock API for trying apply mode, are in [docs/configu
 
 ## Safety
 
-- **Read-only by default.** Only `approve --apply` changes Tenable: Tenable VM rules only, in an interactive
-  terminal, after you confirm each rule. It only disables rules (never deletes), and reads each change back.
-- **Claude never applies.** A deny rule and a hook in `.claude/settings.json` block `approve --apply` from Claude,
-  and the CLI refuses it inside a Claude Code shell.
+- **Read-only by default.** Only `approve --apply` and `approve --undo` change Tenable: Tenable VM rules only, in
+  an interactive terminal, after you confirm each rule. Apply only disables rules (never deletes) and reads each
+  change back; undo switches back on only the rules that run disabled.
+- **Claude never applies.** A hook (`.claude/hooks/block_apply.py`) blocks `approve --apply` and `--undo` from
+  Claude, a deny rule in `.claude/settings.json` blocks `--apply` as well, and the CLI refuses both inside a
+  Claude Code shell.
 - **It fails loudly.** If a source cannot be read, the report says **PARTIAL RUN** and `find` exits 3.
 - **Outside text is data.** Justifications, names and CSV cells never change a grade, and reports escape them.
 - **Detection only.** Drafted rules and hunt briefs contain no exploit code or payloads.
@@ -281,10 +296,12 @@ Every outbound call the tool can make:
 | Destination | When | What is sent |
 |---|---|---|
 | Your Tenable VM tenant | live `find`, `dcs` | your API keys, and read-only calls: rules, exclusions, assets, web apps, plugin details, finding counts, Tenable One exposure scores and attack paths |
-| Your Tenable VM tenant | `approve --apply` | only the disable requests you confirmed |
-| Your Tenable SC host | live `find` with an SC source | your API keys, and reads of accept and recast risk rules and plugin details |
+| Your Tenable VM tenant | `approve --apply`, `approve --undo` | only the disable or re-enable requests you confirmed |
+| Your Tenable SC host | live `find` with an SC source | your API keys, and reads of accept and recast risk rules, plugin details, and hosts with their first-seen dates |
 | [CISA KEV feed](https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json) | `find` without `--offline` | nothing (a plain download) |
 | [FIRST EPSS API](https://api.first.org/data/v1/epss) | `find` without `--offline` | the CVE IDs in your exceptions, and their acceptance dates |
+| Metasploit and Nuclei on GitHub, Exploit-DB on GitLab | `find` without `--offline`, once a day (`exploit_feeds: []` turns it off) | nothing (plain downloads of the public exploit lists) |
+| Your chat webhook (`EG_WEBHOOK_URL`) | `notify` | the run's counts and rule ids. No host names, addresses or justifications |
 | Your DNS resolver | `exposure` | the DNS names in Claude's claims |
 | [Shodan API](https://api.shodan.io) | `exposure`, only if `SHODAN_API_KEY` is set | the public IPs in Claude's claims, and your Shodan key |
 | SigmaHQ on GitHub | only when you rebuild the rule index by hand | nothing (a git clone) |
@@ -312,8 +329,10 @@ built into the page.
 - **"Then" exposure comes from the date the exposure tag was added.** Exposure from a range or host list has no
   date, so it is left blank.
 - **Some rules don't convert to every target** (Defender has no web server table).
-- **Other scanners** are supported through CSV or JSON export only. Apply mode changes only Tenable VM
-  rules: Security Center cannot disable a rule, so the plan keeps a copy and a person deletes it.
+- **Other scanners** are supported through CSV or JSON exports of their exceptions and assets. The Rapid7 kit
+  was written from Rapid7's published data model and has not been run against a live console. Apply mode changes
+  only Tenable VM rules: Security Center cannot disable a rule, so the plan keeps a copy and a person deletes it.
+- **"New hosts" goes by the day the scanner first saw a host,** not the day it was built.
 - **Offline runs** grade on a dated snapshot: the bundled sample (2026-11-02), or a fresh one saved with
   `find --save-intel`.
 
@@ -327,7 +346,11 @@ its skills, the slash commands and hooks, the sample data, the drafted rules and
 **Team wh0-Kn0w5** (SWARM Global 2026): Narasimha Tiruveedula ([@Alien0ne](https://github.com/Alien0ne)) and
 Ilakkiya Vijayakumar ([@ilakkiya-v](https://github.com/ilakkiya-v)).
 
-**Reused:** the libraries and SigmaHQ rules listed under Credits, and the public KEV and EPSS data.
+**Added since the event:** the public-exploit and new-host triggers, the weekly `recheck` and `notify`, undo for
+apply mode, saved intel snapshots, the review plan and tickets, and assets from any scanner with the Rapid7 and
+Defender kits.
+
+**Reused:** the libraries and SigmaHQ rules listed under Credits, and the public KEV, EPSS and exploit data.
 
 ## Credits
 
@@ -339,6 +362,7 @@ Ilakkiya Vijayakumar ([@ilakkiya-v](https://github.com/ilakkiya-v)).
 | [SigmaHQ rules](https://github.com/SigmaHQ/sigma) | [DRL 1.1](https://github.com/SigmaHQ/Detection-Rule-License) | 281 rules bundled unchanged with their authors kept: the 279 the CVE index points at, plus 2 generic behaviour rules; see `src/exception_guardian/data/sigmahq/NOTICE.md`. The CVE index records titles, authors and links at a pinned commit |
 | [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) | public | exploitation status |
 | [FIRST EPSS](https://www.first.org/epss/) | public | exploit prediction scores |
+| [Metasploit Framework](https://github.com/rapid7/metasploit-framework) module list, [Exploit-DB](https://gitlab.com/exploit-database/exploitdb) index, [Nuclei templates](https://github.com/projectdiscovery/nuclei-templates) CVE list | public | which CVEs have public exploit code (read as lists; no exploit code is downloaded or bundled) |
 | [Geologica](https://fonts.google.com/specimen/Geologica) | SIL OFL 1.1 | typeface of `report.html`, Latin subset bundled inside each page (licence in `src/exception_guardian/templates/geologica-OFL.txt`) |
 | [ElevenLabs](https://elevenlabs.io) | paid plan (Creator), commercial use | the two narrations of the workflow film (voices Eric and Alice, `eleven_multilingual_v2`), its sound effects and its music |
 
