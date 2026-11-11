@@ -33,7 +33,7 @@ Back to the [README](/README.md).
 - **Some rules don't convert to every target.** Microsoft Defender has no web server log table, so web server rules
   are reported as `unsupported` there. Sentinel's ASIM web schema does not map IIS-style fields either. The
   `process_creation` rules convert to all three targets.
-- **Qualys, Rapid7 and other scanners are supported through CSV or JSON export only.**
+- **Qualys, Rapid7 and other scanners are supported through CSV or JSON export only**: an exception export and an asset export, each with a column map. Rapid7 InsightVM has a ready-made kit (maps, export queries, samples), written from its published data model and not run against a live console. Microsoft Defender has an asset map only, because its exceptions cannot be exported. Apply mode changes Tenable VM rules only.
 - **Security Center rules are never changed by apply mode.** Security Center can delete a rule but not disable
   it, and a delete cannot be undone, so it stays a person's step: the plan says so and `sc-rule-backups.json`
   keeps a copy of each REVOKE rule to create it again from.

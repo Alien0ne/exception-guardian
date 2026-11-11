@@ -1,0 +1,29 @@
+# Column map for Rapid7 InsightVM / Nexpose vulnerability exceptions.
+# Export: in the console, create a report with the "SQL Query Export" template, paste
+# maps/rapid7-insightvm-exceptions.sql, and save the CSV. The query was written from Rapid7's published reporting
+# data model and has not been run against a console: if the export fails or a column is missing, the reader names it.
+columns:
+  rule_id: "exception_id"
+  cve: "cve"
+  target: "target"
+  created: "submitted_date"
+  expires: "expiration_date"
+  justification: "justification"
+  owner: "owner"
+  status: "status"
+  type: "reason"
+date_format: "%Y-%m-%d"
+# Rapid7's reasons are all a decision to stop counting the finding, so each is read as an accepted risk.
+type_values:
+  "Acceptable Risk": accept
+  "Acceptable use": accept
+  "Compensating Control": accept
+  "False positive": accept
+  "Other": accept
+# Rapid7 applies an exception only while it is Approved.
+status_values:
+  "Approved": enabled
+  "Under Review": disabled
+  "Rejected": disabled
+  "Recalled": disabled
+  "Expired": disabled

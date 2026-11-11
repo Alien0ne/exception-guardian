@@ -150,3 +150,50 @@ warning in the report, with its file line number. A row is skipped when:
 - it has an unknown type;
 - it has no CVE (unless it is an exclusion);
 - its created date is missing or bad.
+
+## Assets from another scanner
+
+Exceptions alone get half the grading. Exposure (`INTERNET_FACING`, `PUBLIC_IP`), unknown hosts (`ASSET_UNKNOWN`),
+blanket scope and new hosts (`NEW_ASSETS`) need the asset list the rules refer to. Any asset export works with a
+column map, the same way:
+
+```yaml
+assets:
+  path: exports/assets.csv            # or a .json list of objects with the same keys
+  map: maps/my-scanner-assets.yaml
+```
+
+```yaml
+columns:                       # our field: "their column header". One of name, id or ips is required
+  id: "Asset ID"
+  name: "Host Name"
+  ips: "IP Addresses"          # several values in one cell are split on ; , or |
+  fqdns: "DNS Names"
+  os: "Operating System"
+  tags: "Labels"               # values already written as key:value
+  first_seen: "First Seen"     # the day the scanner first saw the asset (NEW_ASSETS)
+  internet_facing: "Internet Facing"   # yes / true / 1 marks the asset internet-facing
+  critical: "Business Critical"
+tag_columns:                   # a column of plain names becomes tags with this key: site:London
+  site: "Sites"
+date_format: "%Y-%m-%d"        # Python strptime format of first_seen
+list_separator: ";,|"          # the characters that separate several values in one cell
+true_values: [yes, "true", "1", y]
+```
+
+An exception target matches an asset by name, id, address, DNS name, address range, or `tag:<key>:<value>`. The
+config's `exposure` block (tags, ranges, a host list) works on these assets too, and wins over the
+`internet_facing` column when both mark an asset. A missing mapped column or an unknown map key stops the asset read
+with a message naming it. A row with no id, name or address is skipped with a warning, and a first-seen date that
+does not fit `date_format` is left empty with a warning.
+
+## Ready-made kits
+
+| Scanner | Exceptions | Assets | Run it |
+|---|---|---|---|
+| Rapid7 InsightVM / Nexpose | `maps/rapid7-insightvm.yaml` + export query `maps/rapid7-insightvm-exceptions.sql` | `maps/rapid7-insightvm-assets.yaml` + `maps/rapid7-insightvm-assets.sql` | `find --config samples/rapid7/guardian.yaml --out out/rapid7 --offline` |
+| Microsoft Defender | none: Defender exceptions exist only in the portal, with no API | `maps/defender-assets.yaml` (the device inventory export) | set `assets` to your export and `exposure.internet_tags: ["tag:internet-facing"]` |
+
+The Rapid7 queries run as a "SQL Query Export" report. They were written from Rapid7's published reporting data
+model and tested only against the sample files in `samples/rapid7/`, not against a live console. The Defender
+column names are the portal's documented names; check them against your export's header row.

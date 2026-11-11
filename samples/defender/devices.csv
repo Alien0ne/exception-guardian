@@ -1,0 +1,5 @@
+Name,IP,Domain,Device AAD id,OS platform,Criticality level,First seen,Last device update,Tags
+srv-web-01,192.88.99.31,corp.example.com,00000000-0000-4000-8000-000000000001,Linux,Very high,6/14/2026 9:05 AM,11/1/2026 3:45 PM,"internet-facing, Web"
+srv-db-01,10.40.0.12,corp.example.com,00000000-0000-4000-8000-000000000002,Windows,High,11/2/2024 10:30 AM,11/1/2026 3:45 PM,Database
+wks-hr-07,10.40.1.77,corp.example.com,00000000-0000-4000-8000-000000000003,Windows,None,1/15/2026 8:00 AM,10/30/2026 1:10 PM,HR
+wks-fin-02,10.40.1.52,corp.example.com,00000000-0000-4000-8000-000000000004,macOS,Low,3/3/2025 2:20 PM,10/31/2026 9:00 AM,

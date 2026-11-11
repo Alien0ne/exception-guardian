@@ -116,6 +116,9 @@ def load_assets(params: dict) -> list[Asset]:
     LAST_WARNINGS.clear()
     if "fixture" in params:
         return parse_assets(json.loads(Path(params["fixture"]).read_text())["assets"])
+    if "path" in params:  # any scanner's asset export, read through a column map
+        from .asset_file import read_asset_file
+        return read_asset_file(params, LAST_WARNINGS)
     if "base_url" in params:
         from .tenable_client import TenableVMClient
         client = TenableVMClient.from_env(params["base_url"])

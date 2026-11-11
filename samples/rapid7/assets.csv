@@ -1,0 +1,6 @@
+asset_id,host_name,ip_addresses,operating_system,sites,asset_groups,first_discovered
+1,web-01.example.com,10.20.0.11;192.88.99.21,Ubuntu Linux 24.04,London DC,Payments;Internet Facing,2026-06-14
+2,db-01.example.com,10.20.0.12,Microsoft Windows Server 2022,London DC,,2024-11-02
+3,pay-01.example.com,10.30.0.5,Red Hat Enterprise Linux 9,Paris Office,Payments,2025-09-30
+4,wks-01.example.com,10.30.0.40,Microsoft Windows 11,Paris Office,,2026-01-15
+5,lab-01.example.com,10.99.0.2,Debian Linux 12,Lab,,2025-05-20

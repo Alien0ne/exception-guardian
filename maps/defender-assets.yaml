@@ -1,0 +1,19 @@
+# Column map for a Microsoft Defender device inventory export (assets: {path, map} in the config).
+# Export: Defender portal > Assets > Devices > Export. Add the columns IP and First seen with "Customize columns"
+# first. The names below are the portal's documented column names; check them against your file's header row
+# (the reader names any column it cannot find).
+# Defender tags a device it finds reachable from the internet "internet-facing": set
+#   exposure: {internet_tags: ["tag:internet-facing"]}
+# in the config. Defender exceptions themselves cannot be exported by API (portal only), so the rules still come
+# from another source.
+columns:
+  id: "Device AAD id"
+  name: "Name"
+  ips: "IP"
+  os: "OS platform"
+  first_seen: "First seen"
+  critical: "Criticality level"
+tag_columns:
+  tag: "Tags"
+date_format: "%m/%d/%Y %I:%M %p"
+true_values: ["very high", "high"]

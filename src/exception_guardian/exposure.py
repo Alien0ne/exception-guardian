@@ -82,6 +82,8 @@ def apply_exposure(assets: list[Asset], ex: ExposureConfig) -> tuple[list[Asset]
                     break
         if not why and a.id in seen_open:
             why = seen_open[a.id]
+        if not why and a.internet_facing and a.origin == "asset-file":
+            why = a.exposure_reason  # the asset file's own internet-facing column
         out.append(replace(a, internet_facing=bool(why), exposure_reason=why, exposure_tag_since=since,
                            public_dns=tuple(dns.get(a.id, ())) or a.public_dns))
     if assets and not any(a.internet_facing for a in out):

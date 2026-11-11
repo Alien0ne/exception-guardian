@@ -1,0 +1,7 @@
+exception_id,cve,target,submitted_date,expiration_date,justification,owner,status,reason
+101,CVE-2025-21502,*,2025-02-10,,Acceptable Risk: Low priority across the estate,ciso@example.com,Approved,Acceptable Risk
+102,CVE-2025-27152,tag:site:London DC,2026-03-01,2027-03-01,Compensating Control: Internal only behind the WAF,netsec@example.com,Approved,Compensating Control
+103,CVE-2025-22868,tag:group:Payments,2026-08-01,2027-02-01,Acceptable Risk: Patch planned for the next release,payments-lead@example.com,Approved,Acceptable Risk
+104,CVE-2025-62593,app-01.example.com,2026-01-20,2026-12-31,False positive: Library is present but not loaded,appsec@example.com,Approved,False positive
+105,CVE-2025-30204,tag:site:Paris Office,2026-10-20,,Acceptable Risk: Waiting for review,it-paris@example.com,Under Review,Acceptable Risk
+106,CVE-2025-25193,lab-01.example.com,2025-06-01,2026-06-01,Other: Lab host,lab@example.com,Expired,Other

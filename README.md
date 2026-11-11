@@ -128,7 +128,8 @@ or JSON works through a column map ([ADAPTERS.md](ADAPTERS.md)).
 
 1. Install it and run `exception-guardian demo` (below) to see the report on sample data.
 2. Copy `guardian.yaml`. For Tenable, set `base_url` or `host` and put read-only keys in `.env`. For another
-   scanner, export its exceptions and copy `maps/other-scanner.yaml` to map your column names.
+   scanner, export its exceptions and its assets and map your column names (`maps/other-scanner.yaml`; Rapid7
+   InsightVM has a ready kit, see [ADAPTERS.md](ADAPTERS.md)).
 3. Run `find` and read `report.md` or `report.html`. Then run `guard` and `approve` for the REVOKE rows.
 4. Tune the thresholds in your config to match your policy, and schedule `recheck` weekly
    ([docs/scheduling.md](docs/scheduling.md): cron, GitHub Actions, a chat notification).
@@ -214,7 +215,8 @@ Run commands from the repo folder, because the sample config uses paths relative
    - Point `assets` at `base_url` too.
    - Remove the sources you don't use.
    - For another scanner, export its exceptions to CSV or JSON and write a column map like
-     `maps/other-scanner.yaml` (see [ADAPTERS.md](ADAPTERS.md)).
+     `maps/other-scanner.yaml`, and point `assets` at its asset export with `path` and `map`
+     (see [ADAPTERS.md](ADAPTERS.md)).
 3. Run the three main steps:
 
 ```bash

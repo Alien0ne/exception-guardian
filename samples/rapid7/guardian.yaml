@@ -1,0 +1,12 @@
+# Exception Guardian on Rapid7 InsightVM exports only: no Tenable source. Run from the repo:
+#   exception-guardian find --config samples/rapid7/guardian.yaml --out out/rapid7 --offline
+sources:
+  - name: csv
+    path: samples/rapid7/exceptions.csv
+    map: maps/rapid7-insightvm.yaml
+assets:
+  path: samples/rapid7/assets.csv
+  map: maps/rapid7-insightvm-assets.yaml
+exposure:
+  internet_tags: ["group:Internet Facing"]   # your own asset group or site that holds exposed hosts
+intel_snapshot_dir: samples/intel

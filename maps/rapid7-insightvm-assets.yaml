@@ -1,0 +1,16 @@
+# Column map for a Rapid7 InsightVM / Nexpose asset export (assets: {path, map} in the config).
+# Export: a "SQL Query Export" report with maps/rapid7-insightvm-assets.sql. Sites and asset groups become the
+# tags site:<name> and group:<name>, which is what the exception export's targets name.
+# Rapid7 has no "internet-facing" field: name the group or site that holds your exposed hosts under
+# exposure.internet_tags in the config (see samples/rapid7/guardian.yaml).
+columns:
+  id: "asset_id"
+  name: "host_name"
+  ips: "ip_addresses"
+  os: "operating_system"
+  first_seen: "first_discovered"
+tag_columns:
+  site: "sites"
+  group: "asset_groups"
+date_format: "%Y-%m-%d"
+list_separator: ";"
